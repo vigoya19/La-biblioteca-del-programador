@@ -733,3 +733,7 @@ Los ejemplos son tests ejecutables que ademas documentan.
 - 
 Testea comportamiento, no implementacion. Manten los tests simples.
 En el siguiente capitulo exploraremos Generics en Go.
+
+---
+
+← [Capítulo anterior](09-paquetes-modulos.md) | [Inicio](README.md) | [Capítulo siguiente →](11-generics.md)

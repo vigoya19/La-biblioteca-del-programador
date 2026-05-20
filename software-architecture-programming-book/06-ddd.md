@@ -171,3 +171,7 @@ Técnica colaborativa para descubrir el dominio:
 ---
 
 > **Reflexión del capítulo**: DDD no es sobre tecnología, es sobre entender el negocio. El mejor código del mundo es inútil si resuelve el problema equivocado. Pasa tiempo con los que conocen el dominio.
+
+---
+
+← [Capítulo anterior](05-principios-diseno.md) | [Inicio](README.md) | [Capítulo siguiente →](07-hexagonal-clean.md)

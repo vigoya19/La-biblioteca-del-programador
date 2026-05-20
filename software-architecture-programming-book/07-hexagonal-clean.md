@@ -170,3 +170,7 @@ public class PedidoController {
 ---
 
 > **Reflexión del capítulo**: La arquitectura hexagonal y Clean Architecture no son varitas mágicas. Son disciplinas. El verdadero valor no está en el diagrama bonito, sino en la disciplina diaria de mantener las dependencias apuntando hacia adentro.
+
+---
+
+← [Capítulo anterior](06-ddd.md) | [Inicio](README.md) | [Capítulo siguiente →](08-estilos-arquitectonicos.md)

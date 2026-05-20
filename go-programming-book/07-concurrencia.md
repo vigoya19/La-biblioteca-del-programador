@@ -1308,3 +1308,7 @@ func main() {
 - Ejecuta siempre con `-race` para detectar data races.
 
 En el siguiente capitulo exploraremos el manejo de errores en profundidad.
+
+---
+
+← [Capítulo anterior](06-interfaces.md) | [Inicio](README.md) | [Capítulo siguiente →](08-manejo-de-errores.md)

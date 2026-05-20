@@ -580,3 +580,7 @@ turbo lint --filter=@mi-app/api  # Solo un paquete
 - Path aliases (`@/`) simplifican imports profundos. Configurar en tsconfig y testing.
 
 En el siguiente capitulo exploraremos el testing en Node.js y TypeScript.
+
+---
+
+← [Capítulo anterior](08-manejo-de-errores.md) | [Inicio](README.md) | [Capítulo siguiente →](10-testing.md)

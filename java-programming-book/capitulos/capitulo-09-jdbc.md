@@ -3519,3 +3519,7 @@ Nunca expongas mensajes de error SQL al usuario final. Contienen información so
 - **RowSet** (especialmente `CachedRowSet`) ofrece una alternativa a `ResultSet` con capacidades de desconexión, navegación libre y serialización.
 
 - En producción: **timeouts** en todas las capas, **retry** para deadlocks, **monitoreo** del pool, **validación de conexiones**, **SSL/TLS** obligatorio, y **nunca** credenciales en el código fuente.
+
+---
+
+← [Capítulo anterior](capitulo-08-streams-lambdas.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-10-buenas-practicas.md)

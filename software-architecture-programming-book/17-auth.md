@@ -912,3 +912,7 @@ JWT:
 ---
 
 > **Reflexión del capítulo**: La autenticación y autorización son el candado de tu castillo digital. Puedes tener los muros más gruesos, los fosos más profundos, los dragones más feroces... pero si la cerradura es débil, nada de eso importa. Un error de auth no es un bug. Es una brecha. Y las brechas salen en las noticias. Invierte el tiempo en entender auth a profundidad. Tus usuarios confían en ti sus datos. No los traiciones con un "if (user.role == 'ADMIN')" en 50 archivos.
+
+---
+
+← [Capítulo anterior](16-seguridad.md) | [Inicio](README.md) | [Capítulo siguiente →](18-escalabilidad.md)

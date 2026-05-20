@@ -166,3 +166,7 @@ Predecesor de microservicios. Servicios reutilizables comunicados vía Enterpris
 ---
 
 > **Reflexión del capítulo**: No existen decisiones arquitectónicas "correctas" en abstracto. Todas dependen del contexto. La madurez del arquitecto se mide por su capacidad de elegir el estilo adecuado para las restricciones reales, no por seguir tendencias.
+
+---
+
+← [Capítulo anterior](07-hexagonal-clean.md) | [Inicio](README.md) | [Capítulo siguiente →](09-patrones-comunicacion.md)

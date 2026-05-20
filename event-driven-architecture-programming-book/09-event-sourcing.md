@@ -572,3 +572,7 @@ class ReconstructorProyecciones {
 - Desventajas: complejidad, eventual consistency, versionado de schemas, volumen de almacenamiento.
 
 En el siguiente capítulo exploramos CQRS: separar lecturas de escrituras.
+
+---
+
+← [Capítulo anterior](08-domain-events-ddd.md) | [Inicio](README.md) | [Capítulo siguiente →](10-cqrs.md)

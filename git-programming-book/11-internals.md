@@ -1195,3 +1195,6 @@ git checkout main
 
 5. **Analizar la compresión de un repositorio:** Ejecuta `git count-objects -v` antes y después de `git gc --aggressive`. Documenta la diferencia en: número de objetos sueltos, número de packfiles, tamaño total del directorio `.git/`. Explica qué optimizaciones realizó `git gc`.
 
+---
+
+← [Capítulo anterior](10-hooks.md) | [Inicio](README.md) | [Capítulo siguiente →](12-conflictos.md)

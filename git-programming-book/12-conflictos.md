@@ -905,3 +905,7 @@ En este capítulo hemos cubierto en profundidad los conflictos de fusión en Git
 3. En la rama `main`, elimina `legacy.js` con `git rm`.
 4. Fusiona `feature` en `main` y resuelve el conflicto de tipo "modify/delete".
 5. Documenta qué comandos usaste para decidir entre conservar el archivo o aceptar la eliminación.
+
+---
+
+← [Capítulo anterior](11-internals.md) | [Inicio](README.md) | [Capítulo siguiente →](13-reescritura-historia.md)

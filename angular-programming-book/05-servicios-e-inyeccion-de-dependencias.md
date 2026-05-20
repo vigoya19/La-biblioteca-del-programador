@@ -316,3 +316,7 @@ export class ApiClientService {
 * Los **`InjectionToken`** permiten inyectar constantes, APIs externas y objetos de configuración de manera robusta, tipada y segura.
 
 En el próximo capítulo, aprenderemos a dominar la construcción de interfaces interactivas complejas construyendo y validando **Formularios Reactivos** de alto rendimiento en Angular moderno.
+
+---
+
+← [Capítulo anterior](04-signals.md) | [Inicio](README.md) | [Capítulo siguiente →](06-formularios-y-validaciones.md)

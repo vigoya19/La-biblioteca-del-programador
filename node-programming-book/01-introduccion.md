@@ -514,3 +514,7 @@ const primeraLetra = primerElemento(["a", "b"]); // string | undefined
 - El ecosistema npm es el mas grande del mundo con 2M+ paquetes disponibles.
 
 En el siguiente capitulo exploraremos la sintaxis y los tipos de TypeScript en detalle.
+
+---
+
+[Inicio](README.md) | [Capítulo siguiente →](02-sintaxis-y-tipos.md)

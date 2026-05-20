@@ -857,3 +857,7 @@ echo "Todos los submódulos verificados correctamente."
 4. **Vendorizar una dependencia con subtree:** Crea un proyecto `mi-app` y "vendoriza" una librería externa (puedes simularla con un repositorio público pequeño) usando `git subtree add --squash`. Realiza modificaciones locales en la librería y envíalas de vuelta al repositorio original con `git subtree push`.
 
 5. **Comparativa y decisión:** Investiga un proyecto open-source real que use submódulos (ej. `.vim` bundles, o themes de Hugo). Analiza el archivo `.gitmodules` y explica por qué los mantenedores eligieron submódulos en lugar de subtree o gestores de paquetes. Escribe un breve informe de 200 palabras justificando la decisión.
+
+---
+
+← [Capítulo anterior](08-tags.md) | [Inicio](README.md) | [Capítulo siguiente →](10-hooks.md)

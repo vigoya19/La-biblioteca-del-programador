@@ -970,3 +970,7 @@ console.log(`readFile: ${Number(end - start) / 1e6}ms`);
 - **SSE**: streaming unidireccional servidor->cliente sin WebSockets.
 
 En el siguiente capítulo exploraremos el desarrollo web y APIs REST en profundidad.
+
+---
+
+← [Capítulo anterior](14-arquitectura-hexagonal.md) | [Inicio](README.md) | [Capítulo siguiente →](16-desarrollo-web.md)

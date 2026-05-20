@@ -184,3 +184,7 @@ Para tus revisiones de código de producción, utiliza esta lista de verificaci�
 * Una **lista de verificación estricta de Code Review** unifica los estándares de calidad técnica del equipo, acelerando los pipelines de CI/CD para producción.
 
 En el próximo capítulo, consolidaremos de forma práctica todo el conocimiento adquirido en este libro construyendo paso a paso un **Proyecto Integrador de Alto Rendimiento**.
+
+---
+
+← [Capítulo anterior](13-testing-en-angular.md) | [Inicio](README.md) | [Capítulo siguiente →](15-ejercicios-practicos.md)

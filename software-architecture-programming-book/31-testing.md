@@ -344,3 +344,7 @@ Antes de aprobar un diseño, verifica:
 ---
 
 > **Reflexión del capítulo**: La testabilidad no es un accidente, es una decisión de diseño. Si un sistema es difícil de testear, es difícil de mantener, de cambiar y de confiar. El arquitecto que no diseña para el testing está diseñando para el fracaso. Los tests son la red de seguridad que permite a los equipos moverse rápido sin romper cosas. Invierte en ellos.
+
+---
+
+← [Capítulo anterior](30-documentacion.md) | [Inicio](README.md) | [Capítulo siguiente →](32-arquitectura-datos.md)

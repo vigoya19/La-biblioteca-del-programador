@@ -787,3 +787,7 @@ security:
 - Implementa graceful shutdown capturando SIGTERM y SIGINT.
 
 En el siguiente capítulo exploraremos los patrones de diseño aplicados a Node.js.
+
+---
+
+← [Capítulo anterior](11-generics.md) | [Inicio](README.md) | [Capítulo siguiente →](13-patrones-de-diseno.md)

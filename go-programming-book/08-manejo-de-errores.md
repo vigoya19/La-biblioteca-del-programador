@@ -864,3 +864,7 @@ if err != nil {
 - Los mensajes de error se escriben en minuscula, sin "error:" al inicio, y con contexto claro.
 
 En el siguiente capitulo exploraremos el sistema de paquetes y modulos de Go.
+
+---
+
+← [Capítulo anterior](07-concurrencia.md) | [Inicio](README.md) | [Capítulo siguiente →](09-paquetes-modulos.md)

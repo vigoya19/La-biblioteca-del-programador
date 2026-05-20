@@ -600,3 +600,7 @@ func (l ListaEnteros) Promedio() float64 {
 - **Structs**: tipos compuestos. Composicion via embedding, no herencia.
 - **Metodos**: funciones con receptor. Valor para lectura, puntero para modificacion.
 - **Tags**: metadatos en structs para JSON, DB, validacion, etc.
+
+---
+
+← [Capítulo anterior](04-funciones.md) | [Inicio](README.md) | [Capítulo siguiente →](06-interfaces.md)

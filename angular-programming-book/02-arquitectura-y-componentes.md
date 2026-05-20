@@ -356,3 +356,7 @@ Si un componente supera las 200 líneas en su archivo TypeScript o tiene demasia
 * El ciclo de vida define con claridad dónde inyectar dependencias (`constructor`), dónde consumir APIs externas de forma segura (`ngOnInit`) y dónde prevenir memory leaks de manera explícita (`ngOnDestroy`).
 
 En el próximo capítulo, exploraremos la potente sintaxis de las plantillas de Angular y dominaremos el nuevo **Control Flow sintáctico** (`@if`, `@for` y `@switch`) para modelar interfaces de usuario extremadamente dinámicas y de alto rendimiento.
+
+---
+
+← [Capítulo anterior](01-introduccion.md) | [Inicio](README.md) | [Capítulo siguiente →](03-templates-y-directivas.md)

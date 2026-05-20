@@ -1030,3 +1030,7 @@ git commit -S -m "Commit firmado con SSH"
 4. **Gestion de .gitignore**: Crea un proyecto simulado con archivos de varios tipos (`.js`, `.log`, `.env`, `.swp`, `.exe`, `.DS_Store`). Escribe un `.gitignore` que ignore todo excepto los `.js`. Verifica que funciona con `git check-ignore -v` y `git status`.
 
 5. **Comparacion de versiones**: En un repositorio con al menos 5 commits, usa `git diff` para: a) Ver los cambios en el working directory, b) Ver que se incluira en el proximo commit, c) Comparar HEAD con hace 3 commits, d) Ver solo los nombres de archivos cambiados entre los 2 ultimos commits. Explica la diferencia entre `git diff`, `git diff --staged` y `git diff HEAD`.
+
+---
+
+← [Capítulo anterior](01-introduccion.md) | [Inicio](README.md) | [Capítulo siguiente →](03-ramas.md)

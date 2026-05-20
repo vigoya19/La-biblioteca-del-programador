@@ -822,3 +822,7 @@ go work sync
 - Los workspaces facilitan el desarrollo multi-modulo local.
 
 En el siguiente capitulo exploraremos testing en Go.
+
+---
+
+← [Capítulo anterior](08-manejo-de-errores.md) | [Inicio](README.md) | [Capítulo siguiente →](10-testing.md)

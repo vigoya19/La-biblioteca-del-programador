@@ -447,3 +447,7 @@ func timeoutMiddleware(timeout time.Duration) func(http.Handler) http.Handler {
 ---
 
 > **Reflexión del capítulo**: Go te da todo lo necesario para construir servicios web en su biblioteca estándar. La madurez como arquitecto Go está en saber cuándo mantenerte en stdlib (la mayoría de los casos) y cuándo adoptar un framework como chi o Gin (cuando la productividad del equipo lo justifica). No adoptes un framework porque sí. Adóptalo porque resuelve un problema concreto que la stdlib no resuelve bien.
+
+---
+
+← [Capítulo anterior](18-grpc.md) | [Inicio](README.md) | [Capítulo siguiente →](20-observabilidad.md)

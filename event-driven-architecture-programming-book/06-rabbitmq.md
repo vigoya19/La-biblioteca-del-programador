@@ -519,3 +519,7 @@ disk_free_limit.absolute = 2GB
 - RabbitMQ brilla en enrutamiento flexible, baja latencia y ecosistema de plugins. Kafka domina en streaming de alto volumen. SQS en simplicidad serverless.
 
 En el siguiente capítulo exploramos NATS: mensajería ligera para edge, IoT y microservicios.
+
+---
+
+← [Capítulo anterior](05-aws-messaging.md) | [Inicio](README.md) | [Capítulo siguiente →](07-nats.md)

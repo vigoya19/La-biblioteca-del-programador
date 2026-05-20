@@ -3392,3 +3392,7 @@ public class ComparacionRendimiento {
 - **NIO.2** (`Path` + `Files`) es la API moderna para archivos: más segura, expresiva y potente que `java.io.File`.
 - `Files.walk()`, `Files.find()` y `FileVisitor` permiten recorrer directorios de forma eficiente.
 - `WatchService` proporciona monitoreo de cambios en tiempo real en el sistema de archivos.
+
+---
+
+← [Capítulo anterior](capitulo-05-excepciones.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-07-concurrencia.md)

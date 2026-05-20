@@ -746,3 +746,7 @@ func ejecutarMigracionesEmbebidas(databaseURL string) error {
 - Las migraciones pueden embeberse en el binario con `embed` y `iofs`.
 
 En el siguiente y ultimo capitulo encontraras ejercicios practicos para consolidar todo lo aprendido.
+
+---
+
+← [Capítulo anterior](15-temas-avanzados.md) | [Inicio](README.md) | [Capítulo siguiente →](17-ejercicios.md)

@@ -288,3 +288,7 @@ sasl.enabled.mechanisms: SCRAM-SHA-512
 - En produccion: `min.insync.replicas=2`, `unclean.leader.election=false`, monitoreo de lag.
 
 En el siguiente capitulo exploramos los servicios de mensajeria de AWS.
+
+---
+
+← [Capítulo anterior](03-topologias-patrones.md) | [Inicio](README.md) | [Capítulo siguiente →](05-aws-messaging.md)

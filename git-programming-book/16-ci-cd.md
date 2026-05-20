@@ -1352,3 +1352,7 @@ La integracion y entrega continua transforman Git de un simple VCS al nucleo de 
 5. **Docker + CI/CD**: Crea un workflow que construya una imagen Docker en cada tag semantico (`v*`), la publique en Docker Hub o GHCR, y despliegue un deployment de Kubernetes usando una estrategia rolling update.
 
 ---
+
+---
+
+← [Capítulo anterior](15-workflows.md) | [Inicio](README.md) | [Capítulo siguiente →](17-avanzado.md)

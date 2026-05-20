@@ -379,3 +379,7 @@ console.log(secuencia); // [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
 - `break` con labels permite salir de bucles anidados.
 
 En el siguiente capitulo exploraremos las funciones en profundidad.
+
+---
+
+← [Capítulo anterior](02-sintaxis-y-tipos.md) | [Inicio](README.md) | [Capítulo siguiente →](04-funciones.md)

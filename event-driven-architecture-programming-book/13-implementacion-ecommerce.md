@@ -730,3 +730,7 @@ iniciarSistema().catch(logger.error);
 - **CausationId** permite trazar qué evento causó qué respuesta (trazas distribuidas).
 
 En el siguiente capítulo abordamos la evolución de esquemas de eventos.
+
+---
+
+← [Capítulo anterior](12-eventual-consistency.md) | [Inicio](README.md) | [Capítulo siguiente →](14-schema-evolution.md)

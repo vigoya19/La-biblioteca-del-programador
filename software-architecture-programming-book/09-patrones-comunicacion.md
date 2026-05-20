@@ -177,3 +177,7 @@ Servicio A ──► Sidecar Proxy (Envoy) ──► Sidecar Proxy (Envoy) ─�
 ---
 
 > **Reflexión del capítulo**: La comunicación es el sistema nervioso de tu arquitectura. Cada milisegundo de latencia, cada fallo de red, cada timeout afecta la experiencia del usuario. Diseña la comunicación con la misma seriedad que el dominio.
+
+---
+
+← [Capítulo anterior](08-estilos-arquitectonicos.md) | [Inicio](README.md) | [Capítulo siguiente →](10-mensajeria-eventos.md)

@@ -293,3 +293,7 @@ eventBus.on("orden.confirmada", [
 - La regla practica: empieza con coreografia, migra a orquestacion cuando el flujo sea muy complejo para razonar distribuido.
 
 En el siguiente capitulo nos sumergimos en Apache Kafka en profundidad.
+
+---
+
+← [Capítulo anterior](02-eventos-comandos-mensajes.md) | [Inicio](README.md) | [Capítulo siguiente →](04-apache-kafka.md)

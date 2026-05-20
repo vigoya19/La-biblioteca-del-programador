@@ -996,3 +996,7 @@ git push origin --delete feature/pagina-acerca
 4. **Exploracion de ramas remotas**: Clona un repositorio publico que tenga varias ramas (o usa uno propio en GitHub). Investiga: a) Cuantas ramas remotas existen, b) Que ramas locales tienes, c) Cual es la diferencia entre `git branch -v` y `git branch -vv`, d) Simula `git fetch` y analiza `git status -sb`.
 
 5. **Comparacion merge vs squash vs rebase**: En un repositorio nuevo, crea una rama feature con 3 commits. Realiza 3 experimentos independientes (usa `git reset --hard` para volver al punto de partida): a) Merge con merge commit (`--no-ff`), b) Merge con squash, c) Rebase. Compara el `git log --graph --oneline --all` resultante de cada uno y explica las diferencias en el historial.
+
+---
+
+← [Capítulo anterior](02-fundamentos.md) | [Inicio](README.md) | [Capítulo siguiente →](04-remotos.md)

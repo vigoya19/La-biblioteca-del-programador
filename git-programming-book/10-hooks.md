@@ -1235,3 +1235,7 @@ jobs:
 4. **Instalar y configurar pre-commit framework:** En un proyecto existente (preferiblemente Python), instala `pre-commit`, crea un archivo `.pre-commit-config.yaml` con al menos 3 hooks (trailing-whitespace, black/flake8, y uno de tu elección), ejecuta `pre-commit run --all-files` y corrige los problemas encontrados.
 
 5. **Migrar de hooks nativos a Lefthook:** Copia los hooks de ejemplo del capítulo (pre-commit con linter, commit-msg con validación) a una configuración de Lefthook (`lefthook.yml`). Verifica que los hooks se ejecutan correctamente con `lefthook run pre-commit` y `lefthook run commit-msg`.
+
+---
+
+← [Capítulo anterior](09-submodulos.md) | [Inicio](README.md) | [Capítulo siguiente →](11-internals.md)

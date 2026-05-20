@@ -357,3 +357,7 @@ Sistema: API de Pedidos para E-commerce
 ---
 
 > **Reflexión del capítulo**: Los atributos de calidad son el porqué de la arquitectura. Sin ellos, eres un desarrollador senior, no un arquitecto. Cada vez que tomes una decisión técnica, pregúntate: "¿qué atributo de calidad estoy optimizando y cuál estoy sacrificando?" Si no puedes responder, no has entendido tu propia decisión. Los atributos de calidad son el verdadero corazón de la arquitectura. Un sistema que funciona pero es lento, inseguro e inmantenible es un sistema fallido. Define tus atributos de calidad antes de escribir una sola línea de código.
+
+---
+
+← [Capítulo anterior](02-rol-arquitecto.md) | [Inicio](README.md) | [Capítulo siguiente →](04-principios-solid.md)

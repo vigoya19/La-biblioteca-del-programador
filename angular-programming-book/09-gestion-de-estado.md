@@ -628,3 +628,7 @@ withHooks({
 * Las **DevTools** son esenciales para depurar estado en aplicaciones complejas: Redux DevTools para NgRx clásico, utilities personalizados para Signals Stores.
 
 En el próximo capítulo, profundizaremos en el comportamiento interno de Angular analizando su **Ciclo de Vida en Detalle** y dominando el desarrollo de alto rendimiento mediante **Zoneless Angular** y la eliminación de `zone.js`.
+
+---
+
+← [Capítulo anterior](08-comunicacion-asincrona-http.md) | [Inicio](README.md) | [Capítulo siguiente →](10-ciclo-de-vida-y-optimizaciones.md)

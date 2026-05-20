@@ -227,3 +227,7 @@ Esta técnica de precarga inteligente proporciona una experiencia visual instant
 * Combinar **`prefetch on`** con disparadores de renderizado permite anticipar y pre-descargar recursos pesados en red, ofreciendo interfaces dinámicas instantáneas de alto rendimiento empresarial.
 
 En el próximo capítulo, aprenderemos cómo mejorar la indexación SEO de nuestros sitios de gran escala dominando el **Server-Side Rendering (SSR), SSG e Hidratación** en Angular moderno.
+
+---
+
+← [Capítulo anterior](10-ciclo-de-vida-y-optimizaciones.md) | [Inicio](README.md) | [Capítulo siguiente →](12-ssr-ssg-y-hidratacion.md)

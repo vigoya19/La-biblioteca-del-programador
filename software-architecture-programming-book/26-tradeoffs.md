@@ -154,3 +154,7 @@ Decisiones que tomas tienen impacto en personas reales:
 ---
 
 > **Reflexión del capítulo**: La maestría en arquitectura no se demuestra eligiendo la tecnología más nueva, sino eligiendo la adecuada para el contexto y documentando por qué. Un ADR bien escrito vale más que 100 diagramas. Una decisión consciente, aunque imperfecta, es mejor que una decisión por omisión.
+
+---
+
+← [Capítulo anterior](25-observabilidad.md) | [Inicio](README.md) | [Capítulo siguiente →](27-futuro.md)

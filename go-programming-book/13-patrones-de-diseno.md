@@ -943,3 +943,7 @@ func main() {
 - **Patrones especificos de Go** incluyen Table-Driven Tests, Middleware Chain y Circuit Breaker.
 
 En el siguiente capitulo exploraremos la arquitectura hexagonal aplicada a Go.
+
+---
+
+← [Capítulo anterior](12-buenas-practicas.md) | [Inicio](README.md) | [Capítulo siguiente →](14-arquitectura-hexagonal.md)

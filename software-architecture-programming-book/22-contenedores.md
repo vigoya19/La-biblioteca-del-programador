@@ -188,3 +188,7 @@ spec:
 ---
 
 > **Reflexión del capítulo**: Kubernetes es increíblemente poderoso e increíblemente complejo. No lo adoptes porque está de moda. Adóptalo cuando la complejidad de gestionar contenedores manualmente supere la complejidad de aprender K8s. Y cuando lo hagas, invierte en el equipo: K8s mal configurado es más peligroso que no tener K8s.
+
+---
+
+← [Capítulo anterior](21-cloud.md) | [Inicio](README.md) | [Capítulo siguiente →](23-serverless.md)

@@ -511,3 +511,7 @@ Versión: 2.1 | Última actualización: 2024-06-15
 ---
 
 > **Reflexión del capítulo**: El disaster recovery es como un seguro de vida: esperas no necesitarlo, pero si lo necesitas y no lo tienes, las consecuencias son catastróficas. Tu trabajo como arquitecto es asegurarte de que cuando (no si) el desastre ocurre, el negocio pueda continuar. No es el tema más glamoroso de la arquitectura, pero es el que más impacto puede tener en tu carrera y en la supervivencia de la empresa.
+
+---
+
+← [Capítulo anterior](34-team-topologies.md) | [Inicio](README.md) | [Capítulo siguiente →](36-anti-patrones.md)

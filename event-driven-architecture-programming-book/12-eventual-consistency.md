@@ -450,3 +450,7 @@ class ServicioPagos {
 - **No todo es eventual**: para operaciones críticas (pagos, reservas), usar consistencia fuerte con transacciones ACID locales.
 
 En el siguiente capítulo implementamos un sistema E-Commerce event-driven completo.
+
+---
+
+← [Capítulo anterior](11-sagas.md) | [Inicio](README.md) | [Capítulo siguiente →](13-implementacion-ecommerce.md)

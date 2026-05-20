@@ -742,3 +742,7 @@ npx playwright show-report  # Abrir el reporte visual
 * **Guards funcionales** se testean con `TestBed.runInInjectionContext()` y mocks de dependencias.
 * **Playwright** con Page Objects proporciona tests E2E mantenibles, paralelos y con reportes visuales.
 * La **cobertura de código** debe configurarse con umbrales mínimos (80% lines/functions) y ejecutarse en CI/CD.
+
+---
+
+← [Capítulo anterior](12-ssr-ssg-y-hidratacion.md) | [Inicio](README.md) | [Capítulo siguiente →](14-buenas-practicas-y-patrones.md)

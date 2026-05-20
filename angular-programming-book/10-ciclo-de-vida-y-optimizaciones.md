@@ -185,3 +185,7 @@ export class BannerProductoComponent {}
 * La directiva **`NgOptimizedImage`** automatiza la carga de assets visuales protegiendo las Web Vitals críticas como LCP y CLS mediante priorizaciones avanzadas.
 
 En el próximo capítulo, aprenderemos a optimizar el renderizado visual de carga diferida dominando la sintaxis declarativa más avanzada de Angular: **Vistas Diferibles (`@defer`) en Profundidad**.
+
+---
+
+← [Capítulo anterior](09-gestion-de-estado.md) | [Inicio](README.md) | [Capítulo siguiente →](11-vistas-diferibles.md)

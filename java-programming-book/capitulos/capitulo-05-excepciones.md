@@ -3857,3 +3857,7 @@ En este capítulo hemos cubierto en profundidad el manejo de excepciones en Java
 Las excepciones son una herramienta poderosa, pero como cualquier herramienta, requieren criterio. El abuso de excepciones (para control de flujo, sin información de contexto, ignoradas) conduce a sistemas frágiles y difíciles de depurar. El uso juicioso, combinado con patrones modernos como Result, Circuit Breaker y manejo centralizado, produce sistemas robustos, mantenibles y resilientes.
 
 ---
+
+---
+
+← [Capítulo anterior](capitulo-04-colecciones.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-06-io-nio.md)

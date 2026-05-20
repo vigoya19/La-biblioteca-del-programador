@@ -393,3 +393,7 @@ chmod 777 = rwxrwxrwx  (⚠️ NUNCA en producción)
 | Jenkins | 8080, 50000 | `jenkins/jenkins` |
 | GitLab | 80, 443, 22 | `gitlab/gitlab-ce` |
 | MinIO | 9000, 9001 | `minio/minio` |
+
+---
+
+← [Capítulo anterior](capitulo-13-ejercicios.md) | [Inicio](README.md) | [Capítulo siguiente →](apendice-b-herramientas-modernas.md)

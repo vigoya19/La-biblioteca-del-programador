@@ -554,3 +554,7 @@ El ecosistema Wasm aún está en fase temprana para aplicaciones generales, pero
 | Construir sin Docker daemon (CI) | **Kaniko** | Buildah |
 | Pods locales como K8s | **Podman pods** | Minikube, Kind |
 | Serverless / edge computing | **Docker + Wasm** | WasmEdge, Wasmtime |
+
+---
+
+← [Capítulo anterior](apendice-a-quick-reference.md) | [Inicio](README.md)

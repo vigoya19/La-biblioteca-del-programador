@@ -523,3 +523,7 @@ async function reconstruirFlujoOrden(ordenId: string): Promise<FlujoOrden> {
 - Los **eventos como log inmutable** permiten reconstruir flujos completos para debugging post-mortem.
 
 En el siguiente capítulo final exploramos anti-patrones y buenas prácticas en EDA.
+
+---
+
+← [Capítulo anterior](15-testing.md) | [Inicio](README.md) | [Capítulo siguiente →](17-anti-patrones.md)

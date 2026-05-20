@@ -326,3 +326,7 @@ export class CalculadorInteractivoComponent {
 * La **interoperabilidad con Signals** (`toSignal`) permite calcular estados derivados en tiempo real basados en los datos del formulario de manera rápida, limpia y declarativa.
 
 En el próximo capítulo, aprenderemos a configurar la navegación y a proteger el flujo de pantallas en nuestra aplicación moderna dominando el **Enrutamiento y la Carga Perezosa (Lazy Loading)**.
+
+---
+
+← [Capítulo anterior](05-servicios-e-inyeccion-de-dependencias.md) | [Inicio](README.md) | [Capítulo siguiente →](07-enrutamiento-y-navegacion.md)

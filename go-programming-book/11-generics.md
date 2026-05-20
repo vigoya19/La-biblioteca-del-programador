@@ -879,3 +879,7 @@ func TestVerificarIguales(t *testing.T) {
 - `golang.org/x/exp/slices` y `maps` ofrecen utilidades genericas listas para usar.
 
 En el siguiente capitulo exploraremos las buenas practicas y el Go idiomatico.
+
+---
+
+← [Capítulo anterior](10-testing.md) | [Inicio](README.md) | [Capítulo siguiente →](12-buenas-practicas.md)

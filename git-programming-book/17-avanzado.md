@@ -1228,3 +1228,7 @@ Los comandos avanzados de Git son herramientas de precision para escenarios comp
 5. **Range-diff post-rebase**: Crea una rama con 5 commits de feature. Haz un rebase interactivo donde combines 2 commits, edites 1, y agregues 1 nuevo. Usa `git range-diff` para comparar la version original con la rebaseada y describe las diferencias detectadas.
 
 ---
+
+---
+
+← [Capítulo anterior](16-ci-cd.md) | [Inicio](README.md) | [Capítulo siguiente →](18-buenas-practicas.md)

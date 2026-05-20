@@ -975,3 +975,7 @@ Construye un sistema que procese eventos en tiempo real:
 ---
 
 Este es el final del libro. Has recorrido un camino completo desde los fundamentos de Go hasta temas avanzados como concurrencia, arquitectura hexagonal y desarrollo web. El siguiente paso es construir tus propios proyectos y contribuir a la comunidad Go. ¡Feliz programacion!
+
+---
+
+← [Capítulo anterior](16-desarrollo-web.md) | [Inicio](README.md) | [Capítulo siguiente →](18-grpc.md)

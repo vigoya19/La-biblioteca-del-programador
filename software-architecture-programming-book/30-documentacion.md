@@ -377,3 +377,7 @@ def test_database_reflects_model():
 ---
 
 > **Reflexión del capítulo**: La documentación de arquitectura es una inversión en la memoria institucional. El código dice "qué" y "cómo". La documentación de arquitectura debe decir "por qué". Si tu documentación compite con el código como fuente de verdad, estás haciendo algo mal. La documentación complementa al código, no lo reemplaza.
+
+---
+
+← [Capítulo anterior](29-entrevistas.md) | [Inicio](README.md) | [Capítulo siguiente →](31-testing.md)

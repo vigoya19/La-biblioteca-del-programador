@@ -411,3 +411,7 @@ PRINCIPIOS DE GOBIERNO
 - El **gobierno de schemas** define dueños, procesos de cambio y validación automatizada en CI/CD.
 
 En el siguiente capítulo exploramos estrategias de testing para sistemas event-driven.
+
+---
+
+← [Capítulo anterior](13-implementacion-ecommerce.md) | [Inicio](README.md) | [Capítulo siguiente →](15-testing.md)

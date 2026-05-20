@@ -818,3 +818,7 @@ Patrón híbrido:
 - La arquitectura recomendada combina los tres: EventBridge como bus central, SNS+SQS para servicios que necesitan buffer, y Step Functions para orquestación de sagas.
 
 En el siguiente capítulo exploramos RabbitMQ y el protocolo AMQP en profundidad.
+
+---
+
+← [Capítulo anterior](04-apache-kafka.md) | [Inicio](README.md) | [Capítulo siguiente →](06-rabbitmq.md)

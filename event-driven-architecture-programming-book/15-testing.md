@@ -590,3 +590,7 @@ describe("Resiliencia: fallos de red y timeouts", () => {
 - La **pirámide de testing EDA** añade contract tests entre integration y E2E, ya que la interfaz entre servicios es el contrato de eventos.
 
 En el siguiente capítulo exploramos observabilidad y monitoreo en sistemas event-driven.
+
+---
+
+← [Capítulo anterior](14-schema-evolution.md) | [Inicio](README.md) | [Capítulo siguiente →](16-observabilidad.md)

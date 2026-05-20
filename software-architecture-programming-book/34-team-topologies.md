@@ -447,3 +447,7 @@ Toma tu empresa actual (o una que conozcas bien):
 ---
 
 > **Reflexión del capítulo**: Llevo 20 años en esto y la lección más dura que aprendí es: los diagramas de arquitectura no valen nada sin los equipos correctos detrás. Puedes diseñar la arquitectura más elegante del mundo, pero si tus equipos no están organizados para soportarla, fracasará. El arquitecto que solo sabe de tecnología es medio arquitecto. El arquitecto completo entiende que el software lo construyen personas organizadas de cierta manera. Diseña tus equipos tan cuidadosamente como diseñas tus bases de datos.
+
+---
+
+← [Capítulo anterior](33-gobernanza.md) | [Inicio](README.md) | [Capítulo siguiente →](35-disaster-recovery.md)

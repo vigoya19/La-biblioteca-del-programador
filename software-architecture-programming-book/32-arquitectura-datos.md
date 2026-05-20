@@ -352,3 +352,7 @@ Catálogo y Gobernanza:
 ---
 
 > **Reflexión del capítulo**: La arquitectura de software y la arquitectura de datos son dos caras de la misma moneda. Tu sistema produce datos que alguien necesita analizar. Si no diseñas para eso desde el principio, terminarás con un ETL frágil que extrae datos de réplicas de producción a las 3 AM y falla todos los lunes. Piensa en datos desde el día 1.
+
+---
+
+← [Capítulo anterior](31-testing.md) | [Inicio](README.md) | [Capítulo siguiente →](33-gobernanza.md)

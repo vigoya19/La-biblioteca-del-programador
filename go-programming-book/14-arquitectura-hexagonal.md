@@ -610,3 +610,7 @@ proyecto-hexagonal/
 - `main.go` ensambla todas las piezas (composicion raiz).
 
 En el siguiente capítulo exploraremos temas avanzados de Go.
+
+---
+
+← [Capítulo anterior](13-patrones-de-diseno.md) | [Inicio](README.md) | [Capítulo siguiente →](15-temas-avanzados.md)

@@ -640,3 +640,7 @@ export class EditorPreviewComponent {
 * **`DomSanitizer`** es la última línea de defensa contra XSS, pero `bypassSecurityTrust*()` debe usarse con extrema cautela.
 
 En el próximo capítulo, nos adentraremos en el concepto más revolucionario del Angular Renaissance: **Angular Signals**, el nuevo motor reactivo que redefine cómo fluye la información y que abre la puerta a aplicaciones completamente libres de Zone.js.
+
+---
+
+← [Capítulo anterior](02-arquitectura-y-componentes.md) | [Inicio](README.md) | [Capítulo siguiente →](04-signals.md)

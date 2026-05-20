@@ -167,3 +167,7 @@ El debugging de funciones serverless es más complejo que en servidores tradicio
 ---
 
 > **Reflexión del capítulo**: Serverless es el futuro de gran parte del cómputo, pero no es una solución universal. Entender el cold start, los límites de tiempo y el modelo de costos es esencial. La arquitectura serverless requiere un cambio de mentalidad: piensa en eventos y funciones efímeras, no en servidores y procesos persistentes.
+
+---
+
+← [Capítulo anterior](22-contenedores.md) | [Inicio](README.md) | [Capítulo siguiente →](24-iac-cicd.md)

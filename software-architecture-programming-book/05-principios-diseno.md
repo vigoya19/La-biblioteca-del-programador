@@ -972,3 +972,7 @@ Tu tarea: refactoriza esto aplicando DRY, KISS, YAGNI, SoC, Composition, Fail Fa
 ---
 
 > **Reflexión del capítulo**: Los principios de diseño no se aprenden en un libro. Se aprenden sufriendo las consecuencias de no aplicarlos. Cada vez que violas DRY y duplicas conocimiento, alguien va a tener que arreglar 47 archivos en un fin de semana. Cada vez que violas KISS y sobre-ingenierizas, alguien va a maldecir tu nombre mientras debuggea 50 capas de abstracción para algo que debían ser 20 líneas. Sé el arquitecto cuyo código otros quieren heredar, no el que todos temen tocar.
+
+---
+
+← [Capítulo anterior](04-principios-solid.md) | [Inicio](README.md) | [Capítulo siguiente →](06-ddd.md)

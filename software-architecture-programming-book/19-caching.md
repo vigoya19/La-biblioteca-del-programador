@@ -214,3 +214,7 @@ Cache-Control: no-store, no-cache, must-revalidate, private
 ---
 
 > **Reflexión del capítulo**: El caching es una de las optimizaciones más efectivas, pero también una de las más traicioneras. La invalidación incorrecta es la fuente de bugs más difíciles de reproducir. Empieza sin caché, mide, y añade caché solo donde los datos demuestren que es necesario.
+
+---
+
+← [Capítulo anterior](18-escalabilidad.md) | [Inicio](README.md) | [Capítulo siguiente →](20-bases-datos.md)

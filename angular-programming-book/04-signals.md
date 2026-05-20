@@ -668,3 +668,7 @@ export class CarritoStateService {
 * La **interoperabilidad** con RxJS mediante `toSignal()` y `toObservable()` permite combinar la inmediatez de Signals con el poder de transformación de RxJS.
 
 En el próximo capítulo, aprenderemos a organizar y desacoplar la lógica de negocio dominando el potente sistema de **Servicios e Inyección de Dependencias** del Angular moderno.
+
+---
+
+← [Capítulo anterior](03-templates-y-directivas.md) | [Inicio](README.md) | [Capítulo siguiente →](05-servicios-e-inyeccion-de-dependencias.md)

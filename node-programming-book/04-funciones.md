@@ -647,3 +647,7 @@ Se explora la asincronia en profundidad en el Capitulo 7.
 - Prefiere arrow functions para callbacks cortos y function declarations para metodos.
 
 En el siguiente capitulo exploraremos las estructuras de datos en profundidad.
+
+---
+
+← [Capítulo anterior](03-estructuras-de-control.md) | [Inicio](README.md) | [Capítulo siguiente →](05-estructuras-de-datos.md)

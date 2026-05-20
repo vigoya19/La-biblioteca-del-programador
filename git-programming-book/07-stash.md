@@ -866,3 +866,7 @@ git worktree list
 4. **Multiples worktrees simultaneos:** Crea 3 worktrees adicionales para simular: una feature nueva, una revision de PR, y una rama de release. En cada worktree, haz al menos un commit. Usa `git worktree list` para ver la configuracion completa. Ejecuta `git log --oneline --all --graph` desde cualquier worktree y verifica que todos los commits son visibles. Practica la eliminacion con `git worktree prune`.
 
 5. **Script de automatizacion de stash:** Escribe un script bash que: (a) verifique si hay cambios sin commit, (b) ofrezca hacer stash automatico con mensaje basado en fecha y rama actual, (c) ejecute una operacion (como `git pull --rebase`), (d) restaure el stash automaticamente si existia. El script debe ser idempotente (puede ejecutarse multiples veces sin causar errores). Incluye manejo de errores para cuando el stash pop produce conflictos.
+
+---
+
+← [Capítulo anterior](06-rebase-cherry-pick.md) | [Inicio](README.md) | [Capítulo siguiente →](08-tags.md)

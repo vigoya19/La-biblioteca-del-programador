@@ -111,3 +111,7 @@ Como ejercicio de este capítulo, analiza un sistema que uses diariamente (tu ba
 ---
 
 > **Reflexión del capítulo**: La arquitectura no es un artefacto, es un proceso continuo de toma de decisiones. No existe la arquitectura perfecta, solo la adecuada para el contexto. La historia nos enseña que las tecnologías cambian, pero los principios permanecen. Estudia los principios, usa las herramientas del momento y nunca dejes de preguntarte "¿por qué?".
+
+---
+
+[Inicio](README.md) | [Capítulo siguiente →](02-rol-arquitecto.md)

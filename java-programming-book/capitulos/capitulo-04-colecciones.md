@@ -3012,3 +3012,7 @@ Tengo que almacenar...
 - **Estructuras avanzadas:** `LinkedHashMap` access-order para LRU Cache, `PriorityQueue` como heap binario, `ArrayDeque` más rápido que Stack/LinkedList, `EnumSet`/`EnumMap` con bit vectors (~35x más rápido), `WeakHashMap` para cachés con referencias débiles.
 - **Elección por defecto:** ArrayList para listas, HashMap para mapas, ArrayDeque para pilas/colas.
 - **Inmutabilidad:** `List.of()`/`Set.of()`/`Map.of()` para colecciones inmutables (Java 9+). `List.copyOf()` para copia defensiva (Java 10+). `Collections.unmodifiable*()` crea vistas, no copias.
+
+---
+
+← [Capítulo anterior](capitulo-03-poo.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-05-excepciones.md)

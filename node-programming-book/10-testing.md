@@ -577,3 +577,7 @@ beforeEach(() => {
 - No testees implementacion interna; testea comportamiento observable.
 
 En el siguiente capitulo exploraremos los generics en TypeScript.
+
+---
+
+← [Capítulo anterior](09-modulos-paquetes.md) | [Inicio](README.md) | [Capítulo siguiente →](11-generics.md)

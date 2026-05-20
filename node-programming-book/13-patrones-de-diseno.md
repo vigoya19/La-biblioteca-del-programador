@@ -634,3 +634,7 @@ bus.emit("usuario:creado", { id: "1", email: "test@test.com" });
 - **Retry**: reintenta operaciones fallidas con backoff exponencial.
 
 En el siguiente capítulo exploraremos la arquitectura hexagonal y DDD con TypeScript.
+
+---
+
+← [Capítulo anterior](12-buenas-practicas.md) | [Inicio](README.md) | [Capítulo siguiente →](14-arquitectura-hexagonal.md)

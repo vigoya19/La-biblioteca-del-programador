@@ -288,3 +288,7 @@ export class DetalleComponent {
 * Los **Resolvers Funcionales** pre-cargan flujos de información en segundo plano, mejorando drásticamente la experiencia de usuario final al evitar transiciones visuales bruscas y spinners innecesarios.
 
 En el próximo capítulo, aprenderemos cómo conectar nuestra aplicación a servidores remotos de base de datos dominando el cliente de comunicación asíncrona **`HttpClient`** y los operadores clave de **RxJS**.
+
+---
+
+← [Capítulo anterior](06-formularios-y-validaciones.md) | [Inicio](README.md) | [Capítulo siguiente →](08-comunicacion-asincrona-http.md)

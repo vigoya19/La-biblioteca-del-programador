@@ -429,3 +429,7 @@ for await (const msg of sub) {
 - Kafka sigue siendo la elección para **event sourcing**, **big data** y ecosistemas que requieren Kafka Connect, Streams y Schema Registry.
 
 En el siguiente capítulo conectamos EDA con Domain-Driven Design: Domain Events como ciudadanos de primera clase.
+
+---
+
+← [Capítulo anterior](06-rabbitmq.md) | [Inicio](README.md) | [Capítulo siguiente →](08-domain-events-ddd.md)

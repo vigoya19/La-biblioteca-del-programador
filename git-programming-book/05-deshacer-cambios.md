@@ -714,3 +714,7 @@ git commit -m "Recuperar archivo.txt borrado accidentalmente"
 4. **Limpieza y amend:** Crea un escenario con archivos no rastreados, archivos en staging, y un commit recien hecho. Practica: (a) usar `git clean -nfd` para ver que se eliminaria, (b) ejecutar `git clean -fd` para limpiar, (c) modificar el ultimo commit con `--amend` para agregar un archivo olvidado y cambiar el mensaje. Verifica cada paso con `git log --oneline` y `git show`.
 
 5. **Simulacion de desastre y recuperacion:** Escribe un script bash que: crea un repositorio, hace 5 commits, simula un `reset --hard` accidental a 4 commits atras, ejecuta `git reflog` para encontrar el commit perdido, y lo recupera. Incluye verificaciones con `git log` antes y despues. Este script debe ser reutilizable como herramienta de aprendizaje.
+
+---
+
+← [Capítulo anterior](04-remotos.md) | [Inicio](README.md) | [Capítulo siguiente →](06-rebase-cherry-pick.md)

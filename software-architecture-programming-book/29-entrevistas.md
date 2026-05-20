@@ -483,3 +483,7 @@ Si Redis falla temporalmente → Fail open (permitir requests)
 ---
 
 > **Reflexión del capítulo**: Las entrevistas de arquitectura premian la profundidad sobre la amplitud. Prefieren que conozcas 3 tecnologías en profundidad que 20 superficialmente. Cuando digas "usaría Kafka", prepárate para explicar particiones, consumer groups, exactly-once semantics y cuándo NO usarías Kafka.
+
+---
+
+← [Capítulo anterior](28-caso-estudio.md) | [Inicio](README.md) | [Capítulo siguiente →](30-documentacion.md)

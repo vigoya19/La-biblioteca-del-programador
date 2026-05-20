@@ -448,3 +448,7 @@ npx lighthouse https://tu-app.com --view --preset=desktop --output-path=./lighth
 * La detección de estado online/offline con `navigator.onLine` y eventos permite mostrar banners informativos y ajustar el comportamiento de la app.
 * El evento **`beforeinstallprompt`** permite crear UIs de instalación personalizadas en lugar de depender del prompt nativo del navegador.
 * **Lighthouse** audita los criterios PWA y proporciona un score con recomendaciones específicas.
+
+---
+
+← [Capítulo anterior](18-i18n-y-a11y.md) | [Inicio](README.md)

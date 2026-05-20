@@ -379,3 +379,7 @@ func main() {
 ---
 
 > **Reflexión del capítulo**: La observabilidad en Go se construye con tres bibliotecas: `log/slog` (stdlib), `prometheus/client_golang`, y `go.opentelemetry.io/otel`. No necesitas agentes externos ni sidecars pesados. Instrumenta desde el día 1. El día que tengas un outage en producción, cada log, cada métrica y cada trace que tengas te ahorrará horas de debugging. Lo barato sale caro.
+
+---
+
+← [Capítulo anterior](19-http-client-web.md) | [Inicio](README.md)

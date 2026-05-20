@@ -156,3 +156,7 @@ stub.withDeadline(Deadline.after(5, TimeUnit.SECONDS)).createOrder(request);
 ---
 
 > **Reflexión del capítulo**: gRPC no es un reemplazo universal de REST, es una herramienta para escenarios específicos. La regla práctica: REST para APIs externas, gRPC para comunicación interna de alto rendimiento. Conoce ambos y usa el correcto en cada contexto.
+
+---
+
+← [Capítulo anterior](14-diseno-apis.md) | [Inicio](README.md) | [Capítulo siguiente →](16-seguridad.md)

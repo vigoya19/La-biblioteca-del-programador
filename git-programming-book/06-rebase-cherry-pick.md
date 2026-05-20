@@ -1014,3 +1014,7 @@ git rebase --update-refs -i main
 4. **Rebase --onto complejo:** Crea esta estructura de ramas: `main` → `feature` → `subfeature`. Haz commits en las tres ramas. Luego usa `git rebase --onto main feature subfeature` para mover `subfeature` directamente sobre `main`. Explica que paso con los commits de `feature` que estaban en el medio. Repite el ejercicio creando una situacion donde `--onto` sea la unica solucion (sin cherry-pick ni merge).
 
 5. **Simulacion de flujo de equipo:** Trabaja con dos clones locales del mismo repositorio (simulando dos desarrolladores). Cada uno crea una rama feature con 5 commits. Ambos hacen rebase interactivo para limpiar su historial (dejar 2 commits cada uno). Ambos hacen `git pull --rebase origin main` para actualizarse. Simula un conflicto entre las dos features al integrarlas. Finalmente, haz cherry-pick de un commit especifico de una feature a la otra. Documenta todo el flujo con `git log --oneline --graph --all` en cada paso.
+
+---
+
+← [Capítulo anterior](05-deshacer-cambios.md) | [Inicio](README.md) | [Capítulo siguiente →](07-stash.md)

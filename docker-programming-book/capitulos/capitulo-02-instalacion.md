@@ -3003,3 +3003,7 @@ Antes de pasar al Capítulo 3, asegúrate de poder responder SÍ a todas estas p
 - [ ] ¿Puedo desplegar el stack del laboratorio (Nginx + MySQL + Adminer + Redis) sin mirar la guía?
 
 Si respondiste SÍ a todas, estás listo para el **Capítulo 3: Imágenes y Registries**, donde explorarás el sistema de capas, Docker Hub, registries privados y la gestión avanzada de imágenes.
+
+---
+
+← [Capítulo anterior](capitulo-01-introduccion.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-03-imagenes.md)

@@ -405,3 +405,7 @@ Aunque no existen certificaciones oficiales de Git ampliamente reconocidas, las 
 ---
 
 *Fin del Apendice B. Este documento es una guia viva; ajusta los tiempos y el orden segun tu ritmo de aprendizaje y contexto profesional.*
+
+---
+
+← [Capítulo anterior](A-comandos.md) | [Inicio](README.md) | [Capítulo siguiente →](C-forense.md)

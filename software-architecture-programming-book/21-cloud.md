@@ -143,3 +143,7 @@ La nube es OPEX, no CAPEX. Pero sin control, la factura se dispara.
 ---
 
 > **Reflexión del capítulo**: La nube no es magia, es responsabilidad. Te da elasticidad, pero también te da la capacidad de gastar miles de dólares en minutos si no tienes controles. Un arquitecto cloud-native piensa en costos, seguridad y resiliencia desde el minuto cero.
+
+---
+
+← [Capítulo anterior](20-bases-datos.md) | [Inicio](README.md) | [Capítulo siguiente →](22-contenedores.md)

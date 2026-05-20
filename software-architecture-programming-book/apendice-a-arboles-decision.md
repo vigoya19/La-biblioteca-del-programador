@@ -170,3 +170,7 @@
 ---
 
 > **Reflexión del apéndice**: Estos árboles no reemplazan el análisis profundo. Son atajos mentales, heurísticas basadas en experiencia. Úsalos como punto de partida para la conversación, no como el final de la decisión. Cada sistema es único y merece su propio análisis.
+
+---
+
+← [Capítulo anterior](36-anti-patrones.md) | [Inicio](README.md) | [Capítulo siguiente →](apendice-b-herramientas.md)

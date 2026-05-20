@@ -555,3 +555,7 @@ La misma entidad puede tener distintos nombres y propiedades en cada contexto.
 - TypeScript brilla modelando el dominio con tipos precisos y value objects inmutables.
 
 En el siguiente capítulo exploraremos temas avanzados de Node.js y TypeScript.
+
+---
+
+← [Capítulo anterior](13-patrones-de-diseno.md) | [Inicio](README.md) | [Capítulo siguiente →](15-temas-avanzados.md)

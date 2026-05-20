@@ -385,3 +385,7 @@ EDA no es una tecnología. Es un modelo mental. Una forma de pensar en sistemas 
 ---
 
 **Fin del libro.**
+
+---
+
+← [Capítulo anterior](16-observabilidad.md) | [Inicio](README.md)

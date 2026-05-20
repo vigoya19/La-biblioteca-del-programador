@@ -309,3 +309,7 @@ go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest  # Linter 
 - Las convenciones se refuerzan con herramientas (`go fmt`, `go vet`).
 
 En el siguiente capitulo exploraremos la sintaxis y los tipos de datos en detalle.
+
+---
+
+[Inicio](README.md) | [Capítulo siguiente →](02-sintaxis-y-tipos.md)

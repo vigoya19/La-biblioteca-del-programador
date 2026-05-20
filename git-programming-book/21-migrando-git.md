@@ -410,3 +410,7 @@ Saludos,
 ---
 
 > **Reflexión del capítulo**: Una migración de VCS exitosa no se mide por la herramienta que usaste para convertir los commits. Se mide por cuántos días tardó el equipo en volver a ser productivo después del corte. La diferencia entre una migración traumática y una fluida está en: el mapeo de autores, la preparación del equipo, el plan de rollback, y la comunicación constante. La herramienta de conversión es el 20% del trabajo. El 80% es gestión del cambio.
+
+---
+
+← [Capítulo anterior](20-activos-no-codigo.md) | [Inicio](README.md) | [Capítulo siguiente →](A-comandos.md)

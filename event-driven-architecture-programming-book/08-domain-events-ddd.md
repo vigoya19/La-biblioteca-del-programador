@@ -503,3 +503,7 @@ class OrdenesApplicationService {
 - EDA + DDD permite modelar sistemas complejos donde cada contexto es autónomo y evoluciona independientemente.
 
 En el siguiente capítulo exploramos Event Sourcing: almacenar eventos en lugar de estado.
+
+---
+
+← [Capítulo anterior](07-nats.md) | [Inicio](README.md) | [Capítulo siguiente →](09-event-sourcing.md)

@@ -589,3 +589,7 @@ process.on("uncaughtException", (error) => {
 - Proporciona contexto en los mensajes de error. Encadena errores con `{ cause: error }`.
 
 En el siguiente capitulo exploraremos los modulos, paquetes y el ecosistema npm.
+
+---
+
+← [Capítulo anterior](07-asincronia.md) | [Inicio](README.md) | [Capítulo siguiente →](09-modulos-paquetes.md)

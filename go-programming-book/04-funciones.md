@@ -746,3 +746,7 @@ func main() {
 - El method set de `T` incluye metodos con receptor `T`; el de `*T` incluye ambos.
 - Los decorators de funciones agregan comportamiento sin modificar la funcion original.
 - Go soporta recursion pero sin optimizacion de tail calls; cuidado con recursiones profundas.
+
+---
+
+← [Capítulo anterior](03-estructuras-de-control.md) | [Inicio](README.md) | [Capítulo siguiente →](05-estructuras-de-datos.md)

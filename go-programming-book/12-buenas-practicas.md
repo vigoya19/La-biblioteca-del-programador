@@ -1049,3 +1049,7 @@ Usa esta lista en cada code review para detectar problemas comunes:
 - El creador del channel lo cierra; usa `errgroup` para goroutines con errores.
 - Evita paquetes `util`, `common`, `helper`; prefiere nombres con significado.
 - Usa la checklist de code review para detectar problemas comunes sistematicamente.
+
+---
+
+← [Capítulo anterior](11-generics.md) | [Inicio](README.md) | [Capítulo siguiente →](13-patrones-de-diseno.md)

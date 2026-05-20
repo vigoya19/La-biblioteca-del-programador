@@ -1184,3 +1184,7 @@ En este capítulo has construido, paso a paso, una aplicación E-Commerce funcio
 * **SSR** con protección de APIs del navegador
 
 Cada ejercicio ha sido diseñado para reforzar los conceptos de capítulos anteriores en un contexto práctico real. Los retos adicionales te permiten seguir explorando y profundizando en las áreas que más te interesen.
+
+---
+
+← [Capítulo anterior](14-buenas-practicas-y-patrones.md) | [Inicio](README.md) | [Capítulo siguiente →](16-microfrontends.md)

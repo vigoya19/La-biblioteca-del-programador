@@ -583,3 +583,7 @@ class SagaConTimeout {
 - **Idempotencia** y **timeouts** son críticos: cada paso de saga debe tolerar reintentos y mensajes duplicados.
 
 En el siguiente capítulo exploramos la consistencia eventual en detalle.
+
+---
+
+← [Capítulo anterior](10-cqrs.md) | [Inicio](README.md) | [Capítulo siguiente →](12-eventual-consistency.md)

@@ -933,3 +933,7 @@ Las buenas practicas transforman Git de una herramienta tecnica a un pilar de la
 5. **Implementacion de pre-commit hooks**: Configura pre-commit con al menos 4 hooks: `trailing-whitespace`, `end-of-file-fixer`, `check-yaml`, y `detect-private-key`. Ejecutalo sobre un repositorio existente y corrige los problemas detectados.
 
 ---
+
+---
+
+← [Capítulo anterior](17-avanzado.md) | [Inicio](README.md) | [Capítulo siguiente →](19-ejercicios.md)

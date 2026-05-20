@@ -189,3 +189,7 @@ Alerta → On-Call Primario (5 min) → On-Call Secundario (10 min) → Manager 
 ---
 
 > **Reflexión del capítulo**: La observabilidad no es para debugging, es para entender. Un sistema sin observabilidad es un avión sin instrumentos: puedes volar, pero no sabes a qué altura, velocidad o si te estás quedando sin combustible. Invierte en observabilidad desde el día 1. El día que tengas un outage en producción, cada dólar invertido se paga solo.
+
+---
+
+← [Capítulo anterior](24-iac-cicd.md) | [Inicio](README.md) | [Capítulo siguiente →](26-tradeoffs.md)

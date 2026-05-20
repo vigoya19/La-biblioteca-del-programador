@@ -169,3 +169,7 @@ Si un paso falla, debes deshacer los pasos anteriores:
 ---
 
 > **Reflexión del capítulo**: CQRS y Event Sourcing son poderosos, pero no son la respuesta para todo. Si los adoptas sin necesidad real, añadirás una complejidad que te perseguirá durante años. Evalúa el costo antes de adoptarlos.
+
+---
+
+← [Capítulo anterior](10-mensajeria-eventos.md) | [Inicio](README.md) | [Capítulo siguiente →](12-resiliencia.md)

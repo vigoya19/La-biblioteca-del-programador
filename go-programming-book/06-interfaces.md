@@ -834,3 +834,7 @@ func Ordenar[T constraints.Ordered](s []T) { ... }
 - Evita interfaces prematuras (espera 2+ implementaciones), interfaces gigantes (segrega) y retornar interfaces desde constructores.
 - Usa interfaces para polimorfismo en runtime, generics para operaciones identicas con tipos diferentes.
 - "Accept interfaces, return structs".
+
+---
+
+← [Capítulo anterior](05-estructuras-de-datos.md) | [Inicio](README.md) | [Capítulo siguiente →](07-concurrencia.md)

@@ -2508,3 +2508,7 @@ $ docker inspect stress-lab --format='{{.State.ExitCode}}'  # 137 = OOM killed
 ---
 
 *En el próximo capítulo: Instalación de Docker, primeros comandos, y creación de nuestro primer entorno de desarrollo completo.*
+
+---
+
+[Inicio](README.md) | [Capítulo siguiente →](capitulo-02-instalacion.md)

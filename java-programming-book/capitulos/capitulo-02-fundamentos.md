@@ -3146,3 +3146,7 @@ public class ShadowingDemo {
 - **`BigDecimal`** es para aritmética decimal exacta. Créalo siempre desde `String`. Usa `compareTo()` para comparar, no `equals()`. Especifica `RoundingMode` al dividir.
 - **`BigInteger`** ofrece enteros de precisión arbitraria para criptografía y matemáticas avanzadas.
 - El **scope** determina dónde es visible una variable: bloque, método o clase. El shadowing ocurre cuando una variable interna oculta una externa.
+
+---
+
+← [Capítulo anterior](capitulo-01-introduccion.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-03-poo.md)

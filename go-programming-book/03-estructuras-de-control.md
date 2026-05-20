@@ -502,3 +502,7 @@ func hacerTrabajo(id int) {
 - `defer` garantiza limpieza de recursos (LIFO).
 - `panic`/`recover` son para errores irrecuperables, no para control de flujo normal.
 - El patron `if err != nil` es la forma idiomatica de manejar errores (detalle en capitulo 8).
+
+---
+
+← [Capítulo anterior](02-sintaxis-y-tipos.md) | [Inicio](README.md) | [Capítulo siguiente →](04-funciones.md)

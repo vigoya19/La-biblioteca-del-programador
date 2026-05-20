@@ -353,3 +353,7 @@ Presenta: [equipo]
 ---
 
 > **Reflexión del capítulo**: La gobernanza efectiva no se siente como burocracia. Se siente como un guardarraíl en la carretera: no te impide conducir, pero te salva cuando te desvías. Invierte en fitness functions automáticas. La mejor gobernanza es la que ocurre sin que nadie se dé cuenta.
+
+---
+
+← [Capítulo anterior](32-arquitectura-datos.md) | [Inicio](README.md) | [Capítulo siguiente →](34-team-topologies.md)

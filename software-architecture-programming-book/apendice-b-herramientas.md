@@ -225,3 +225,7 @@ Año 5+: Maestría
 ---
 
 > **Reflexión del apéndice**: Las herramientas van y vienen. La habilidad del arquitecto no está en conocer 100 herramientas, sino en saber elegir la correcta para el problema correcto. Construye tu caja de herramientas con criterio, no con moda.
+
+---
+
+← [Capítulo anterior](apendice-a-arboles-decision.md) | [Inicio](README.md)

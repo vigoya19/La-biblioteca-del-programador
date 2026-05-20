@@ -220,3 +220,7 @@ bootstrapApplication(AppComponent, appConfig)
 *   El **Angular CLI** es la herramienta estándar indispensable para andamiar y gestionar proyectos profesionales de forma consistente y limpia.
 
 En el próximo capítulo, profundizaremos en la creación de componentes independientes (`Standalone Components`), explorando sus ciclos de vida y la comunicación de datos entre ellos a través de parámetros.
+
+---
+
+[Inicio](README.md) | [Capítulo siguiente →](02-arquitectura-y-componentes.md)

@@ -1151,3 +1151,7 @@ export class UsuarioV1Controller {
 - Siempre: validar entrada, sanitizar salida, rate limiting, y graceful shutdown.
 
 En el siguiente y último capítulo encontraras ejercicios prácticos para consolidar lo aprendido.
+
+---
+
+← [Capítulo anterior](15-temas-avanzados.md) | [Inicio](README.md) | [Capítulo siguiente →](17-ejercicios.md)

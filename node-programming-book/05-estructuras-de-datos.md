@@ -700,3 +700,7 @@ console.log(params.toString());      // "lang=es&lang=en&lang=fr"
 - Prefiere interfaces para objetos, type aliases para unions y tuplas.
 
 En el siguiente capitulo exploraremos las interfaces y tipos avanzados en TypeScript.
+
+---
+
+← [Capítulo anterior](04-funciones.md) | [Inicio](README.md) | [Capítulo siguiente →](06-interfaces.md)

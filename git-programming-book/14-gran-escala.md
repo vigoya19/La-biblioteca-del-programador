@@ -719,3 +719,7 @@ Git a gran escala requiere un conjunto de herramientas y estrategias que van má
 3. Especifica qué herramientas de monorepo serían adecuadas (Bazel, Nx, Turborepo, etc.) según el stack tecnológico.
 4. Diseña una estrategia de branching y CI/CD para ese monorepo hipotético.
 5. Documenta los riesgos de la migración y cómo los mitigarías.
+
+---
+
+← [Capítulo anterior](13-reescritura-historia.md) | [Inicio](README.md) | [Capítulo siguiente →](15-workflows.md)

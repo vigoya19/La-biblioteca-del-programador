@@ -1096,3 +1096,7 @@ func main() {
 - **`sync.Cond`** para esperar condiciones, **`singleflight`** para deduplicar y **`sync.Map`** para casos especificos.
 
 En el siguiente capitulo exploraremos el desarrollo web y APIs con Go.
+
+---
+
+← [Capítulo anterior](14-arquitectura-hexagonal.md) | [Inicio](README.md) | [Capítulo siguiente →](16-desarrollo-web.md)

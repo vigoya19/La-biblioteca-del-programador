@@ -4280,3 +4280,7 @@ public record DireccionRecord(String calle, String ciudad, String codigoPostal) 
 ---
 
 **Este capítulo cubre los fundamentos de la Programación Orientada a Objetos en Java, desde la sintaxis básica hasta los principios de diseño avanzados. Dominar estos conceptos es esencial para escribir código Java mantenible, extensible y profesional.**
+
+---
+
+← [Capítulo anterior](capitulo-02-fundamentos.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-04-colecciones.md)

@@ -800,3 +800,7 @@ ANTES de que cualquier código vaya a producción, verifica:
 ---
 
 > **Reflexión del capítulo**: La seguridad no es una feature que añades al final. Es una propiedad emergente de cada decisión arquitectónica que tomas. Un sistema seguro no es el que tiene más firewalls, es el que fue diseñado asumiendo que CADA capa fallará. La pregunta no es "¿somos seguros?". La pregunta es "¿qué pasa CUANDO una capa falle?"
+
+---
+
+← [Capítulo anterior](15-grpc.md) | [Inicio](README.md) | [Capítulo siguiente →](17-auth.md)

@@ -7338,3 +7338,6 @@ echo "=== End Report ==="
 □ Caché remota compartida entre builds y entre desarrolladores
 ```
 
+---
+
+← [Capítulo anterior](capitulo-03-imagenes.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-05-volumenes.md)

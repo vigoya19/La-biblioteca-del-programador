@@ -285,3 +285,7 @@ echo "✓ Reporte generado: $REPORT"
 ---
 
 > **Reflexión del apéndice**: Git es una base de datos de cada cambio que ha ocurrido en tu código. Como arquitecto, tu trabajo es saber extraer la verdad de esa base de datos cuando el negocio, los auditores o los abogados la necesitan. El forense no es paranoia. Es preparación. Porque el día que necesites responder "¿quién tocó este archivo y cuándo?", la respuesta no puede ser "déjame revisar".
+
+---
+
+← [Capítulo anterior](B-ruta-aprendizaje.md) | [Inicio](README.md)

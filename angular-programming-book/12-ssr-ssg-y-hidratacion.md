@@ -184,3 +184,7 @@ export class TarjetaAnalyticsComponent implements OnInit {
 * Es fundamental utilizar **`isPlatformBrowser`** y **`isPlatformServer`** junto con **`PLATFORM_ID`** para blindar la aplicación contra fallos catastróficos de ejecución al consumir APIs exclusivas del navegador.
 
 En el próximo capítulo, aprenderemos cómo asegurar la calidad de nuestro software y prevenir regresiones de código dominando el **Testing Unitario y de Integración con Vitest** y **Playwright**.
+
+---
+
+← [Capítulo anterior](11-vistas-diferibles.md) | [Inicio](README.md) | [Capítulo siguiente →](13-testing-en-angular.md)

@@ -3987,3 +3987,7 @@ En el próximo capítulo, pondremos este conocimiento en práctica construyendo 
 
 *Capítulo 3 — Imágenes Docker*  
 *Libro: Docker de Novato a Experto*
+
+---
+
+← [Capítulo anterior](capitulo-02-instalacion.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-04-dockerfile.md)

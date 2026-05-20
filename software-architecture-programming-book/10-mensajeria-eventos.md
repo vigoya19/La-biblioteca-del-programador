@@ -161,3 +161,7 @@ Si necesitas orden:
 ---
 
 > **Reflexión del capítulo**: La mensajería asíncrona es el superpoder de los sistemas distribuidos, pero también su mayor fuente de complejidad. Domina la idempotencia y el outbox pattern. El resto se aprende sobre la marcha.
+
+---
+
+← [Capítulo anterior](09-patrones-comunicacion.md) | [Inicio](README.md) | [Capítulo siguiente →](11-patrones-datos.md)

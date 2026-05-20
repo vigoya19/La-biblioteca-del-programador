@@ -374,3 +374,7 @@ Este apendice proporciona una tabla de referencia rapida de todos los comandos d
 | W | worktree |
 
 ---
+
+---
+
+← [Capítulo anterior](21-migrando-git.md) | [Inicio](README.md) | [Capítulo siguiente →](B-ruta-aprendizaje.md)

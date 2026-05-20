@@ -325,3 +325,7 @@ Construye un sistema que:
 ---
 
 Este es el final del libro. Has recorrido un camino completo desde los fundamentos de Node.js y TypeScript hasta arquitectura hexagonal, testing avanzado y desarrollo web profesional. El ecosistema Node.js + TypeScript es inmenso y sigue creciendo. Tu siguiente paso es construir proyectos reales, contribuir al open source y nunca dejar de aprender. ¡Feliz programacion!
+
+---
+
+← [Capítulo anterior](16-desarrollo-web.md) | [Inicio](README.md)

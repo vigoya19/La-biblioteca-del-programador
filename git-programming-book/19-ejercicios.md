@@ -1248,3 +1248,7 @@ git worktree remove ../proyecto-hotfix
 5. **Auditoria de repositorio existente**: Toma un repositorio real en el que trabajes y aplica los ejercicios 14 (bisect), 19 (reflog), y 25 (optimizacion). Identifica al menos una mejora concreta que puedas implementar.
 
 ---
+
+---
+
+← [Capítulo anterior](18-buenas-practicas.md) | [Inicio](README.md) | [Capítulo siguiente →](20-activos-no-codigo.md)

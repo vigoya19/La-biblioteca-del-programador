@@ -812,3 +812,7 @@ app.useGlobalGuards(new LoadSheddingGuard());
 - Top-level await permite usar `await` en el nivel superior de modulos ESM.
 
 En el siguiente capitulo exploraremos el manejo de errores en profundidad.
+
+---
+
+← [Capítulo anterior](06-interfaces.md) | [Inicio](README.md) | [Capítulo siguiente →](08-manejo-de-errores.md)

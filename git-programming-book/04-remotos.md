@@ -1068,3 +1068,7 @@ done
 4. **Pull con rebase vs merge:** En un repositorio compartido con otra persona (o simulandolo con dos clones locales), haz cambios divergentes. Practica resolver el mismo escenario con `git pull` (merge) y con `git pull --rebase`. Compara el historial resultante con `git log --oneline --graph --all`.
 
 5. **Inspeccion de remotos:** Usa `git ls-remote` para listar todas las ramas y tags de varios repositorios publicos populares. Escribe un script que compare las ramas locales con sus upstreams y muestre cuales estan desincronizadas (ahead/behind).
+
+---
+
+← [Capítulo anterior](03-ramas.md) | [Inicio](README.md) | [Capítulo siguiente →](05-deshacer-cambios.md)

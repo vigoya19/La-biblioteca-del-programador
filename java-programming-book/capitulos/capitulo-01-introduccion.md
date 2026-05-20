@@ -2313,3 +2313,7 @@ java -Xms64m -Xmx256m -Xlog:gc*:file=gc.log:time,level,tags GeneradorBasura
    ¿Qué diferencias observas en la frecuencia y duración de las pausas?
 
 **Objetivo**: Entender el Garbage Collector en acción, usar `jstat` para monitorización, y experimentar con diferentes algoritmos de GC.
+
+---
+
+[Inicio](README.md) | [Capítulo siguiente →](capitulo-02-fundamentos.md)

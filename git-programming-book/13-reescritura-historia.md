@@ -1199,3 +1199,7 @@ La reescritura de historia es una herramienta poderosa que debe manejarse con re
 3. Usa BFG para eliminar todos los archivos `.mp4` del historial.
 4. Compara la experiencia y el rendimiento con `git filter-repo` para la misma tarea.
 5. Documenta en qué escenarios preferirías cada herramienta.
+
+---
+
+← [Capítulo anterior](12-conflictos.md) | [Inicio](README.md) | [Capítulo siguiente →](14-gran-escala.md)

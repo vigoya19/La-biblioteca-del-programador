@@ -654,3 +654,7 @@ MTTR:                  8 minutos (mediana)
 ---
 
 > **Reflexión del capítulo**: ShopFlow no es un caso hipotético. Es una amalgama de experiencias reales en múltiples startups y empresas. Los errores que evitamos en este capítulo son errores que yo (y muchos colegas) cometimos. La moraleja: no necesitas la arquitectura perfecta el día 1, necesitas la arquitectura que te permita llegar al día 100, y luego evolucionarla.
+
+---
+
+← [Capítulo anterior](27-futuro.md) | [Inicio](README.md) | [Capítulo siguiente →](29-entrevistas.md)

@@ -690,3 +690,7 @@ usage: git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 4. **Configuracion avanzada**: Configura `core.autocrlf` de forma adecuada para tu sistema operativo. Investiga que otros parametros de `core.*` existen y escribe un breve resumen de 3 que consideres utiles.
 
 5. **Laboratorio de los tres estados**: Crea un repositorio nuevo y un archivo. Sigue este flujo: modifica el archivo, agregalo al staging, haz commit, modificalo de nuevo sin agregar. Usa `git status` entre cada paso y documenta como cambia el estado del archivo en cada etapa.
+
+---
+
+[Inicio](README.md) | [Capítulo siguiente →](02-fundamentos.md)

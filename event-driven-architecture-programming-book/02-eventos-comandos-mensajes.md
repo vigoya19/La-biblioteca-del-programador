@@ -290,3 +290,7 @@ await producer.send({
 - El **ordenamiento** se garantiza por partition key en Kafka. Eventos de la misma entidad = misma particion.
 
 En el siguiente capitulo exploramos las topologias y patrones de comunicacion en detalle.
+
+---
+
+← [Capítulo anterior](01-fundamentos.md) | [Inicio](README.md) | [Capítulo siguiente →](03-topologias-patrones.md)

@@ -168,3 +168,7 @@ Equipo A        Equipo B   (Consumidores de la plataforma)
 ---
 
 > **Reflexión del capítulo**: IaC y CI/CD no son herramientas, son cultura. La diferencia entre un equipo que despliega cada 3 meses y uno que despliega 20 veces al día no es técnica; es confianza en el pipeline. Construye pipelines que den confianza, y la velocidad llegará sola.
+
+---
+
+← [Capítulo anterior](23-serverless.md) | [Inicio](README.md) | [Capítulo siguiente →](25-observabilidad.md)

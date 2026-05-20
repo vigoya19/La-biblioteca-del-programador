@@ -672,3 +672,7 @@ async function usarRedis() {
 - Utility types (`Partial`, `Pick`, `Omit`, `Record`) cubren la mayoria de transformaciones comunes.
 
 En el siguiente capitulo exploraremos la asincronia y el Event Loop en Node.js.
+
+---
+
+← [Capítulo anterior](05-estructuras-de-datos.md) | [Inicio](README.md) | [Capítulo siguiente →](07-asincronia.md)

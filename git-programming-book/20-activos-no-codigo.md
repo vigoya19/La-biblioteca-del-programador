@@ -420,3 +420,7 @@ jobs:
 ---
 
 > **Reflexión del capítulo**: Git no discrimina tipos de archivo. Almacena bytes. La diferencia entre un proyecto con assets que funciona bien en Git y uno que es un infierno está en la configuración: `.gitattributes`, Git LFS, file locking, y las herramientas de diff adecuadas para cada formato. Un game studio que domina Git LFS + file locking puede manejar terabytes de assets. Un equipo de datos que ignora DVC llena el repo de CSVs de 500MB y hace el clone imposible. La herramienta es la misma. La diferencia es saber usarla.
+
+---
+
+← [Capítulo anterior](19-ejercicios.md) | [Inicio](README.md) | [Capítulo siguiente →](21-migrando-git.md)

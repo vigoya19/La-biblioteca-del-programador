@@ -184,3 +184,7 @@ Algunas cosas que debes recordar:
 *"Un arquitecto de software es alguien que ha cometido suficientes errores como para saber qué puede salir mal."*
 
 Gracias por leer. Ahora ve y construye algo increíble.
+
+---
+
+← [Capítulo anterior](26-tradeoffs.md) | [Inicio](README.md) | [Capítulo siguiente →](28-caso-estudio.md)

@@ -3559,3 +3559,7 @@ Características:
 - Los **streams primitivos** (`IntStream`, `LongStream`, `DoubleStream`) eliminan el autoboxing y son 4-5x más rápidos que `Stream<Integer>`.
 - Las **excepciones verificadas** no encajan en lambdas. Usa wrappers (`ThrowingFunction`), `@SneakyThrows` o librerías como Vavr para manejarlas limpiamente.
 - Los **streams infinitos** (`Stream.iterate`, `Stream.generate`) combinados con `takeWhile`/`limit` modelan secuencias ilimitadas de forma segura.
+
+---
+
+← [Capítulo anterior](capitulo-07-concurrencia.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-09-jdbc.md)

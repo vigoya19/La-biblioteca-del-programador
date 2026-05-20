@@ -887,3 +887,7 @@ go build -ldflags "$ldflags" -o app .
 4. **Generar changelog entre tags:** En un repositorio con múltiples tags, genera un changelog listando todos los commits no-merge entre v1.0.0 y v2.0.0. Formatea la salida incluyendo autor y fecha de cada commit.
 
 5. **Configurar GPG para firmar tags:** Genera un par de claves GPG, configúralo en Git, crea un tag firmado y verifica la firma. Exporta la clave pública y simula cómo otro desarrollador verificaría tu firma.
+
+---
+
+← [Capítulo anterior](07-stash.md) | [Inicio](README.md) | [Capítulo siguiente →](09-submodulos.md)

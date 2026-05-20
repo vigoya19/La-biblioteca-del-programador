@@ -638,3 +638,7 @@ func main() {
 - `iota` es una herramienta poderosa para generar constantes.
 - El paquete `fmt` proporciona formateo flexible con Printf.
 - Arrays, slices, maps, structs y channels son tipos compuestos (ver Capitulo 5).
+
+---
+
+← [Capítulo anterior](01-introduccion.md) | [Inicio](README.md) | [Capítulo siguiente →](03-estructuras-de-control.md)

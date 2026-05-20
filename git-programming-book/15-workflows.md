@@ -867,3 +867,7 @@ Los flujos de trabajo en Git definen cómo los equipos colaboran y entregan soft
 2. Para cada escenario, elige el workflow más apropiado y escribe una justificación de al menos 5 líneas.
 3. Identifica qué métricas usarías para evaluar si el workflow está funcionando (e.g., tiempo desde commit hasta deploy, frecuencia de conflictos, tiempo de revisión de PRs).
 4. Para el escenario de la gran corporación, propón una estrategia de escalamiento de equipos usando CODEOWNERS, feature flags y protocolos de comunicación.
+
+---
+
+← [Capítulo anterior](14-gran-escala.md) | [Inicio](README.md) | [Capítulo siguiente →](16-ci-cd.md)

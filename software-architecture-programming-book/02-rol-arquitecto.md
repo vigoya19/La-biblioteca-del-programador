@@ -193,3 +193,7 @@ Tu legado no es el código ni los diagramas. Es la gente que formaste.
 ---
 
 > **Reflexión del capítulo**: El título de "arquitecto" no lo da un cargo, lo da la influencia técnica y la confianza que generas en los equipos. No persigas el título, persigue el impacto. La mejor validación de tu trabajo como arquitecto es que los desarrolladores digan: "este sistema es un placer trabajar con él".
+
+---
+
+← [Capítulo anterior](01-fundamentos.md) | [Inicio](README.md) | [Capítulo siguiente →](03-atributos-calidad.md)

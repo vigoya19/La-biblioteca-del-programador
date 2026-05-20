@@ -219,3 +219,7 @@ Readiness Probe: ¿Puede recibir tráfico?
 ---
 
 > **Reflexión del capítulo**: La resiliencia no es un feature, es un atributo sistémico. No puedes añadirla al final. Debes diseñarla desde el primer día, porque el día que la necesites ya será demasiado tarde.
+
+---
+
+← [Capítulo anterior](11-patrones-datos.md) | [Inicio](README.md) | [Capítulo siguiente →](13-protocolos.md)

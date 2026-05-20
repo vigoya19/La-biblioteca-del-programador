@@ -467,3 +467,7 @@ Puntuación > 30: Excelente. Sigue así y no bajes la guardia.
 ---
 
 > **Reflexión del capítulo**: Los anti-patrones son como las enfermedades: más vale prevenir que curar. Pero si ya estás enfermo (ya tienes un Big Ball of Mud, un Distributed Monolith, o una God Table), no te desesperes. Todos los sistemas tienen anti-patrones en algún grado. La diferencia entre un buen arquitecto y uno excelente no es nunca cometer errores — es reconocerlos temprano y tener la valentía de corregirlos. No te enamores de tu arquitectura. Enamórate de resolver problemas.
+
+---
+
+← [Capítulo anterior](35-disaster-recovery.md) | [Inicio](README.md) | [Capítulo siguiente →](apendice-a-arboles-decision.md)

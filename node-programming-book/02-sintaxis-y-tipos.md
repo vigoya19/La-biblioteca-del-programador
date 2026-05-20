@@ -702,3 +702,7 @@ declare module "*.css" {
 - Las discriminated unions permiten modelar estados complejos de forma segura.
 
 En el siguiente capitulo exploraremos las estructuras de control en TypeScript.
+
+---
+
+← [Capítulo anterior](01-introduccion.md) | [Inicio](README.md) | [Capítulo siguiente →](03-estructuras-de-control.md)

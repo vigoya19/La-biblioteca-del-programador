@@ -285,3 +285,7 @@ export class PerfilEmpresaComponent implements OnInit {
 * La API **`takeUntilDestroyed`** proporciona una estrategia de protección de red al cancelar peticiones en vuelo ante la salida prematura del usuario del componente.
 
 En el próximo capítulo, aprenderemos a gestionar flujos de datos interconectados a nivel de negocio y a construir tiendas reactivas complejas dominando la **Gestión de Estado** con **NgRx Signals Store**.
+
+---
+
+← [Capítulo anterior](07-enrutamiento-y-navegacion.md) | [Inicio](README.md) | [Capítulo siguiente →](09-gestion-de-estado.md)

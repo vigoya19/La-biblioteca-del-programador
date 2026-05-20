@@ -467,3 +467,7 @@ const { rows } = await db.query(
 - Casos de uso reales: fintech (transacciones vs saldos), e-commerce (catálogo vs búsqueda), IoT (eventos crudos vs agregaciones).
 
 En el siguiente capítulo exploramos Sagas: transacciones distribuidas en el mundo event-driven.
+
+---
+
+← [Capítulo anterior](09-event-sourcing.md) | [Inicio](README.md) | [Capítulo siguiente →](11-sagas.md)

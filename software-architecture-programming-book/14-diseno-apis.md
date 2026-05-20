@@ -372,3 +372,7 @@ Antes de publicar una API:
 ---
 
 > **Reflexión del capítulo**: Diseñar APIs es diseño de producto para desarrolladores. Una API fea, inconsistente o mal documentada es una experiencia de usuario terrible. Trata a tus APIs con el mismo cuidado que tratarías una interfaz gráfica. Y recuerda: es más fácil diseñar bien desde el principio que arreglar una API con miles de consumidores.
+
+---
+
+← [Capítulo anterior](13-protocolos.md) | [Inicio](README.md) | [Capítulo siguiente →](15-grpc.md)

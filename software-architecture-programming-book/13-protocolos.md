@@ -156,3 +156,7 @@ Cliente ──► Certificado Cliente ──► Servidor
 ---
 
 > **Reflexión del capítulo**: No necesitas ser experto en cada protocolo, pero sí entender sus trade-offs. La elección entre TCP y UDP, entre HTTP/2 y gRPC, entre WebSocket y SSE, es tu responsabilidad como arquitecto. El protocolo correcto puede ahorrarte meses de trabajo.
+
+---
+
+← [Capítulo anterior](12-resiliencia.md) | [Inicio](README.md) | [Capítulo siguiente →](14-diseno-apis.md)

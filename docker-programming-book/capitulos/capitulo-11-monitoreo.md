@@ -3090,3 +3090,7 @@ docker volume rm $(docker volume ls -q | grep monitoring) 2>/dev/null
 > observabilidad —logs, métricas y trazas— debe ser parte del despliegue, no un
 > afterthought. Cuando un contenedor muere a las 3 AM, tu yo del futuro te lo
 > agradecerá.
+
+---
+
+← [Capítulo anterior](capitulo-10-seguridad.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-12-produccion.md)

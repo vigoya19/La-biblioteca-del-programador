@@ -773,3 +773,7 @@ Si una funcionalidad cruza los límites de dos dominios, pertenece a la librerí
 * La **migración progresiva** de un monolito a MFEs sigue el patrón Strangler Fig, extrayendo gradualmente dominios del monolito mientras este continúa funcionando como Shell.
 
 Este capítulo concluye la teoría avanzada del libro. Has adquirido el conocimiento arquitectónico necesario para diseñar, implementar y operar aplicaciones Angular de cualquier escala, desde proyectos personales hasta plataformas empresariales distribuidas globalmente con decenas de equipos.
+
+---
+
+← [Capítulo anterior](15-ejercicios-practicos.md) | [Inicio](README.md) | [Capítulo siguiente →](17-material-cdk-animaciones.md)

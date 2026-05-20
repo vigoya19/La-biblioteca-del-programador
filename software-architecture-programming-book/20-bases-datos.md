@@ -181,3 +181,7 @@ Fase 3 (Contract): El código solo lee/escribe el nuevo esquema.
 ---
 
 > **Reflexión del capítulo**: La base de datos suele ser el cuello de botella más difícil de resolver en un sistema. No porque la tecnología sea mala, sino porque los datos son el activo más valioso y moverlos es costoso. Dedica tiempo a elegir y modelar tu persistencia. Es la decisión más difícil de revertir.
+
+---
+
+← [Capítulo anterior](19-caching.md) | [Inicio](README.md) | [Capítulo siguiente →](21-cloud.md)

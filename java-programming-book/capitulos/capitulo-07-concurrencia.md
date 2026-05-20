@@ -3061,3 +3061,6 @@ VisualVM (incluido en JDK hasta Java 8, descargable para versiones posteriores) 
 - **Testing:** usar CountDownLatch para coordinar hilos en tests, ejecutar miles de iteraciones, variar número de hilos, usar jcstress.
 - **Depuración:** `jstack`/`jcmd` para thread dumps, JFR para profiling de baja sobrecarga, VisualVM para monitoreo visual.
 
+---
+
+← [Capítulo anterior](capitulo-06-io-nio.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-08-streams-lambdas.md)

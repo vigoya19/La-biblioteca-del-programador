@@ -483,3 +483,7 @@ func (s *server) CreateOrder(ctx context.Context, req *pb.CreateOrderRequest) (*
 ---
 
 > **Reflexión del capítulo**: gRPC + Go es la combinación más poderosa para construir APIs de alto rendimiento. La generación automática de tipos elimina categorías enteras de bugs (campos mal escritos, tipos incorrectos, contratos no cumplidos). Si tu sistema tiene más de 2 servicios que se comunican entre sí, evalúa seriamente gRPC.
+
+---
+
+← [Capítulo anterior](17-ejercicios.md) | [Inicio](README.md) | [Capítulo siguiente →](19-http-client-web.md)

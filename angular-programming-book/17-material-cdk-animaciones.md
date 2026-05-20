@@ -532,3 +532,7 @@ export class AppComponent {
 * Los triggers `:enter` y `:leave` animan elementos que entran/salen del DOM (compatible con `@if` y `@for`).
 * **`stagger()`** crea animaciones escalonadas elegantes en listas.
 * Para rendimiento óptimo, anima exclusivamente `transform` y `opacity`, que se ejecutan en el compositor GPU sin disparar reflows.
+
+---
+
+← [Capítulo anterior](16-microfrontends.md) | [Inicio](README.md) | [Capítulo siguiente →](18-i18n-y-a11y.md)

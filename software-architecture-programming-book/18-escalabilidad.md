@@ -301,3 +301,7 @@ Antes de ir a producción con carga significativa:
 - [ ] ¿Los p95/p99 están dentro de los SLOs bajo carga 2x?
 - [ ] ¿El plan de capacidad predice crecimiento a 6, 12 y 18 meses?
 - [ ] ¿Hay un runbook de "¿qué hacer si el tráfico se triplica en 5 minutos?"
+
+---
+
+← [Capítulo anterior](17-auth.md) | [Inicio](README.md) | [Capítulo siguiente →](19-caching.md)

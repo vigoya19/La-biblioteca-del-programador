@@ -486,3 +486,7 @@ const usuario = crear(Usuario, 1, "Andres"); // Usuario, type-safe
 - Evita generics cuando añaden complejidad sin beneficio real.
 
 En el siguiente capitulo exploraremos las buenas practicas y el TypeScript idiomatico.
+
+---
+
+← [Capítulo anterior](10-testing.md) | [Inicio](README.md) | [Capítulo siguiente →](12-buenas-practicas.md)

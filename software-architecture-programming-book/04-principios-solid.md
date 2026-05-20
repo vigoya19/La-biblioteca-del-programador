@@ -878,3 +878,7 @@ class Facturador {
 ---
 
 > **Reflexión del capítulo**: SOLID no es una lista de reglas para pasar entrevistas. Es el conjunto de principios que, aplicados con criterio, separan el código desechable del código que sobrevive 10 años. La diferencia no la ves en el primer mes. La ves en el mes 18, cuando el equipo sigue entregando features al mismo ritmo que el primer día. Eso es SOLID. No perfección académica. Supervivencia profesional.
+
+---
+
+← [Capítulo anterior](03-atributos-calidad.md) | [Inicio](README.md) | [Capítulo siguiente →](05-principios-diseno.md)

@@ -135,317 +135,152 @@ Esta diferencia de órdenes de magnitud no es magia, es arquitectura. Y la arqui
 
 ---
 
-## 2. La magia del kernel: Namespaces
+## 2. Namespaces: cómo el kernel crea "cajas aisladas"
 
-> *Los namespaces son la característica del kernel de Linux que hace posible que varios procesos tengan diferentes vistas del sistema.*
+Imagina que vives en un edificio de apartamentos. Dentro de tu apartamento ves tus muebles, tu tele, tu cocina. No ves lo que hay en el apartamento de tu vecino. Pero todos comparten la estructura del edificio: las tuberías, los cables, el ascensor.
 
-Esta sección es densa. Tómate tu tiempo. Entender namespaces es la diferencia entre *usar* Docker y *comprender* Docker.
+Los **namespaces** son exactamente eso para procesos en Linux:
 
-### 2.1 ¿Qué es un namespace?
+| El edificio... | Es en Linux... |
+|---|---|
+| El edificio entero | El **kernel** (el host) |
+| Cada apartamento | Un **namespace** |
+| Tus muebles dentro | Los **procesos** del contenedor |
+| Tuberías y ascensor | El kernel **compartido** |
 
-Un **namespace** es un mecanismo del kernel de Linux que envuelve un recurso global del sistema en una abstracción que hace que, para los procesos dentro del namespace, parezca que tienen su propia instancia aislada del recurso.
+Linux tiene 8 tipos de namespace. Cada uno aísla una cosa distinta. Vamos a ver los dos más importantes para entender Docker.
 
-Piensa en un edificio de oficinas. El edificio entero es el kernel. Cada oficina es un namespace. Desde dentro de tu oficina, ves tus muebles, tus papeles, tus compañeros. No ves (ni puedes acceder) a lo que hay en la oficina de al lado. Pero todas las oficinas comparten la misma estructura del edificio (electricidad, fontanería, ascensores = el kernel).
+---
 
-Linux implementa actualmente **8 tipos de namespaces**. Docker usa todos ellos. Vamos a examinar cada uno en detalle.
+### 2.2 PID namespace: "cada contenedor tiene su propia lista de procesos"
 
-### 2.2 PID namespace: aislamiento de procesos
+#### La idea en 30 segundos
 
-**Qué aísla:** Los identificadores de proceso (PID). Los procesos dentro de un PID namespace solo ven los procesos que pertenecen a ese namespace. Los PIDs se renumeran: el primer proceso creado en el namespace recibe PID 1.
+En Linux, cada proceso tiene un número (el PID). Chrome es el #847, Spotify el #1203... Es como el DNI de cada proceso. **Todos los procesos del sistema comparten la misma lista de números.**
 
-**Por qué importa:** En Linux, el proceso con PID 1 (`init`) es especial. Es el ancestro de todos los procesos, recibe señales del kernel, y si muere, el kernel hace panic. Un contenedor necesita su propio PID 1 para gestionar procesos hijo y recibir señales correctamente, sin interferir con el `init` real del host.
+Un PID namespace crea una "habitación aparte". Dentro de esa habitación, los procesos arrancan una lista NUEVA desde el número 1. El proceso que era el #28471 en la lista global ahora es el #1 dentro de su habitación.
 
-**Verificación práctica:**
+**Analogía:** Imagina una oficina gigante con 300 empleados numerados del 1 al 300. Pones paredes y creas despachos pequeños. Dentro de cada despacho, el empleado se renumera: el #274 de la oficina ahora es el #1 de su despacho. Desde dentro solo ves los números de tu despacho. No sabes que fuera eres el #274.
+
+#### Ejemplo visual
+
+```
+┌──────────────────────────────────────────┐
+│           HOST (tu máquina)              │
+│                                          │
+│  PID 1   → systemd (el init del host)    │
+│  PID 847 → Chrome                        │
+│  ...                                     │
+│  PID 28471 ───────────────────┐          │
+│                               │          │
+│  ┌────────────────────────────┘          │
+│  │ ┌────────────────────────┐           │
+│  │ │   CONTENEDOR alpine    │           │
+│  │ │                        │           │
+│  │ │  PID 1 → ps aux       │           │
+│  │ │                        │           │
+│  │ │  (Este proceso es el   │           │
+│  │ │   PID 28471 del host,  │           │
+│  │ │   pero él cree que es  │           │
+│  │ │   el PID 1.)           │           │
+│  │ └────────────────────────┘           │
+│                                          │
+│  El contenedor NO SABE que existen       │
+│  Chrome, systemd, ni los otros 300       │
+│  procesos. Solo se ve a sí mismo.        │
+└──────────────────────────────────────────┘
+```
+
+#### Pruébalo tú mismo (30 segundos)
 
 ```bash
-# En el host: ¿cuántos procesos hay?
+# ¿Cuántos procesos hay en tu máquina?
 $ ps aux | wc -l
-342
+342       # Tu ordenador tiene 342 procesos
 
-# Dentro del contenedor: visión recortada
-$ docker run --rm -it alpine ps aux
+# Ahora dentro de un contenedor Alpine:
+$ docker run --rm alpine ps aux
 PID   USER     TIME  COMMAND
     1 root      0:00 ps aux
+# Solo ve 1 proceso. Y se cree el número 1.
 ```
 
-El proceso `ps aux` dentro del contenedor cree que es el PID 1. Pero en el host:
+El contenedor vive en una burbuja: cree que es el único proceso del mundo.
+
+#### ¿Por qué le importa esto a Docker?
+
+1. **El contenedor no puede tocar los procesos del host.** Si dentro del contenedor haces `kill`, solo matas procesos del contenedor.
+2. **Cada contenedor tiene su "jefe" (PID 1).** Cuando Docker quiere apagar el contenedor, le manda una señal al PID 1 y este cierra todo ordenadamente.
+3. **50 contenedores = 50 "PID 1".** Ninguno interfiere con los demás.
+
+---
+
+> **📚 Avanzado (sáltate esto si estás empezando):** El PID 1 en Linux tiene responsabilidades especiales: recoger procesos huérfanos (zombis) y reenviar señales. Si tu app no fue diseñada para ser PID 1, usa `docker run --init` y Docker meterá un mini-gestor (`tini`) que se encarga. Si algún día ves procesos con estado `Z` (defunct) en `docker top`, vuelve aquí.
+
+---
+
+### 2.3 NET namespace: "cada contenedor tiene su propia red privada"
+
+#### La idea en 30 segundos
+
+Tu ordenador tiene una tarjeta de red, una IP, y 65535 puertos. Si dos programas intentan usar el puerto 80, el segundo casca.
+
+Un NET namespace le da a cada contenedor **su propia red privada virtual** completa: su propia IP, sus propios puertos, sus propias reglas. Dos contenedores pueden usar el puerto 80 sin estorbarse porque cada uno está en su "mundo de red" privado.
+
+**Analogía:** Un hotel. El hotel tiene una dirección postal (la IP del host: `192.168.1.10`). Cada habitación tiene su propio teléfono interno. La habitación 101 tiene extensión 101, la 102 tiene extensión 102. Ambas pueden tener un contestador en la extensión 80 sin conflicto. Para llamar desde fuera, marcas el número del hotel y dices "pásame con la extensión 80 de la habitación 101" (eso es `docker run -p 8080:80`).
+
+#### Ejemplo visual
+
+```
+┌─────────────────────────────────────────────────┐
+│            HOST (192.168.1.10)                  │
+│                                                 │
+│  ┌───────────────────┐  ┌───────────────────┐  │
+│  │  Contenedor A     │  │  Contenedor B     │  │
+│  │                   │  │                   │  │
+│  │  IP: 172.17.0.2   │  │  IP: 172.17.0.3   │  │
+│  │  Puerto 80: nginx │  │  Puerto 80: Apache │  │
+│  │                   │  │                   │  │
+│  │  Red privada A    │  │  Red privada B    │  │
+│  └───────────────────┘  └───────────────────┘  │
+│                                                 │
+│  Ambos en puerto 80. ¡Cero conflictos!          │
+│                                                 │
+│  Desde fuera accedes así:                       │
+│  http://192.168.1.10:8080 → Contenedor A :80   │
+│  http://192.168.1.10:9090 → Contenedor B :80   │
+└─────────────────────────────────────────────────┘
+```
+
+#### Pruébalo tú mismo (30 segundos)
 
 ```bash
-# En el host: el mismo proceso tiene un PID real distinto
-$ ps aux | grep "ps aux"
-root     28174  0.0  0.0   1592     4 ?  Ss+  10:23   0:00 ps aux
+# Terminal 1: lanza un contenedor que escucha en puerto 80
+$ docker run --rm -it alpine sh
+/ # ip addr | grep inet
+    inet 127.0.0.1/8 ...
+    inet 172.17.0.2/16 ...    ← IP propia de ESTE contenedor
+/ # nc -l -p 80               ← Escuchando en puerto 80
+(se queda esperando)
+
+# Terminal 2: otro contenedor, mismo puerto 80, sin conflicto
+$ docker run --rm -it alpine sh
+/ # ip addr | grep inet
+    inet 172.17.0.3/16 ...    ← OTRA IP, distinta
+/ # nc -l -p 80               ← ¡También puerto 80 y funciona!
 ```
 
-El PID 1 del contenedor es el PID 28174 del host. Esta "doble identidad" es lo que permite que comandos como `kill`, `ps`, `top` funcionen correctamente dentro del contenedor sin afectar al host.
+Dos contenedores, mismo puerto 80, cero conflictos. Eso es el NET namespace.
 
-**Creando un PID namespace manualmente:**
+#### ¿Por qué le importa esto a Docker?
 
-```bash
-# Crear un nuevo PID namespace y ejecutar bash dentro
-$ sudo unshare --pid --fork --mount-proc /bin/bash
+1. **Sin conflictos de puertos.** 10 Nginx distintos, todos en puerto 80. Cero problemas.
+2. **Seguridad.** El contenedor A no puede espiar el tráfico del contenedor B.
+3. **Redes a medida.** Puedes crear una red privada donde tu backend y tu base de datos se ven entre sí, pero solo el backend está expuesto a internet.
 
-# Ahora dentro del namespace:
-$ echo $$
-1
-$ ps aux
-USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-root         1  0.0  0.0   7440  4260 pts/0    S    10:25   0:00 /bin/bash
-root         8  0.0  0.0  10060  3024 pts/0    R+   10:25   0:00 ps aux
-```
+---
 
-`unshare` es la herramienta de línea de comandos que crea namespaces. `--pid` crea el PID namespace, `--fork` asegura que el proceso actual se bifurque para ser el PID 1 del nuevo namespace, y `--mount-proc` monta un nuevo `/proc` (sin esto, `ps` seguiría viendo los procesos del host porque `/proc` es un mount point que refleja el PID namespace global).
-
-**¿Qué pasa si PID 1 muere en un contenedor?** El kernel envía `SIGKILL` a todos los demás procesos del namespace. El contenedor termina. Por eso es crítico que el proceso principal de tu contenedor maneje señales correctamente (especialmente `SIGTERM`). Un error común es usar un script shell como `CMD` sin usar `exec`, lo que hace que el script sea PID 1 pero no reenvíe señales al proceso hijo real.
-
-**El problema de los procesos zombis en contenedores:**
-
-En Linux, el proceso con PID 1 tiene una responsabilidad especial: debe "adoptar" procesos huérfanos (cuyo padre muere) y llamar a `wait()` para limpiarlos. Si PID 1 no hace esto, los procesos zombis se acumulan y no pueden ser eliminados. En un contenedor, si tu aplicación no está diseñada para ser PID 1 (no implementa un bucle de `wait()`), puedes encontrarte con este problema.
-
-Por eso existen **init systems ligeros** para contenedores:
-
-| Init system         | Descripción                                          | Tamaño  |
-|---------------------|------------------------------------------------------|---------|
-| `tini`              | Init mínimo que reenvía señales y recoge zombis      | ~50KB   |
-| `dumb-init`         | Similar, con soporte para proxies de señal           | ~1MB    |
-| `s6-overlay`        | Suite completa de supervisión de procesos            | ~10MB   |
-| `supervisord`       | Gestor de procesos en Python                         | ~15MB   |
-
-Docker incorpora `tini` con el flag `--init`:
-
-```bash
-# ¡RECOMENDADO para aplicaciones que crean procesos hijo!
-$ docker run --init myapp
-
-# Dentro del contenedor:
-$ ps aux
-PID   USER     TIME  COMMAND
-    1 root      0:00 /sbin/docker-init -- myapp   # tini es PID 1
-    7 app       0:01 myapp                         # tu app es PID 7
-```
-
-**Cómo manejar señales correctamente:**
-
-```bash
-# MAL: script shell no reenvía señales
-# start.sh:
-#!/bin/sh
-python app.py     # El script es PID 1, python es PID hijo
-# SIGTERM al script no llega a python
-
-# REGULAR: señales sí llegan pero script es PID 1
-#!/bin/sh
-exec python app.py   # exec REEMPLAZA el proceso shell
-
-# MEJOR: usa --init de Docker
-$ docker run --init myapp
-# tini se encarga de reenviar señales y adoptar huérfanos
-```
-
-Puedes ver los procesos zombis en cualquier contenedor:
-
-```bash
-$ docker exec <container> ps aux
-# Si ves procesos con STAT = Z (defunct), tienes un problema de PID 1
-
-# O desde el host:
-$ docker top <container>
-# Busca procesos con estado Z
-```
-
-```dockerfile
-# MAL: el script shell es PID 1, no reenvía señales a nginx
-CMD /start-nginx.sh
-
-# BIEN: exec reemplaza el proceso shell, nginx es PID 1
-CMD ["nginx", "-g", "daemon off;"]
-
-# O BIEN: usando exec en el script
-CMD exec /start-nginx.sh
-```
-
-### 2.3 NET namespace: aislamiento de red
-
-**Qué aísla:** Interfaces de red, tablas de enrutamiento, reglas de iptables, sockets de red. Cada NET namespace tiene su propia pila de red completa: sus propias `eth0`, `lo`, tabla de rutas, reglas de firewall, y sockets de escucha.
-
-**Por qué importa:** Cada contenedor puede tener su propia dirección IP, su propio puerto 80, sus propias reglas de iptables. Un contenedor puede ejecutar un servidor en el puerto 80 y otro contenedor también en el puerto 80, sin conflicto. Cada uno está en su propio NET namespace.
-
-**Modelo mental esencial:**
-
-En Linux, un socket pertenece a un NET namespace desde el momento en que se crea. Cuando un proceso llama a `socket()` o `bind()`, el socket se registra en el NET namespace del proceso. Esto significa que:
-
-1. Dos procesos en distintos NET namespaces pueden escuchar en el mismo puerto sin conflicto.
-2. Las rutas de red (`ip route`), las reglas de iptables, y las interfaces se gestionan por separado.
-3. La comunicación entre NET namespaces requiere mecanismos explícitos: veth pairs, bridges, o reenvío de sockets.
-
-**Verificación práctica:**
-
-```bash
-# En dos terminales distintas:
-$ docker run --rm -it alpine ip addr
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN
-    inet 127.0.0.1/8 scope host lo
-26: eth0@if27: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500
-    inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0
-
-# En otra terminal, otro contenedor:
-$ docker run --rm -it alpine ip addr
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN
-    inet 127.0.0.1/8 scope host lo
-28: eth0@if29: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500
-    inet 172.17.0.3/16 brd 172.17.255.255 scope global eth0
-```
-
-Cada contenedor tiene su propia interfaz `eth0` con direcciones IP diferentes. El `@if27` y `@if29` indican que estas interfaces están conectadas a interfaces virtuales (veth pairs) en el host. Docker crea un puente virtual (`docker0` por defecto) y conecta cada contenedor mediante un par de interfaces virtuales (veth).
-
-```
-┌─────────────────────────────────────────────────────┐
-│                     HOST                             │
-│                                                      │
-│   ┌───────────┐       ┌───────────┐                 │
-│   │ Contenedor│       │ Contenedor│                 │
-│   │    A      │       │    B      │                 │
-│   │ eth0      │       │ eth0      │                 │
-│   │ 172.17.0.2│       │ 172.17.0.3│                 │
-│   └─────┬─────┘       └─────┬─────┘                 │
-│         │                   │                        │
-│   veth pair            veth pair                    │
-│         │                   │                        │
-│   ┌─────┴───────────────────┴─────┐                 │
-│   │        docker0 bridge         │                 │
-│   │        172.17.0.1             │                 │
-│   └─────────────┬─────────────────┘                 │
-│                 │                                    │
-│            NAT (iptables)                            │
-│                 │                                    │
-│           eth0 (host)                                │
-│           192.168.1.10                               │
-└─────────────────────────────────────────────────────┘
-```
-
-**Creando un NET namespace manualmente:**
-
-```bash
-# Crear un nuevo NET namespace
-$ sudo ip netns add demo-ns
-
-# Listar namespaces de red
-$ sudo ip netns list
-demo-ns
-
-# Ejecutar un comando dentro del NET namespace
-$ sudo ip netns exec demo-ns ip addr
-1: lo: <LOOPBACK> mtu 65536 qdisc noop state DOWN
-    lo
-# Solo loopback, ni siquiera está levantada
-
-# Conectar el namespace al host (crear veth pair)
-$ sudo ip link add veth0 type veth peer name veth1
-$ sudo ip link set veth1 netns demo-ns
-
-# Asignar IPs
-$ sudo ip addr add 10.0.1.1/24 dev veth0
-$ sudo ip netns exec demo-ns ip addr add 10.0.1.2/24 dev veth1
-
-# Levantar interfaces
-$ sudo ip link set veth0 up
-$ sudo ip netns exec demo-ns ip link set veth1 up
-
-# Verificar conectividad
-$ ping 10.0.1.2
-PING 10.0.1.2 (10.0.1.2) 56(84) bytes of data.
-64 bytes from 10.0.1.2: icmp_seq=1 ttl=64 time=0.050 ms
-```
-
-Lo que acabamos de hacer manualmente (crear namespace, crear veth pair, conectar, asignar IPs) es exactamente lo que Docker hace cuando ejecutas `docker run`. La comprensión de estos mecanismos te permitirá depurar problemas de red complejos que de otra forma serían una caja negra.
-
-**Docker networking: los drivers por defecto**
-
-Docker ofrece varios drivers de red. Cada uno crea una topología distinta de NET namespaces:
-
-| Driver     | Descripción                                   | Comunicación entre contenedores | Aislamiento |
-|------------|-----------------------------------------------|---------------------------------|-------------|
-| `bridge`   | Bridge Linux (docker0) + NAT. Por defecto.    | Por IP en misma subred          | Medio       |
-| `host`     | Contenedor comparte NET namespace del host.   | N/A (mismo namespace)           | Ninguno     |
-| `none`     | Sin interfaz de red excepto loopback.         | Ninguna                         | Total       |
-| `overlay`  | Red distribuida multi-host (para Swarm).      | Por IP a través de VXLAN        | Alto        |
-| `macvlan`  | Asigna MAC address física a cada contenedor.  | Como dispositivos físicos       | Alto        |
-| `ipvlan`   | Similar a macvlan pero comparte MAC.          | Como dispositivos físicos       | Alto        |
-
-**¿Qué driver usa qué NET namespace?**
-
-```bash
-# Bridge (por defecto): NET namespace aislado, conectado a docker0
-$ docker run --rm -it alpine ip addr
-# eth0@ifXX con IP del rango docker0 (172.17.0.0/16)
-
-# Host: comparte el NET namespace del host (sin aislamiento de red)
-$ docker run --rm --net=host alpine ip addr
-# Misma salida que `ip addr` en el host. Ve todas las interfaces del host.
-
-# None: NET namespace con solo loopback
-$ docker run --rm --net=none alpine ip addr
-# Solo muestra lo (loopback). El contenedor está completamente aislado en red.
-```
-
-**Profundizando: cómo Docker expone puertos**
-
-Cuando haces `docker run -p 8080:80 nginx`, Docker configura iptables con reglas DNAT:
-
-```bash
-$ docker run -d -p 8080:80 --name web nginx
-
-# Docker crea reglas en la tabla NAT de iptables
-$ sudo iptables -t nat -L -n
-Chain DOCKER (2 references)
-target     prot opt source    destination
-RETURN     all  --  0.0.0.0/0 0.0.0.0/0
-DNAT       tcp  --  0.0.0.0/0 0.0.0.0/0   tcp dpt:8080 to:172.17.0.2:80
-#                                                      ^^^^^^^^^^^^^^^^^^^
-#                                                El tráfico al puerto 8080 del host
-#                                                se redirige al puerto 80 del contenedor
-
-# Docker también configura el forward y las reglas de filtrado
-$ sudo iptables -L -n | grep docker
-# Verás reglas en las cadenas FORWARD, DOCKER, DOCKER-ISOLATION
-```
-
-Esta es la razón por la que `ufw` y `firewalld` pueden interferir con Docker: ambos manipulan iptables y pueden sobrescribir las reglas de Docker. Si el mapeo de puertos no funciona, `iptables -t nat -L -n` es tu primer comando de diagnóstico.
-
-**DNS en Docker: cómo funciona el descubrimiento de servicios**
-
-Docker proporciona un servidor DNS interno (por defecto en `127.0.0.11`) para los contenedores conectados a redes bridge definidas por el usuario. A diferencia de la red `bridge` por defecto (que solo usa `/etc/hosts`), las redes definidas por el usuario (`docker network create`) habilitan resolución DNS automática entre contenedores:
-
-```bash
-# Red bridge por defecto: solo /etc/hosts (no DNS)
-$ docker run -d --name web1 --net bridge nginx
-$ docker run --rm --net bridge alpine ping web1
-ping: bad address 'web1'     # No resuelve!
-
-# Red definida por el usuario: DNS automático
-$ docker network create mi-red
-$ docker run -d --name web1 --net mi-red nginx
-$ docker run --rm --net mi-red alpine ping web1
-PING web1 (172.18.0.2): 56 data bytes    # ¡Resuelve!
-64 bytes from 172.18.0.2: seq=0 ttl=64 time=0.085 ms
-
-# Ver el servidor DNS dentro del contenedor
-$ docker run --rm --net mi-red alpine cat /etc/resolv.conf
-nameserver 127.0.0.11    # DNS server de Docker
-options ndots:0
-```
-
-El DNS interno soporta alias de red (`--network-alias`), lo que permite esquemas como blue-green deployment:
-
-```bash
-$ docker run -d --name app-v1 --net mi-red --network-alias app nginx:1.23
-$ docker run -d --name app-v2 --net mi-red --network-alias app nginx:1.24
-
-# 'app' resuelve a ambas IPs (round-robin)
-$ docker run --rm --net mi-red alpine nslookup app
-Name:      app
-Address 1: 172.18.0.2 app-v1
-Address 2: 172.18.0.3 app-v2
-```
+> **📚 Avanzado (sáltate esto si estás empezando):** Por dentro, Docker conecta cada contenedor al host con un "cable virtual" (veth pair) enchufado a un "switch virtual" (bridge `docker0`). El mapeo de puertos (`-p 8080:80`) se hace con reglas de iptables. Si algún día `-p` no funciona tras instalar un firewall como `ufw`, el problema es que las reglas de iptables se pisan. Más adelante, en el capítulo de redes, desmontamos todo esto con detalle.
 
 ### 2.4 MNT (Mount) namespace: aislamiento del sistema de archivos
 

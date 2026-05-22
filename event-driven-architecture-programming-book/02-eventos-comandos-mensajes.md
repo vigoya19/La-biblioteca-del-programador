@@ -9,6 +9,16 @@ La diferencia entre eventos, comandos y mensajes no es solo semantica — determ
 Un evento bien disenado tiene tres capas:
 
 ```typescript
+// Un evento bien diseñado tiene tres capas, como un sobre de correo:
+// 1. ENVELOPE (capa de transporte): el sobre en sí — quién lo envió, cuándo, qué tipo de mensaje es.
+// 2. METADATA (capa de infraestructura): la etiqueta de rastreo — información técnica para trazabilidad.
+// 3. PAYLOAD (capa de negocio): la carta dentro — los datos reales del evento.
+//
+// La interfaz de abajo usa "generics" de TypeScript (<T, D>). Los generics son
+// como una plantilla reutilizable: la <T> dice "el tipo de evento puede variar"
+// y la <D> dice "los datos del evento también". Así, una sola interfaz sirve
+// para representar cualquier tipo de evento (orden creada, pago rechazado, etc.)
+// sin tener que escribir una interfaz diferente para cada uno.
 interface Evento<T extends string, D = unknown> {
   // ─── Envelope (capa de transporte) ───
   id: string;                         // UUID unico del evento
@@ -18,10 +28,17 @@ interface Evento<T extends string, D = unknown> {
   specversion: string;                // Version de la especificacion (CloudEvents)
 
   // ─── Metadata (capa de infraestructura) ───
-  correlationId?: string;             // Traza distribuida
-  causationId?: string;               // Que evento CAUSO este
-  tenant?: string;                    // Multi-tenancy
-  partitionKey?: string;              // Ordenamiento en Kafka
+  correlationId?: string;             // Traza distribuida: como un número de pedido que
+                                      // permite rastrear TODOS los eventos relacionados
+                                      // con una misma operación original.
+  causationId?: string;               // ¿Qué evento CAUSÓ este? La cadena de causa-efecto.
+                                      // Si el pago generó la factura, el causationId de
+                                      // la factura apunta al evento del pago.
+  tenant?: string;                    // Multi-tenancy (múltiples clientes en el mismo sistema)
+  partitionKey?: string;              // Ordenamiento en Kafka: todos los eventos con
+                                      // la misma partitionKey se procesan en orden.
+                                      // Es como un código postal: todas las cartas del
+                                      // mismo código van al mismo estante.
 
   // ─── Payload (capa de negocio) ───
   data: D;                            // El contenido real del evento

@@ -526,6 +526,18 @@ function memoizarConTTL<T extends (...args: any[]) => any>(
 
 ## 4.10 Debounce y Throttle
 
+> [!NOTE]
+> ### 🚪 El Ascensor de Hotel (Debounce) vs. La Puerta Giratoria (Throttle)
+> 
+> Cuando tienes un flujo masivo de eventos rápidos (como clicks de botones o búsquedas en tiempo real) y deseas limitar cuántas veces se ejecuta tu código, tienes dos estrategias:
+> 
+> 1. **Debounce (El Ascensor de Hotel)**:
+>    - Imagina que estás por subir al ascensor. Entras y las puertas empiezan a cerrarse. De repente, otra persona viene corriendo y presiona el botón. Las puertas se abren y el temporizador se reinicia. Entra otra persona, y se vuelve a reiniciar. El ascensor **solo subirá cuando pasen 3 segundos de silencio absoluto** sin que nadie nuevo presione el botón.
+>    - **Uso**: Ideal para cajas de búsqueda. No consultes a la base de datos con cada letra; espera a que el usuario deje de escribir por 300 milisegundos.
+> 2. **Throttle (La Puerta Giratoria)**:
+>    - Imagina una puerta giratoria en un banco que solo da una vuelta completa cada 2 segundos. Aunque haya una fila de 50 personas empujando frenéticamente a la vez, la puerta **solo dejará pasar a una persona en intervalos fijos y constantes de 2 segundos**.
+>    - **Uso**: Ideal para scroll de pantallas o redimensionamiento. Captura la posición del usuario de forma constante, pero solo procesa los cálculos una vez cada 100ms.
+
 ```typescript
 // Debounce: ejecuta solo cuando dejan de llegar llamadas
 function debounce<T extends (...args: any[]) => void>(

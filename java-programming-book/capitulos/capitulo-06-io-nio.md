@@ -1666,6 +1666,17 @@ public class AtributosDemo {
 
 Un **memory-mapped file** asigna una región de un archivo directamente en la memoria virtual del proceso. El sistema operativo se encarga de cargar y descargar páginas según sea necesario, sin copias intermedias explícitas.
 
+> [!NOTE]
+> ### 🪞 El Escritorio Mágico / El Espejo de Portales (Memory-Mapped Files)
+>
+> Imagina que necesitas leer y modificar un libro gigante de 1,000 páginas que se encuentra guardado en una bóveda lejana (el disco duro).
+> - **El enfoque de lectura tradicional (Streams)**: Cada vez que quieres leer un renglón, tienes que enviar a un cartero a la bóveda. El cartero saca la página del libro, la mete en un portafolios (el buffer del sistema operativo), viaja de vuelta, copia la información en tu cuaderno de notas (el buffer de la JVM) y finalmente tú la lees en tu escritorio (tu aplicación). ¡Esto requiere un constante trasiego de mensajeros y copias de papel!
+> - **El enfoque de mmap (El Espejo de Portales)**: En lugar de enviar mensajeros, colocas un **espejo de portales mágico en tu escritorio (un `MappedByteBuffer`)** que apunta directamente a las páginas del libro dentro de la bóveda lejana.
+>   - Cuando posas tus ojos en el espejo, la página exacta se visualiza al instante (paginación bajo demanda administrada por el sistema operativo).
+>   - Si tomas un bolígrafo y escribes sobre la superficie de tu espejo mágico, **la tinta se dibuja automáticamente y de forma instantánea sobre las hojas reales de papel dentro de la bóveda lejana**, omitiendo por completo a todos los mensajeros y cuadernos intermedios (Zero-Copy).
+>
+> **En resumen**: El mapeo de archivos en memoria virtual permite que Java acceda y altere archivos gigantescos directamente como si fueran arreglos en memoria RAM, dejando que el sistema operativo se encargue de sincronizar físicamente los bytes en disco de la forma más veloz y eficiente posible.
+
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │        LECTURA TRADICIONAL vs MEMORY-MAPPED FILE                 │
@@ -1956,6 +1967,17 @@ public class MMapArchivoGrande {
 ### 6.9.1 ¿Qué es I/O asíncrona?
 
 En I/O **síncrona**, el thread se bloquea esperando que la operación termine. En I/O **asíncrona**, el thread continúa inmediatamente y recibe una notificación cuando los datos están disponibles.
+
+> [!NOTE]
+> ### 📟 La Llamada en Espera vs. El Localizador Vibratorio de Restaurante (I/O Síncrona vs. Asíncrona)
+>
+> Imagina que tienes muchísima hambre y vas a pedir comida para llevar:
+> - **Enfoque Síncrono (La Llamada en Espera)**: Llegas al mostrador, ordenas tu plato y **te quedas parado frente al cajero con los brazos cruzados esperando a que lo cocinen** (tu hilo de ejecución se bloquea). Durante los 15 minutos que toma preparar la comida, no puedes ir al baño, no puedes contestar llamadas, ni hacer otra cosa. Estás "congelado".
+> - **Enfoque Asíncrono (El Localizador Vibratorio - `Future` / `CompletionHandler`)**: Ordenas tu comida y el cajero te entrega un **pequeño localizador vibratorio (un `CompletionHandler` o callback)** y te dice: *"Sigue con tus actividades"*.
+>   - Tú te vas a sentar, revisas tus correos, hablas por teléfono o lees un libro (el hilo principal sigue libre haciendo otros trabajos).
+>   - En cuanto tu platillo está listo en la cocina, el localizador de tu bolsillo **vibra y parpadea (el callback se dispara)**, indicándote que puedes recoger los datos listos sin haber perdido ni un solo segundo de tu tiempo útil de pie en el mostrador.
+>
+> **En resumen**: La I/O asíncrona permite que tus aplicaciones inicien operaciones pesadas de lectura o escritura en archivos o redes y continúen haciendo otros trabajos de inmediato, recibiendo una notificación automática de vuelta sólo cuando los bytes han sido transferidos con éxito.
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐

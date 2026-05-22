@@ -2,7 +2,23 @@
 
 La decision mas importante en EDA no es que broker usar, sino como organizar la comunicacion entre servicios. Dos estilos fundamentales: **coreografia** (servicios inteligentes, tuberias tontas) y **orquestacion** (orquestador inteligente, servicios tontos).
 
+> 🎼 **La Analogía de la Sesión de Jazz vs. El Director de Orquesta**
+> 
+> Hay dos formas de lograr que múltiples músicos (que representan a nuestros microservicios) toquen una hermosa canción sin chocar ni desafinar entre sí:
+> 
+> 1. **Coreografía (Sesión de Improvisación de Jazz)**: No hay un líder en el escenario. Cada músico escucha con atención lo que toca su compañero y reacciona de forma totalmente autónoma.
+>    - *El pianista toca un acorde alegre (Evento: `orden.creada`)*.
+>    - *El bajista lo escucha y decide tocar una línea de bajo suave que combine (Evento: `pago.procesado`)*.
+>    - **Ventaja**: Si el pianista se resfría y deja de tocar, el bajista y el baterista pueden seguir tocando. Es altamente flexible y desacoplado.
+> 
+> 2. **Orquestación (Director de Orquesta clásico)**: Hay un director en el podio con una batuta. Él decide exactamente quién toca, con qué volumen y en qué milisegundo, siguiendo una partitura estricta.
+>    - *El director señala al pianista: "¡Toca!"*
+>    - *El director espera a que suene la nota, la registra en su libreta y luego señala al bajista: "¡Ahora te toca a ti!"*
+>    - *Si el bajista comete un error, el director tiene un plan alternativo de rescate escrito en su partitura (Mecanismo de Compensación)*.
+>    - **Ventaja**: El director sabe en todo momento exactamente en qué compás de la sinfonía se encuentra la canción completa.
+
 ---
+
 
 ## 3.1 Coreografia
 
@@ -150,8 +166,13 @@ class ProcesarOrdenSaga {
 
 ### Orquestacion con AWS Step Functions
 
+> [!TIP]
+> **El Director Digital de la Orquesta**:
+> En la nube de AWS, **AWS Step Functions** actúa como el director de orquesta robótico de nuestra aplicación. En lugar de escribir código TypeScript complejo para coordinar cada paso, le damos a Step Functions una "partitura" en formato **JSON** (llamada Amazon States Language). Este archivo le indica al servicio exactamente qué función ejecutar, cómo reaccionar si una tarea falla, y cuándo dar por completada la sinfonía de negocio de forma 100% automatizada.
+
 ```json
 {
+
   "Comment": "Saga de procesar orden",
   "StartAt": "CrearOrden",
   "States": {

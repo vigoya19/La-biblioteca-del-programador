@@ -46,6 +46,15 @@ func main() {
 
 En Go, toda variable tiene un valor por defecto llamado **zero value**:
 
+> [!NOTE]
+> 📦 **La Caja Vacía vs. La Caja no Inicializada (El Misterio de `nil`)**
+> 
+> Al comenzar en Go, verás la palabra reservada `nil` repetidamente. Piensa en `nil` como **"esta estructura aún no ha sido creada"** o **"esta variable no apunta a ningún lugar real en la memoria"**:
+> - **Zero Value tradicional (`int = 0`, `string = ""`):** Tienes una taza vacía en tu mesa. La taza existe física y concretamente, pero no contiene café. Puedes usarla o modificarla en cualquier momento.
+> - **Zero Value compuesto (`slice = nil`, `map = nil`):** ¡No tienes taza! Solo tienes un boleto de papel que dice "Aquí irá una taza en el futuro". Si intentas verter café en el boleto de papel (es decir, intentar escribir o guardar datos en un `map` que es `nil`), tu programa se romperá de inmediato ("panic").
+> 
+> En Go, las estructuras dinámicas avanzadas como slices, maps y channels inician como `nil` (el boleto sin la taza). Aprenderemos a fabricar las tazas reales usando la instrucción especial `make()` en los siguientes capítulos.
+
 | Tipo | Zero Value |
 |------|-----------|
 | `int`, `float64` | `0` |
@@ -93,6 +102,19 @@ const (
 )
 
 // Se pueden combinar: Leer | Escribir = 3 (011)
+
+> [!TIP]
+> 🎛️ **El Tablero de Interruptores de Luz (Bit Flags con iota)**
+> 
+> Cuando veas código como `1 << iota` o combinaciones como `Leer | Escribir`, no te asustes con las matemáticas binarias. Imagina que tienes un **tablero con 3 interruptores de luz alineados en la pared**:
+> - **Interruptor 1 (Leer)**: `1 << 0` (el primer interruptor está encendido: representa `001` en binario, valor decimal = 1).
+> - **Interruptor 2 (Escribir)**: `1 << 1` (el segundo interruptor está encendido: representa `010` en binario, valor decimal = 2).
+> - **Interruptor 3 (Ejecutar)**: `1 << 2` (el tercer interruptor está encendido: representa `100` en binario, valor decimal = 4).
+> 
+> **¿Por qué combinarlos con el operador OR (`|`)?**
+> Si quieres darle a un usuario permisos de **Leer** Y **Escribir** a la vez, simplemente activas los dos primeros interruptores en el tablero. En Go, haces `Leer | Escribir`, lo que da como resultado `011` en binario (valor decimal = 3).
+> 
+> Gracias a este truco de bajo nivel, puedes guardar múltiples opciones de configuración independientes en una sola variable numérica ultra-ligera, simplemente encendiendo y apagando interruptores individuales en memoria.
 ```
 
 ### Regla importante: las variables no usadas son un error

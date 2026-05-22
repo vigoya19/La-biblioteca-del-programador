@@ -218,16 +218,16 @@ git commit -m "Prueba de concepto offline"
 
 ### Integridad SHA-1 y SHA-256
 
-Todo en Git tiene un **checksum** antes de ser almacenado y es referenciado por ese checksum. Esto significa que es imposible modificar el contenido de un archivo o directorio sin que Git lo detecte.
+Todo en Git tiene un **checksum** (suma de verificación) antes de ser almacenado y es referenciado por ese checksum. Piensa en un checksum como la **huella digital** de tus archivos: es un código único de 40 caracteres que identifica de forma irrepetible cada cambio que guardas en Git. Si alguien altera un solo carácter de tu código, la huella digital cambia completamente y Git lo detecta al instante. Esto significa que es imposible modificar el contenido de un archivo o directorio sin que Git lo detecte.
 
-Historicamente Git ha usado **SHA-1**:
+Históricamente Git ha usado **SHA-1**:
 
 ```
 SHA-1: 40 caracteres hexadecimales
 Ejemplo: 24b9da6552252987aa493b52f8696cd6d3b00373
 ```
 
-Desde Git 2.45+ existe soporte para **SHA-256** como alternativa criptografica mas robusta frente a colisiones. Si bien SHA-1 sigue siendo seguro en el contexto de Git (donde se requiere ataque de preimagen, no solo colision), SHA-256 prepara a Git para el futuro:
+Desde Git 2.45+ existe soporte para **SHA-256** como alternativa criptográfica más robusta. SHA-256 genera huellas digitales más largas y seguras (64 caracteres en vez de 40). Para el uso diario de Git, la diferencia entre SHA-1 y SHA-256 es irrelevante — ambos funcionan perfectamente. SHA-256 es una preparación para el futuro, por si alguna vez SHA-1 dejara de ser suficientemente seguro:
 
 ```bash
 # Crear un repositorio con hashing SHA-256
@@ -392,7 +392,9 @@ git config --global core.editor "subl -n -w"
 
 ### Repositorios Bare (Desnudos)
 
-Un repositorio **bare** es un repositorio Git sin working directory. No contiene una copia extraida de los archivos; solo contiene el contenido de `.git/`. Se utilizan exclusivamente como punto de sincronizacion central (servidor), nunca para trabajo directo:
+Un repositorio **bare** es un repositorio Git sin working directory (sin archivos visibles para editar). No contiene una copia extraída de los archivos; solo contiene el contenido de `.git/`. Piensa en ello como un **almacén puro de historial**: no tiene escritorio ni carpetas que puedas abrir y editar, solo guarda todos los cambios y versiones. Es lo que usan GitHub, GitLab y servidores Git internos para almacenar tu código. Tú como usuario nunca trabajarás directamente en un repositorio bare; simplemente haces `git push` hacia él.
+
+Se utilizan exclusivamente como punto de sincronización central (servidor), nunca para trabajo directo:
 
 ```bash
 git init --bare servidor-central.git
@@ -425,9 +427,11 @@ Desde Git 2.28, puedes configurar el nombre de la rama inicial al crear un nuevo
 git config --global init.defaultBranch main
 ```
 
-### Manejo de finales de linea (CRLF)
+### Manejo de finales de línea (CRLF)
 
-Este es un punto critico cuando trabajas en equipos multiplataforma:
+> **📖 ¿Qué es CRLF?** Cuando presionas Enter en un archivo de texto, tu sistema operativo agrega un carácter invisible al final de la línea. El problema es que Windows usa **dos caracteres** (CRLF: Carriage Return + Line Feed), mientras que macOS y Linux usan **uno solo** (LF: Line Feed). Cuando personas con diferentes sistemas operativos trabajan en el mismo proyecto, esto puede causar conflictos falsos donde Git piensa que TODAS las líneas cambiaron, cuando en realidad solo cambió el carácter invisible del final. La configuración de abajo resuelve este problema automáticamente.
+
+Este es un punto crítico cuando trabajas en equipos multiplataforma:
 
 ```bash
 # Windows: convierte CRLF a LF al commit, LF a CRLF al checkout

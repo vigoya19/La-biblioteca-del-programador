@@ -48,6 +48,25 @@ func main() {
 
 Los slices son la estructura de datos mas usada en Go. Son vistas dinamicas sobre arrays:
 
+> [!TIP]
+> ### 🖼️ La Ventana de Vidrio sobre el Lienzo de Pintura (Slices y Sub-slices)
+>
+> En Go, un **Array subyacente** es como un **lienzo de pintura físico** de tamaño fijo, y un **Slice** no es un lienzo propio, sino una **ventana de vidrio transparente con un marco de madera móvil (el Slice Header)** que colocas encima del lienzo.
+>
+> Las propiedades del marco de madera son:
+> 1. **Puntero**: En qué parte del lienzo empieza tu ventana.
+> 2. **Longitud (len)**: Cuántos cuadros del lienzo puedes ver a través de la ventana.
+> 3. **Capacidad (cap)**: Cuánto espacio total libre del lienzo hay hacia la derecha antes de chocar con el borde del marco del lienzo.
+>
+> **¿Qué pasa al hacer un sub-slice?**
+> Si haces `sub := s1[1:3]`, estás colocando un segundo marco de vidrio más pequeño sobre el mismo lienzo, justo encima de los cuadros 1 y 2.
+> - **El peligro**: Si tomas un marcador indeleble y dibujas sobre el vidrio de la subventana (`sub[0] = 99`), la tinta atraviesa el vidrio y mancha el lienzo subyacente de forma permanente. Cuando mires el lienzo a través del marco de la ventana original (`s1`), verás la mancha del número 99. Ambos comparten y modifican el mismo lienzo físico.
+>
+> **¿Cómo actúa `append`? (Comprar un lienzo nuevo)**
+> Si decides agregar un nuevo número usando `append(sub, 100)` y este supera la capacidad de tu marco hacia la derecha, Go detecta que no hay espacio libre. Para no dañar el resto del lienzo, **compra un lienzo nuevo dos veces más grande (reasignación de memoria)**, copia los números, dibuja el nuevo 100 y **mueve tu marco de vidrio para que flote sobre este lienzo nuevo**.
+>
+> A partir de ese milisegundo, cualquier modificación que hagas en `sub` no afectará a `s1`, ya que tu subventana apunta a un lienzo completamente diferente.
+
 ```go
 package main
 

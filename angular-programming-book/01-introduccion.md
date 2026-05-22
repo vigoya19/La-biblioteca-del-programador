@@ -172,7 +172,11 @@ import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    // Optimización de la detección de cambios reduciendo eventos no necesarios
+    // Optimización de la detección de cambios reduciendo eventos no necesarios.
+    // En palabras simples: cuando muchas cosas cambian al mismo tiempo en tu app,
+    // Angular las agrupa y las procesa una sola vez en lugar de una por una.
+    // Es como esperar a tener 10 mensajes nuevos antes de revisar el buzón,
+    // en vez de ir al buzón cada vez que llega uno.
     provideZoneChangeDetection({ eventCoalescing: true }),
     // Provisión del sistema de enrutamiento global
     provideRouter(routes)

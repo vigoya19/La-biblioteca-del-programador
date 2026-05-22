@@ -492,6 +492,18 @@ const cache: UsuariosPorID = {
 
 ## 5.7 WeakMap y WeakSet
 
+> [!NOTE]
+> ### 🎈 Los Post-It Adhesivos en Globos de Helio (WeakMap vs. Map)
+>
+> Imagina que en JavaScript los **objetos** que creas son **globos de helio flotantes**. Mientras los tengas atados de un hilo en tu mano (referencias al objeto), los globos se mantienen flotando en la habitación. Si sueltas el hilo por completo, el globo vuela por la ventana hacia el cielo y desaparece para siempre (el recolector de basura o Garbage Collector lo libera de la memoria).
+>
+> - **El Map Convencional (El Gancho Metálico)**: Si usas un objeto globo como clave en un `Map` convencional, el mapa le ata un **cable de acero pesado** al globo. Aunque sueltes el hilo de tu mano, el globo nunca se irá volando porque el mapa lo tiene anclado a la fuerza en su catálogo. Si olvidas eliminarlo del mapa (`map.delete(objeto)`), el globo se quedará ahí atrapado para siempre, causando una **fuga de memoria (memory leak)**.
+> - **El WeakMap (El Post-It en el Globo)**: Un `WeakMap` no ata ningún cable de acero. Es como escribir información en un **pequeño papel Post-It adhesivo y pegarlo directamente en la superficie del globo**.
+>   - Mientras tengas el hilo del globo en la mano, puedes leer el papel adhesivo (`weakmap.get(globo)`).
+>   - En cuanto sueltas el hilo y el globo sale volando por la ventana, **el Post-It se va adherido al globo hacia el cielo**. El recolector de basura destruye el globo y el Post-It al mismo tiempo, limpiando la memoria de forma totalmente automática y sin tu intervención.
+>
+> **En resumen**: Las claves de un `WeakMap` son exclusivamente objetos mantenidos con *referencias débiles*. Si pierdes la referencia principal del objeto clave en tu aplicación, el sistema liberará la memoria de inmediato y limpiará el WeakMap de manera transparente.
+
 ```typescript
 // WeakMap: claves debiles (objetos), no previene garbage collection
 // IDEAL para: metadata privada, caches, datos asociados a objetos

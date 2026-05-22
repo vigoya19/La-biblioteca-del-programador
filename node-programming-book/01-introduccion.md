@@ -150,6 +150,8 @@ echo "22" > .node-version   # fnm usa esto (y nvm como fallback)
 
 ### corepack (gestor de package managers)
 
+> **📖 Para principiantes**: `npm` (que viene con Node.js) es todo lo que necesitas para empezar. Es el "gestor de paquetes" que te permite instalar librerías: escribes `npm install express` y se descarga lista para usar. Las herramientas de abajo (corepack, pnpm, yarn) son **alternativas avanzadas** que ofrecen mayor velocidad o mejor manejo de dependencias. Si estás empezando, **usa `npm` y salta esta sección sin preocupaciones**.
+
 ```bash
 # corepack viene con Node.js 16+. Gestiona pnpm/yarn automaticamente
 corepack enable
@@ -168,6 +170,8 @@ corepack --version
 ```
 
 ### Debugging con VS Code
+
+> **📖 Para principiantes**: El "debugging" (depuración) es el proceso de encontrar y corregir errores en tu código. VS Code te permite ejecutar tu programa paso a paso, pausar la ejecución en cualquier línea, e inspeccionar el valor de las variables en ese momento. La configuración de abajo (archivo `launch.json`) le dice a VS Code cómo ejecutar tu programa en modo debug. No necesitas memorizarla — VS Code puede generarla automáticamente desde el menú "Run > Add Configuration".
 
 ```json
 // .vscode/launch.json
@@ -492,7 +496,11 @@ const multiplicar = (a: number, b: number): number => a * b;
 type Estado = "activo" | "inactivo" | "pendiente";
 let estado: Estado = "activo";
 
-// Generics: tipos que aceptan otros tipos
+// Generics: tipos que aceptan otros tipos.
+// Los generics son como una "caja sorpresa reutilizable": la funcion no sabe
+// de antemano si trabajara con numeros, textos o lo que sea. La <T> es un
+// comodin que dice "T puede ser cualquier tipo" y TypeScript lo infiere
+// automaticamente segun lo que le pases.
 function primerElemento<T>(arr: T[]): T | undefined {
   return arr[0];
 }

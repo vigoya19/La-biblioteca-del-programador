@@ -514,6 +514,21 @@ Docker identifica cada capa por el hash SHA256 de su contenido **descomprimido**
 │   └── GHI789JKL012... → ../7b8c9d0e.../diff
 ```
 
+> [!NOTE]
+> **¿Cómo funciona esto en palabras simples?**
+> ¿Cómo hace Docker para apilar 10 capas diferentes y hacer que parezcan un único disco duro coherente? Usa un mecanismo del kernel de Linux llamado **OverlayFS** (a través de su driver de almacenamiento `overlay2`).
+> 
+> 📽️ **La Analogía del Proyector de Diapositivas de Vidrio**
+> Imagina un proyector de transparencias o diapositivas antiguo:
+> - **`lower` (Las diapositivas de abajo)**: Son diapositivas de vidrio transparente apiladas en la base. Contienen los archivos del sistema operativo base (como Ubuntu). Son de **solo lectura**: no puedes pintar encima de ellas.
+> - **`diff` (Tu diapositiva de arriba)**: Es una diapositiva en blanco que pones en la cima de la pila. Si instalas un programa nuevo (como Node.js), solo se escribe en esta diapositiva superior.
+> - **`merged` (La pantalla del proyector)**: Cuando enciendes la luz, todas las diapositivas se fusionan y en la pared ves **una única imagen unificada**. Para ti es un único sistema de archivos en capas, pero por detrás está compuesto por piezas independientes.
+> - **`work` (El borrador)**: Es un espacio de trabajo intermedio que usa el proyector para preparar y realizar operaciones atómicas de escritura antes de fijar la diapositiva en la pila.
+> 
+> **¿Qué pasa al borrar un archivo base?**
+> Como no puedes modificar ni raspar una diapositiva inferior de solo lectura, Docker dibuja una "mancha de corrector blanco" (un archivo especial *whiteout* `.wh.nombre`) en tu diapositiva superior (`diff`). Al proyectarse en la pantalla unificada (`merged`), el archivo original parece haber desaparecido por completo, aunque la diapositiva de abajo siga intacta.
+
+
 ### 1.5 Diagrama ASCII: Anatomía completa de la imagen
 
 ```
@@ -583,6 +598,18 @@ Docker identifica cada capa por el hash SHA256 de su contenido **descomprimido**
 │  La capa está lista para ser montada por contenedores                        │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
+
+> [!TIP]
+> **¿Por qué hay dos tipos de hashes para la misma capa (Digest de Transporte vs. DiffID Local)?**
+> Esta es una duda muy común. ¿Por qué el manifest del registry muestra un hash `digest` y luego en nuestro disco local (`layerdb`) vemos un hash `diff-id` totalmente diferente?
+> 
+> 📦 **La Analogía del Mueble de IKEA**
+> Imagina que compras un gran escritorio de madera por internet:
+> 1. **El Digest de Transporte (La caja sellada de IKEA)**: Es el escritorio desarmado, empaquetado plano y muy comprimido dentro de una caja de cartón. La empresa de mensajería le pone una etiqueta de código de barras a la caja de cartón para rastrearla por el camión de reparto. Ese es el **Digest** (en el manifest del registry): el hash de la capa *comprimida* en formato `.tar.gz` tal y como viaja por la red.
+> 2. **El DiffID Local (El escritorio armado en tu habitación)**: Cuando te llega la caja, la abres, sacas las maderas y armas el escritorio. El mueble armado ahora ocupa un volumen real y tiene un aspecto totalmente diferente. Si mides y etiquetas el mueble terminado, esa etiqueta es el **DiffID**: el hash de la capa *descomprimida* tal y como reside instalada físicamente en tu disco local bajo `overlay2/`.
+> 
+> **¿Por qué son diferentes hashes?** Porque una cosa es calcular la firma digital de una caja de cartón plana sellada, y otra es calcular la firma del escritorio de madera armado en tu cuarto. Son el mismo objeto, pero en estados físicos y de compresión totalmente diferentes.
+
 
 ---
 

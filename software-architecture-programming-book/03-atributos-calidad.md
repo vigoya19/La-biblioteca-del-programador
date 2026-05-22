@@ -90,6 +90,21 @@ No basta con decir "el sistema debe ser rápido". Necesitas métricas concretas.
 
 ### Midiendo Rendimiento
 
+> [!NOTE]
+> ### 🚦 ¿Por qué medir en percentiles (p50, p95, p99) y no en promedios?
+> 
+> Si tu equipo te dice: *"El tiempo promedio de respuesta de nuestra web es de 1 segundo"*, suena aceptable. Pero los promedios son mentirosos compulsivos.
+> 
+> Imagina que vas a cruzar un río a pie y te dicen que el río tiene en promedio 50 cm de profundidad. ¡Pero en el centro hay una fosa oculta de 3 metros de profundidad! Si te confías del promedio, te ahogarás.
+> 
+> Los **percentiles** ordenan los tiempos de carga de tus usuarios de mejor a peor:
+> - **p50 (Mediana)**: La experiencia del usuario del medio. El 50% de las visitas carga en menos de este tiempo.
+> - **p95**: El 95% de las visitas carga en menos de este tiempo. Solo el 5% de tus usuarios experimenta una carga más lenta.
+> - **p99**: La peor experiencia real (el 1% de tus visitas). Representa a usuarios con conexiones lentas de celular o procesando carritos de compras gigantescos.
+> 
+> **¿Cómo medimos esto en producción?**
+> En lugar de calcular cada carga individual de manera costosa, sistemas como **Prometheus** agrupan los tiempos en "baldes" (buckets): baldes de menos de 100ms, menos de 500ms, menos de 1s, etc. Luego, mediante fórmulas especiales en su lenguaje (**PromQL**), calculan dinámicamente qué balde contiene a ese 5% de usuarios inconformes (el percentil 95), indicándote con precisión quirúrgica dónde optimizar.
+
 ```
 Métrica              Herramienta              Cómo lo mides
 ─────────────────────────────────────────────────────────────
@@ -219,6 +234,17 @@ Solución real:
 Lección: Seguridad no es "activar o no activar".
          Es "activar con la estrategia correcta para minimizar impacto".
 ```
+
+> [!NOTE]
+> ### 🛡️ mTLS y Service Mesh: El Cifrado Automático con Escoltas Privadas
+> 
+> Cuando se solicita cifrar todas las comunicaciones internas entre tus 50 microservicios (usando **TLS/mTLS**), es como pedirle a cada empleado de una oficina que encripte con una clave secreta manual cada nota de papel que le pasa al compañero de al lado. ¡El trabajo se detendría por el "overhead" administrativo y la sobrecarga mental!
+> 
+> Para solucionar este dilema sin complicar el código de tus desarrolladores, la industria utiliza el patrón **Service Mesh (Malla de Servicios)**:
+> - **El Escolta Personal (Proxy Sidecar)**: En lugar de programar la encriptación dentro de tu aplicación, cada microservicio recibe un escolta personal (un programa ligero instalado al lado, como *Envoy*). Cuando tu servicio envía un mensaje, el escolta lo toma, lo encripta en una fracción de milisegundo y se lo pasa al escolta del microservicio receptor, quien lo desencripta y se lo entrega limpio a su aplicación. Tu código ni se entera del cifrado.
+> - **Credenciales Inteligentes (SPIFFE)**: Es el sistema que le da a cada escolta una identificación digital temporal y súper segura. Si el escolta de la base de datos no reconoce la credencial de identidad del escolta del sistema de cobros, le bloquea el paso inmediatamente.
+> 
+> Gracias a esta red de "escoltas automáticos", logras seguridad interna impenetrable sin agregar una sola línea de complejidad de encriptación a tus aplicaciones.
 
 ### Ejemplo 2: Consistencia vs Disponibilidad (Teorema CAP Explicado)
 

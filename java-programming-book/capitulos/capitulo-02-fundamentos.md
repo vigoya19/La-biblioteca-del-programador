@@ -670,6 +670,19 @@ public class MemoriaDemo {
 
 #### Escape Analysis: Cómo la JVM Optimiza Poniendo Objetos en el Stack
 
+> [!NOTE]
+> **¿Qué es esto en palabras simples?**
+> Normalmente, en Java, las variables locales simples viven en la memoria rápida de trabajo (**Stack**), y todos los objetos complejos viven en el almacén general (**Heap**), lo que requiere que el ayudante de limpieza (el Garbage Collector) vaya a limpiarlos después. Sin embargo, la JVM cuenta con un mecanismo inteligente de optimización automática llamado **Escape Analysis** (Análisis de Escape).
+> 
+> 🍳 **La Analogía del Organizador de Cocina**
+> Imagina que estás cocinando y necesitas picar una cebolla para la receta de un método:
+> - **El Heap (La Despensa)**: Es el almacén general. Normalmente, vas a la despensa, buscas un contenedor, lo traes a la mesa, lo usas y luego esperas a que el lavaplatos (Garbage Collector) lo recoja y limpie. Esto consume tiempo y esfuerzo.
+> - **El Stack (La Tabla de Picar)**: Es tu espacio de trabajo inmediato, directo y ultraveloz.
+> 
+> Si el compilador JIT (que actúa como un chef supervisor superdotado) observa tu receta y determina que la cebolla **nunca saldrá de tu tabla de picar** (es decir, el objeto no se retorna del método ni se guarda en una variable compartida), realiza dos optimizaciones mágicas:
+> 1. **Stack Allocation (Asignación en Tabla)**: Coloca la cebolla directamente en la tabla de picar (Stack) en lugar de registrarla en la despensa (Heap). Al terminar la receta, la tabla se limpia sola instantáneamente.
+> 2. **Scalar Replacement (Reemplazo Escalar)**: ¡Ni siquiera crea el objeto cebolla! Lo descompone directamente en sus propiedades individuales (como "cebolla picada"). Maneja variables primitivas simples directamente en el Stack en lugar de un objeto complejo.
+
 El **Escape Analysis** es una optimización del compilador JIT (Just-In-Time) de HotSpot. Si el compilador determina que un objeto **nunca escapa** del método donde se crea (no se retorna, no se almacena en un campo), puede aplicar dos optimizaciones:
 
 **1. Stack Allocation (Asignación en el Stack):** El objeto se crea directamente en el stack frame en lugar de en el heap, eliminando la presión sobre el Garbage Collector.
@@ -1440,6 +1453,19 @@ public class ProcesadorComandos {
 ### 2.5.5 Pattern Matching en `switch` (Java 17+ Preview, Java 21 Estable)
 
 El pattern matching permite verificar el **tipo de un objeto** directamente en el `switch`, eliminando la necesidad de `instanceof` + cast.
+
+> [!NOTE]
+> **¿Qué es esto en palabras simples?**
+> Imagina que eres un cartero y tienes que clasificar diferentes tipos de correspondencia. En un switch tradicional, solo podías clasificar cartas por su etiqueta exacta (como números o textos fijos). Con **Pattern Matching** (Coincidencia de Patrones), tienes un escáner inteligente de última tecnología:
+> 
+> 📬 **La Analogía del Clasificador de Correo**
+> - **Sealed Interface (Lista VIP de Invitados)**: Es como un club exclusivo que dice: "Solo estas tres personas específicas tienen permitido entrar". En código, le dices a Java: *"La interfaz `Mensaje` **solo** puede ser implementada por `MensajeTexto`, `MensajeBinario` y `Ping`. Nadie más."* Esto garantiza que tu clasificador de correo conozca de antemano todas las opciones posibles en tiempo de compilación.
+> - **Record (La postal sin sobre)**: Un *record* es un tipo especial de carta donde la información está impresa directamente en el frente. No necesitas abrir un sobre (es decir, no escribes getters ni constructores manuales) para ver su contenido.
+> - **Pattern Matching Switch (El escáner inteligente)**: Cuando pones la correspondencia en el escáner, este no solo mira el tipo de carta, sino que **extrae sus datos** en un solo paso:
+>   - *"Si es un `MensajeTexto` (tipo de objeto) Y su texto tiene menos de 1000 caracteres (`when`), léelo así..."*
+>   - *"Si es un `Ping` (otro tipo), calcula cuánto tardó en llegar..."*
+> 
+> Todo se valida, comprueba y desempaqueta al mismo tiempo de manera segura y sin posibilidad de error.
 
 ```java
 // Java 21+

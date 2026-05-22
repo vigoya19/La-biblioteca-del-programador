@@ -131,6 +131,20 @@ Cuando conectas un contenedor a esa red (`docker run --network`), libnetwork:
 
 Cuando un contenedor se conecta a una red, libnetwork crea un par de interfaces virtuales Ethernet (veth pair). Una veth pair es como un cable virtual con dos extremos: lo que entra por un extremo sale por el otro, y viceversa.
 
+> [!TIP]
+> ### 🔌 El Cable de Red de Dos Puntas / El Portal Interdimensional (VETH Pairs)
+>
+> Imagina que tienes una habitación completamente sellada y aislada acústicamente del resto de tu casa (el namespace de red o **Sandbox** de tu contenedor). No hay ventanas ni puertas abiertas; nada de información puede entrar ni salir de allí.
+>
+> Para conectarlo al router de la sala (el **Bridge** o switch virtual del host) sin romper el aislamiento térmico y acústico, los ingenieros de Linux inventaron un dispositivo fantástico: **un portal interdimensional en forma de cable de red con dos extremos mágicos (VETH Pair)**.
+> - **Extremo A (La interfaz de red del contenedor - `eth0`)**: Tomas este extremo del cable virtual y lo metes dentro de la habitación sellada (el namespace del contenedor).
+> - **Extremo B (La interfaz de red del host - `veth1XXXX`)**: El otro extremo del cable cruza la pared interdimensional y aparece de repente en la sala principal de la casa (el namespace del host). Allí, lo conectas directamente al switch de red central (`docker0`).
+>
+> **¿Cómo funciona?**
+> Gracias a las leyes físicas del kernel de Linux, cualquier bit de datos que empujes en el Extremo A (`eth0`) dentro de la habitación, instantáneamente "se teletransporta" y sale por el Extremo B (`veth1XXXX`) en la sala del host, listo para viajar a internet. Y de igual forma, las respuestas regresan por el mismo portal interdimensional.
+>
+> **En resumen**: Un par VETH es un par de interfaces de red virtuales acopladas a nivel de kernel. Es el fontanero de red que permite que un contenedor aislado en su propio namespace de red pueda comunicarse de forma segura con el host y con otros contenedores.
+
 ```
 +---------------------------+       +---------------------------+
 |    NAMESPACE CONTENEDOR   |       |    NAMESPACE DEL HOST     |

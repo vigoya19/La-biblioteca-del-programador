@@ -764,6 +764,19 @@ void notificaPedidoConfirmado() {
 
 ### DIP No Es Solo Dependency Injection
 
+> [!NOTE]
+> ### 🔌 El Enchufe de Pared vs. Quién Te Trae el Cable (DIP vs. DI)
+> 
+> Para entender la diferencia entre el **Principio de Inversión de Dependencias (DIP)** y la **Inyección de Dependencias (DI)**, imagina que quieres usar una secadora de cabello en tu habitación:
+> 
+> 1. **DIP (El "Qué" - El Enchufe Estándar de la Pared)**:
+>    - La pared tiene un enchufe redondo estándar. Tu secadora no sabe si la electricidad proviene de una planta solar, una hidroeléctrica o de carbón. Solo sabe que si tiene dos clavijas redondas de esa medida, funcionará.
+>    - Has creado una **abstracción (el contrato del enchufe)**. El aparato de alto nivel (tu secadora) y el proveedor de bajo nivel (la red eléctrica) se comunican a través de ese contrato en común. Eso es **DIP**.
+> 2. **DI (El "Cómo" - El Ayudante que te trae y conecta el cable)**:
+>    - En lugar de que tú salgas corriendo a la central eléctrica a fabricar tu propia corriente, o busques cables sueltos pelados dentro de la secadora (usando `new`), tienes un ayudante (un **Contenedor de Inyección**, como *Spring*, *Dagger* o *NestJS*) que toma el cable de la secadora y lo enchufa en la pared por ti al encender el sistema. Eso es **DI**.
+> 
+> **¿La regla de oro?** Puedes aplicar DIP (diseñar interfaces) sin usar un inyector automático de dependencias (puedes instanciar e inyectar tus clases a mano), o puedes usar inyección automática sin respetar DIP (inyectando directamente clases de infraestructura concretas, lo cual anula el desacoplamiento). ¡La verdadera maestría está en combinar ambos!
+
 Mucha gente confunde DIP con Dependency Injection (DI). No son lo mismo:
 
 ```

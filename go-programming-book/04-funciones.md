@@ -527,6 +527,19 @@ func main() {
 
 ### Method sets y consecuencias para interfaces
 
+> [!NOTE]
+> ### ✍️ El Mandatario y el Poder de Firma (Method Sets)
+> 
+> En Go, la diferencia entre declarar un método con receptor de valor `(c Contador)` o de puntero `(c *Contador)` define qué "derechos de firma" tiene tu variable frente a las interfaces:
+> 
+> 1. **Llamadas Directas (Cortesía del Compilador)**:
+>    - Si tienes un papel original en tu escritorio (`Contador`) y llamas a un método que requiere modificarlo, Go es amable: toma automáticamente tu papel original, va a la notaría, saca su dirección de memoria (`&c`) y realiza la modificación por ti.
+> 2. **Asignación a Interfaces (El Contrato Legal Estricto)**:
+>    - Una interfaz es un contrato notariado muy estricto. Si la interfaz exige que el método pueda modificar el contenido real (`Incrementar()`), **debes entregarle el bolígrafo original y el documento oficial (`&c`, el puntero)**.
+>    - Si intentas entregarle una **fotocopia del documento (`c`, el valor)**, la interfaz te detendrá con un error. ¿Por qué? Porque si permitiera que una fotocopia firme una modificación, el documento original en la oficina nunca se actualizaría, perdiendo coherencia de datos.
+> 
+> Por eso, recuerda: los tipos de valor `T` solo pueden cumplir contratos de solo lectura. Para contratos que modifican datos, siempre debes presentar el puntero real `*T`.
+
 ```go
 type Contador struct {
     valor int

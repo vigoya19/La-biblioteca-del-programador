@@ -217,7 +217,11 @@ Compila y genera un binario ejecutable:
 go build -o mi-app .
 go build ./...              # Compila todos los paquetes
 
-# Cross-compilation (compilar para otra plataforma)
+# Cross-compilation (compilar para otra plataforma).
+# Go permite generar ejecutables para otros sistemas operativos
+# SIN tener ese sistema instalado. Es como imprimir un libro en
+# dos idiomas a la vez: escribes en tu Mac y generas un ejecutable
+# que funciona en un servidor Linux.
 GOOS=linux GOARCH=amd64 go build -o mi-app-linux .
 GOOS=windows GOARCH=amd64 go build -o mi-app.exe .
 ```
@@ -281,7 +285,7 @@ go doc -all fmt             # Documentacion completa
 
 ### go generate
 
-Ejecuta comandos de generacion de codigo definidos en comentarios:
+Ejecuta comandos de generación de código definidos en comentarios especiales. Es una herramienta avanzada que automatiza la creación de código repetitivo: tú escribes un comentario indicando qué código generar, y Go lo crea por ti. Piensa en ello como tener un asistente que escribe las partes mecánicas y aburridas de tu código:
 
 ```go
 //go:generate stringer -type=Color

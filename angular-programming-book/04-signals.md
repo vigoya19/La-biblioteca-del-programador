@@ -18,6 +18,22 @@ Este modelo ("dirty checking global") funciona sin que el desarrollador piense e
 
 Para entender Signals en profundidad, necesitamos comprender el modelo computacional que los sustenta: el **grafo de dependencias reactivas push/pull**.
 
+> [!NOTE]
+> ### 📊 La Analogía de la Hoja de Cálculo Inteligente (Excel)
+> 
+> Para entender el motor de reactividad de los **Signals**, imagina que estás trabajando en una hoja de cálculo de Excel:
+> 
+> - En la celda **A1** escribes el valor `100` (este es tu **Writable Signal**: la fuente original del dato).
+> - En la celda **B1** escribes la fórmula `=A1 * 2` (este es tu **Computed Signal**: un dato que se calcula a partir de otro).
+> - En la celda **C1** escribes la fórmula `=B1 - 10` (este es tu **Consumidor**: la plantilla de tu página web que muestra el precio final).
+> 
+> Angular Signals gestiona esta conexión en dos fases ultrarrápidas y perezosas:
+> 
+> 1. **Fase PUSH (La Alarma)**: Si cambias el valor de **A1** a `200`, Excel no calcula inmediatamente los valores de B1 y C1. En su lugar, simplemente envía un "grito de alarma" a través del cableado: *"¡Oigan, A1 ha cambiado! Por lo tanto, el valor que tengan guardado actualmente en B1 y C1 ya no es confiable, márquense como desactualizados (dirty)"*. Esto toma apenas una milésima de segundo.
+> 2. **Fase PULL (El Recálculo Perezoso)**: Solo cuando el usuario dirige la mirada a la celda **C1** (es decir, cuando el navegador necesita renderizar la pantalla), C1 "jala" del sistema: *"Oye B1, dame tu valor actualizado"*. B1 a su vez le pide el dato a A1, calcula `200 * 2 = 400`, se lo pasa a C1, y C1 calcula el resultado final de `390`.
+> 
+> **¿Por qué es genial?** Si cambias el valor de A1 100 veces seguidas pero nadie está mirando la celda C1, Angular **cero veces** ejecutará la multiplicación o renderizado. Ahorro total de batería y procesador.
+
 ### El Modelo Mental
 
 Imagina tu aplicación como un grafo dirigido acíclico (DAG) donde:

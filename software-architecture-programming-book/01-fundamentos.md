@@ -46,15 +46,15 @@ Se diseña de forma deliberada antes y durante la construcción. Implica anticip
 ### Ley de Conway
 > "Las organizaciones diseñan sistemas que reflejan su estructura de comunicación."
 
-Si tienes 4 equipos, terminarás con 4 componentes. Diseña tus equipos según la arquitectura deseada, o tu arquitectura reflejará tus equipos.
+En otras palabras: los sistemas se parecen a la organización que los creó. Si tu empresa tiene un equipo de pagos y otro de envíos que apenas se hablan, probablemente terminarás con un módulo de pagos y otro de envíos que apenas se comunican. Si tienes 4 equipos, terminarás con 4 componentes. Diseña tus equipos según la arquitectura deseada, o tu arquitectura reflejará tus equipos (quieras o no).
 
 ### Ley de Gall
 > "Un sistema complejo que funciona invariablemente evolucionó de un sistema simple que funcionaba."
 
-No intentes construir el sistema perfecto desde el día uno.
+No intentes construir el sistema perfecto desde el día uno. Empieza simple, haz que funcione, y luego mejóralo iterativamente. Los sistemas complejos exitosos (como Google, Amazon o Netflix) empezaron como aplicaciones simples que fueron creciendo pieza a pieza.
 
 ### Ley de Pareto (80/20)
-El 80% de los problemas de rendimiento vienen del 20% del código. Optimiza donde realmente importa.
+El 80% de los problemas de rendimiento vienen del 20% del código. No intentes optimizar todo tu código — encuentra ese 20% problemático (los cuellos de botella, las consultas lentas a la base de datos, los bucles ineficientes) y enfócate ahí. Optimizar donde realmente importa da el mayor retorno de inversión.
 
 ## 1.6 Breve Historia de la Arquitectura de Software
 
@@ -62,16 +62,16 @@ El 80% de los problemas de rendimiento vienen del 20% del código. Optimiza dond
 El software era monolítico por necesidad. Mainframes, COBOL, Fortran. No existía el concepto de arquitectura como disciplina. Cada sistema era un universo aislado. La complejidad se gestionaba con documentación física y jerarquías rígidas.
 
 ### Era de la Estructuración (1990s)
-Nace la arquitectura como disciplina. El libro *Software Architecture: Perspectives on an Emerging Discipline* (1996) de Mary Shaw y David Garlan formaliza el campo. UML se estandariza. Nacen los patrones GoF (1994). Surge el concepto de capas (presentación, negocio, datos). CORBA y DCOM intentan (y fallan) estandarizar la comunicación entre sistemas.
+Nace la arquitectura como disciplina. El libro *Software Architecture: Perspectives on an Emerging Discipline* (1996) de Mary Shaw y David Garlan formaliza el campo. **UML** (Unified Modeling Language — un lenguaje visual estándar para dibujar diagramas de software) se estandariza. Nacen los **patrones GoF** (Gang of Four — 23 patrones de diseño clásicos documentados por 4 autores en 1994). Surge el concepto de **capas** (presentación, negocio, datos): organizar el código en niveles donde cada capa solo habla con la capa inmediatamente inferior. **CORBA** y **DCOM** (protocolos para que programas en diferentes máquinas se comunicaran entre sí) intentan (y fallan) estandarizar la comunicación entre sistemas.
 
 ### Era de Internet (2000s)
-La web lo cambia todo. Nace REST (Roy Fielding, 2000). SOA promete reutilización empresarial (resultados mixtos). Nace Agile (2001) que desafía el Big Design Up Front. Amazon internaliza los microservicios (2002). Surge Spring (2003) y el concepto de inyección de dependencias.
+La web lo cambia todo. Nace **REST** (un estilo de comunicación web donde usas URLs y verbos HTTP como GET, POST, PUT, DELETE para interactuar con datos — definido por Roy Fielding en su tesis doctoral, 2000). **SOA** (Service-Oriented Architecture — la idea de organizar el software como servicios independientes que se comunican entre sí) promete reutilización empresarial (con resultados mixtos). Nace **Agile** (2001), un manifiesto que desafía el "Big Design Up Front" (diseñar todo antes de escribir una línea de código). Amazon internaliza los **microservicios** (2002): en vez de tener UNA aplicación gigante (monolito), tienes muchas aplicaciones pequeñas, cada una responsable de una cosa. Surge **Spring** (2003) y el concepto de **inyección de dependencias** (una técnica donde los componentes reciben sus dependencias desde fuera en vez de crearlas ellos mismos, facilitando el testing y la modularidad).
 
 ### Era Cloud y DevOps (2010s)
 AWS se vuelve mainstream. Docker (2013) revoluciona el empaquetado. Kubernetes nace en Google (2014) y se estandariza. Los microservicios explotan (Netflix, Uber, Spotify evangelizan). Domain-Driven Design resurge. Continuous Delivery se convierte en aspiración. Event Sourcing y CQRS ganan tracción. GraphQL llega de Facebook (2015).
 
 ### Era Actual (2020s)
-Serverless madura. WebAssembly expande los límites del navegador y servidor. eBPF transforma el kernel. IA/LLMs integrados en productos. Plataform Engineering reemplaza DevOps como modelo organizativo. FinOps y GreenOps se convierten en prioridades de directorio. El foco se mueve de "construir sistemas" a "construir plataformas que permitan construir sistemas".
+**Serverless** madura (no te preocupas por el servidor: escribes funciones pequeñas y el proveedor cloud las ejecuta por ti, cobrándote solo por el tiempo que se usan). **WebAssembly** (un formato binario que permite ejecutar código de alto rendimiento en el navegador) expande los límites del navegador y servidor. **eBPF** (un mecanismo para ejecutar programas dentro del kernel de Linux sin modificarlo) transforma la observabilidad y la seguridad a nivel de kernel. **IA/LLMs** (modelos de lenguaje como ChatGPT) se integran en productos. **Platform Engineering** (ingeniería de plataformas internas para que los desarrolladores se autogestionen) reemplaza DevOps como modelo organizativo. **FinOps** (optimización de costos cloud) y **GreenOps** (reducción del impacto ambiental del software) se convierten en prioridades de directorio. El foco se mueve de "construir sistemas" a "construir plataformas que permitan construir sistemas".
 
 **La constante**: Cada era trajo nuevas herramientas, pero los principios subyacentes — acoplamiento bajo, cohesión alta, abstracciones correctas — permanecen inmutables.
 

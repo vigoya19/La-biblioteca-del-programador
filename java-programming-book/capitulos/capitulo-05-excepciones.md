@@ -46,6 +46,15 @@ Este volcado se denomina **stack trace** (traza de pila) y muestra la secuencia 
 
 Uno de los mitos más persistentes en Java es que «las excepciones son lentas». La realidad es más matizada: **lanzar una excepción no es caro; lo caro es llenar el stack trace**.
 
+> [!NOTE]
+> ### 🛩️ El Registro de Vuelo de una Caja Negra de Avión (fillInStackTrace)
+>
+> Imagina que un avión de pasajeros (tu aplicación Java) está volando sin problemas. De repente, ocurre una pequeña turbulencia esperada o un desvío menor en el plan de vuelo (un error de negocio controlado o validación de datos fallida).
+> - **El enfoque tradicional de excepciones**: Para registrar este desvío menor, el sistema detiene el avión por completo en pleno aire, activa la **caja negra** para registrar la posición exacta de cada tornillo, la velocidad de cada engranaje, el historial completo de cada aeropuerto por el que pasó desde su despegue (recorrer los frames de la pila de llamadas) y redacta un informe oficial de 50 páginas en ese mismo instante. ¡Esto es sumamente pesado y consume una cantidad inmensa de recursos!
+> - **El enfoque ligero (`fillInStackTrace` desactivado)**: Si sabes que es una situación controlada (por ejemplo, validando si un email es incorrecto), no necesitas la caja negra completa. Simplemente quieres reportar *"turbulencia detectada"* sin gastar combustible ni tiempo generando el pesado informe de vuelo de 50 páginas.
+>
+> **En resumen**: Capturar un *stack trace* es el equivalente a congelar el estado de ejecución y tomar una radiografía en 3D de todas las funciones que estaban activas en ese milisegundo. Si usas excepciones como parte del flujo normal de negocio, este comportamiento por defecto ahogará el rendimiento de tu aplicación.
+
 Cuando se crea un objeto `Throwable`, la JVM invoca automáticamente `fillInStackTrace()`, un método nativo que recorre la pila de llamadas y captura cada frame. Esta operación es costosa porque:
 
 1. Requiere navegar por toda la pila de la JVM, frame por frame.
@@ -698,6 +707,19 @@ Lenguajes posteriores como C#, Kotlin, Scala o Go optaron por no incluir excepci
 
 Una técnica avanzada (y controvertida) para lanzar checked exceptions sin declararlas:
 
+> [!NOTE]
+> ### 🦹 El Contrabandista con Camuflaje Holográfico (Sneaky Throw)
+>
+> Imagina una aduana súper estricta en la frontera (el compilador de Java) que revisa todo el equipaje. Tiene una lista negra de mercancías prohibidas llamadas **Checked Exceptions** (como `IOException` o `SQLException`). Si intentas pasar una sin una visa especial (`throws` en la firma de tu método), el guardia fronterizo de la aduana te arrestará de inmediato y no te dejará continuar (error de compilación).
+>
+> Sin embargo, un contrabandista inteligente inventa un dispositivo de **camuflaje holográfico (los Genéricos `<E extends Throwable>`)**:
+> - Pone una **Checked Exception** real (por ejemplo, una maleta con dinamita `SQLException`) dentro del contenedor.
+> - Activa el camuflaje holográfico para que el contenedor parezca una caja genérica e inocua de tipo `E`.
+> - El guardia fronterizo (el compilador) mira el contenedor, ve la firma holográfica `E` (que bajo borrado de tipos se interpreta como si no tuviera restricciones o fuera una excepción no controlada / `RuntimeException`), y dice: *"Adelante, puedes pasar sin declarar"* (compila sin `throws`).
+> - Una vez que el equipaje llega a su destino dentro del país en tiempo de ejecución (la JVM), **el camuflaje se disipa (borrado de tipos)**, revelando la maleta original con dinamita, la cual detona de inmediato en pleno vuelo de ejecución.
+>
+> **En resumen**: El *Sneaky Throw* burla los controles del compilador usando genéricos para lanzar excepciones comprobadas sin declararlas formalmente. Herramientas como Lombok (`@SneakyThrows`) lo hacen automáticamente por debajo para ahorrar líneas de código redundantes, pero debe usarse con precaución ya que el receptor de tu método no sabrá que debe prepararse para esa explosión.
+
 ```java
 public class SneakyThrow {
 
@@ -911,6 +933,20 @@ Respuesta: OK: HOLA, SERVIDOR
 ### 5.6.5 Excepciones suprimidas (Suppressed Exceptions)
 
 Si se lanza una excepción tanto en el bloque `try` como durante el cierre automático, la excepción del `close()` **no reemplaza** a la del `try`; se añade como **excepción suprimida**. Se recuperan con `getSuppressed()`:
+
+> [!NOTE]
+> ### 🚛 El Accidente del Camión Principal y los Retrasos de los Autos Traseros (Suppressed Exceptions)
+>
+> Imagina una autopista de un solo carril en donde viajan varios vehículos en fila. El primer vehículo grande es la **operación principal de tu negocio** (el código dentro del bloque `try`), y los autos que le siguen detrás son las **tareas de limpieza y cierre de recursos** (el método `close()` del try-with-resources).
+>
+> 1. **El Accidente del Camión (La Excepción Principal)**:
+>    - Si el gran camión choca y bloquea por completo la autopista (se lanza una excepción dentro de tu bloque `try`), el tráfico se detiene de golpe. Este es el problema más grave y urgente que debes reportar a emergencias (la excepción capturada por el bloque `catch`).
+> 2. **Los Choques Traseros de Limpieza (Las Excepciones Suprimidas)**:
+>    - Dado que la autopista está bloqueada, el sistema intenta de forma desesperada pero ordenada apartar y apagar los motores de los autos de atrás (`close()`). Sin embargo, debido al impacto, dos de estos autos de limpieza también fallan y chocan (`RuntimeException` en el `close()`).
+>    - **El dilema de Java pre-JDK 7**: En las versiones antiguas de Java, la grúa que venía a rescatar el camión ignoraba el choque principal y solo reportaba el último choquecito menor de los autos traseros, perdiendo el rastro del gran accidente original.
+>    - **La solución actual (Excepciones Suprimidas)**: Ahora, Java mantiene al gran camión como el accidente principal en el reporte oficial. Y en la sección de "Notas adicionales" del mismo reporte (el array `getSuppressed()`), añade y adjunta de forma ordenada los pequeños choques traseros de limpieza.
+>
+> **En resumen**: Gracias a las excepciones suprimidas, si tu código de negocio falla y también falla la limpieza de archivos o bases de datos, nunca perderás el error original que causó la catástrofe, pudiendo auditar los fallos secundarios desde el mismo objeto de excepción principal.
 
 ```java
 static class RecursoFallo implements AutoCloseable {

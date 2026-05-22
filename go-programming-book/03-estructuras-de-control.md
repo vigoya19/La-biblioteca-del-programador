@@ -145,6 +145,20 @@ func main() {
 
 Permite actuar segun el tipo de una interface:
 
+> [!NOTE]
+> ### 🔍 El Clasificador de Objetos Desconocidos (Type Switch)
+> 
+> Imagina que tienes una caja negra con un agujero. Alguien mete la mano y coloca un objeto sorpresa dentro de tu mano (`interface{}`). No puedes ver el objeto, pero tu programa debe reaccionar según lo que sea:
+> - Si es un **bloque de madera** (un tipo `int`), quieres medirlo.
+> - Si es una **tarjeta de felicitación** (un tipo `string`), quieres leerla.
+> - Si es una **moneda** (un tipo `bool`), quieres ver si es cara o cruz.
+> 
+> En Go, un **Type Switch** (`switch v := i.(type)`) es como pasar ese objeto sorpresa por un escáner inteligente:
+> 1. El escáner detecta qué material exacto es en una milésima de segundo.
+> 2. Te entrega el objeto desempaquetado en una nueva variable `v` con su tipo real (ej. si era un entero, `v` será un número real con todas sus propiedades matemáticas y aritméticas).
+> 
+> Esto nos permite trabajar de forma ultra-segura con datos de origen desconocido, sin arriesgarnos a que el programa se rompa por intentar sumar un texto con un número.
+
 ```go
 func describir(i interface{}) string {
     switch v := i.(type) {
@@ -383,6 +397,16 @@ func procesarUnArchivo(nombre string) {
 ```
 
 ### defer captura valores
+
+> [!TIP]
+> ### 📸 La Foto Instantánea vs. El Mensajero al Final (Captura de defer)
+> 
+> Cuando usas la palabra clave `defer` para posponer una tarea en Go, debes tener cuidado con **cuándo** lee Go el valor de tus variables. Imagina estas dos situaciones:
+> 
+> 1. **La Foto Instantánea (`defer fmt.Println(x)`)**: Cuando Go lee esta línea, toma una foto instantánea del valor de `x` en ese preciso momento (digamos, `x = 0`). Guarda la foto en un cajón y, cuando la función termina, la imprime. Aunque cambies `x = 42` más abajo en tu código, la foto ya fue tomada con `0`.
+> 2. **El Mensajero al Final (`defer func() { fmt.Println(x) }()`)**: Aquí no tomas una foto de `x`. En su lugar, dejas una nota que dice: *"Cuando termine la función, ve a buscar la variable `x` e imprime lo que sea que tenga en ese instante"*. Al finalizar la función, el mensajero va a revisar `x`, encuentra `42` y lo imprime.
+> 
+> Usa la **foto instantánea** para la mayoría de los casos simples, y usa el **mensajero (closure)** cuando necesites que el valor se evalúe dinámicamente justo al final de la función.
 
 ```go
 func main() {

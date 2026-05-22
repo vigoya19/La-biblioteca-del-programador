@@ -137,6 +137,12 @@ Esta diferencia de órdenes de magnitud no es magia, es arquitectura. Y la arqui
 
 ## 2. Namespaces: cómo el kernel crea "cajas aisladas"
 
+> **📖 Para principiantes**: Los namespaces son el mecanismo fundamental que hace posible Docker. Si entiendes la idea general, el resto de Docker tendrá mucho más sentido. La analogía es sencilla:
+>
+> Imagina que vives en un **edificio de apartamentos**. Dentro de tu apartamento ves tus muebles, tu tele, tu cocina. No ves lo que hay en el apartamento de tu vecino. Pero todos comparten la estructura del edificio: las tuberías, los cables, el ascensor. Un **namespace** es exactamente eso para los programas en Linux: le da a cada contenedor su propio "apartamento" aislado, aunque todos comparten el mismo "edificio" (el kernel del sistema operativo).
+>
+> Las secciones que siguen explican los diferentes tipos de aislamiento (procesos, red, archivos, usuarios...). Cada uno es como un tipo diferente de aislamiento en el apartamento: paredes (no ves al vecino), contadores de agua separados (cada uno controla su consumo), buzones independientes (tu correo es privado). No necesitas memorizar todos los detalles técnicos — lo importante es entender el concepto general.
+
 Imagina que vives en un edificio de apartamentos. Dentro de tu apartamento ves tus muebles, tu tele, tu cocina. No ves lo que hay en el apartamento de tu vecino. Pero todos comparten la estructura del edificio: las tuberías, los cables, el ascensor.
 
 Los **namespaces** son exactamente eso para procesos en Linux:
@@ -280,17 +286,19 @@ Dos contenedores, mismo puerto 80, cero conflictos. Eso es el NET namespace.
 
 ---
 
-> **📚 Avanzado (sáltate esto si estás empezando):** Por dentro, Docker conecta cada contenedor al host con un "cable virtual" (veth pair) enchufado a un "switch virtual" (bridge `docker0`). El mapeo de puertos (`-p 8080:80`) se hace con reglas de iptables. Si algún día `-p` no funciona tras instalar un firewall como `ufw`, el problema es que las reglas de iptables se pisan. Más adelante, en el capítulo de redes, desmontamos todo esto con detalle.
+> **📚 Avanzado (sáltate esto si estás empezando):** Por dentro, Docker conecta cada contenedor al host con un "cable virtual" llamado **veth pair** (piensa en un cable de red virtual con dos extremos: uno dentro del contenedor y otro en el host) enchufado a un "switch virtual" llamado **bridge** (`docker0`). Es como tener un switch de red dentro de tu computadora que conecta a todos los contenedores entre sí. El mapeo de puertos (`-p 8080:80`) se implementa con **iptables**, que son las reglas del firewall de Linux — Docker automáticamente agrega reglas que dicen "redirige el tráfico del puerto 8080 del host al puerto 80 del contenedor". Si algún día `-p` no funciona tras instalar un firewall como `ufw`, el problema es que las reglas de iptables se pisan. Más adelante, en el capítulo de redes, desmontamos todo esto con detalle.
 
 ### 2.4 MNT (Mount) namespace: aislamiento del sistema de archivos
 
-**Qué aísla:** Los puntos de montaje. Cada MNT namespace tiene su propio árbol de montajes. Un montaje realizado en un namespace no es visible en otros.
+**Qué aísla:** Los puntos de montaje (las "conexiones" entre discos/carpetas y el sistema de archivos). Cada MNT namespace tiene su propio árbol de montajes. Un montaje realizado en un namespace no es visible en otros.
+
+> **📖 En palabras simples**: Un "montaje" es como enchufar un disco duro externo o USB a tu computadora. Cuando enchufas algo, aparece una carpeta nueva en tu sistema. El MNT namespace le da a cada contenedor **su propio sistema de archivos virtual**, como si cada apartamento del edificio tuviera sus propias conexiones eléctricas independientes. Si enchufas un disco USB en tu computadora (el host), el contenedor NO lo verá automáticamente — está completamente aislado.
 
 **Por qué importa:** Es la base de las imágenes de Docker y del sistema de archivos del contenedor. Permite que cada contenedor tenga su propio `/`, sus propios montajes, sin interferir con el host ni con otros contenedores.
 
 **¿Cómo se crea un MNT namespace?**
 
-Cuando un proceso crea un nuevo MNT namespace (vía `clone()` con `CLONE_NEWNS` o `unshare --mount`), recibe una copia exacta de la tabla de montajes del namespace padre. Es decir, **hereda** todos los montajes. Pero a partir de ese momento, cualquier cambio de montaje (mount, umount, remount) dentro del namespace no afecta a otros namespaces.
+Cuando un proceso crea un nuevo MNT namespace (vía `clone()` con `CLONE_NEWNS` o `unshare --mount`), recibe una copia exacta de la tabla de montajes del namespace padre. Es decir, **hereda** todos los montajes, como cuando te mudas a un apartamento nuevo que ya tiene enchufes instalados. Pero a partir de ese momento, cualquier cambio de montaje (mount, umount, remount) dentro del namespace no afecta a otros namespaces — si instalas un enchufe nuevo en tu apartamento, el vecino no lo ve.
 
 Esto tiene una implicación sutil pero fundamental: si montas `/proc` en un nuevo namespace de montaje sin antes crear un PID namespace, el nuevo `/proc` reflejará los procesos del PID namespace padre (el host). Por eso, cuando creas un contenedor completamente aislado, necesitas:
 
@@ -301,6 +309,8 @@ Esto tiene una implicación sutil pero fundamental: si montas `/proc` en un nuev
 El orden importa. Y Docker lo hace automáticamente.
 
 **Eventos de propagación de montajes:**
+
+> **📖 En palabras simples**: La "propagación" determina si un cambio de montaje en el host (como conectar un USB) se refleja automáticamente dentro de los contenedores. Docker usa el modo `private` por defecto, lo que significa: **lo que pasa en el host se queda en el host, y lo que pasa en el contenedor se queda en el contenedor**. Si necesitas compartir archivos entre el host y un contenedor, debes hacerlo explícitamente con `--volume`. Los cuatro modos disponibles son `shared` (propagación bidireccional), `slave` (del host al contenedor), `private` (sin propagación — el predeterminado), y `unbindable` (no permite ni siquiera montar encima).
 
 Linux soporta propagación de eventos de montaje entre namespaces mediante los flags `shared`, `slave`, `private` y `unbindable`. Por defecto, Docker usa `private` para todos los montajes del contenedor: los cambios en el host no se propagan al contenedor y viceversa.
 
@@ -407,6 +417,13 @@ UTS significa "UNIX Time-sharing System". Es uno de los namespaces más antiguos
 ### 2.6 IPC namespace: aislamiento de comunicación entre procesos
 
 **Qué aísla:** Mecanismos de IPC de System V (semáforos, colas de mensajes, segmentos de memoria compartida) y colas de mensajes POSIX.
+
+> **📖 En palabras simples**: IPC (Inter-Process Communication) son los mecanismos que usan los programas para "hablar" entre sí dentro de una misma computadora. Imagínalo como los **tubos neumáticos** de un banco: permiten enviar mensajes rápidamente entre ventanillas. Los tres tipos principales son:
+> - **Semáforos**: Como un semáforo de tráfico — controlan quién puede acceder a un recurso compartido y cuándo. Si un programa está usando un archivo, el semáforo le dice al otro "espera, está ocupado".
+> - **Colas de mensajes**: Como un buzón — un programa deja un mensaje y otro lo recoge cuando puede.
+> - **Memoria compartida**: Como una pizarra en la oficina — todos los programas pueden escribir y leer de la misma zona de memoria.
+>
+> El IPC namespace garantiza que los contenedores no puedan usar estos mecanismos para espiar o interferir con otros contenedores o con el host.
 
 **Por qué importa:** Evita que un contenedor acceda a la memoria compartida o a los semáforos de otro contenedor o del host. Esto es tanto una cuestión de seguridad como de corrección: dos aplicaciones en distintos contenedores no deberían colisionar en recursos IPC.
 
@@ -604,6 +621,14 @@ Los números entre corchetes son los inode numbers que identifican de forma úni
 
 ## 3. cgroups (Control Groups)
 
+> **📖 En palabras simples**: Si los namespaces son los **apartamentos** que separan a los inquilinos (cada contenedor tiene su propia vista aislada del sistema), los **cgroups** son el **administrador del edificio** que controla cuántos recursos puede usar cada apartamento:
+> - "¿Cuánta electricidad (CPU) puede consumir el apartamento 1?"
+> - "¿Cuánta agua (memoria RAM) puede usar el apartamento 2?"
+> - "¿A qué velocidad puede descargar internet (I/O de disco) el apartamento 3?"
+> - "¿Cuántos electrodomésticos (procesos) puede tener encendidos el apartamento 4?"
+>
+> Sin cgroups, un contenedor malicioso o mal programado podría consumir toda la CPU o la memoria de tu servidor, afectando a todos los demás contenedores. Los cgroups ponen límites claros para que esto no suceda.
+
 Si los namespaces responden a la pregunta **"¿qué ven los procesos?"**, los cgroups responden a **"¿cuánto pueden usar?"**. Los namespaces proporcionan aislamiento; los cgroups proporcionan control.
 
 ### 3.1 ¿Qué son los cgroups?
@@ -614,17 +639,19 @@ Un cgroup es un grupo de procesos vinculados a un conjunto de parámetros que de
 
 Cada subsistema de recursos (llamado "controller" en la jerga de cgroups v2) gestiona un tipo de recurso:
 
-- **cpu**: controla el acceso a la CPU.
-- **memory**: limita y contabiliza el uso de memoria.
-- **blkio**: controla el acceso a dispositivos de bloque (discos).
-- **pids**: limita el número de procesos.
-- **net_cls/net_prio**: clasifica paquetes de red para QoS.
-- **devices**: controla acceso a dispositivos.
-- **cpuset**: asigna procesos a CPUs y nodos de memoria específicos.
-- **hugetlb**: controla el uso de huge pages.
-- **perf_event**: monitorización de rendimiento.
+- **cpu**: controla el acceso a la CPU (cuánto tiempo de procesador puede usar un contenedor).
+- **memory**: limita y contabiliza el uso de memoria RAM (si un contenedor excede su límite, el kernel lo detiene).
+- **blkio**: controla el acceso a dispositivos de bloque, es decir, los discos (velocidad de lectura/escritura).
+- **pids**: limita el número de procesos (protección contra ataques de tipo "fork bomb" donde un programa crea infinitos procesos).
+- **net_cls/net_prio**: clasifica paquetes de red para QoS (calidad de servicio — priorizar el tráfico de ciertos contenedores).
+- **devices**: controla qué dispositivos físicos (USB, GPU) puede ver un contenedor.
+- **cpuset**: asigna procesos a CPUs específicas ("este contenedor solo puede usar los núcleos 0 y 1").
+- **hugetlb**: controla el uso de huge pages (páginas de memoria grandes, usadas en bases de datos de alto rendimiento).
+- **perf_event**: monitorización de rendimiento a nivel de hardware.
 
 ### 3.2 cgroups v1 vs cgroups v2
+
+> **📖 En palabras simples**: Linux ha tenido dos versiones de cgroups, como dos generaciones del mismo sistema. La v1 es como tener **un administrador diferente** para cada recurso (uno controla la electricidad, otro el agua, otro internet, y no se hablan entre sí). La v2 es como tener **un solo administrador** que controla todo de forma coordinada. La v2 es más simple y coherente, pero la v1 todavía se usa por compatibilidad con software antiguo.
 
 Linux ha tenido dos generaciones de cgroups:
 

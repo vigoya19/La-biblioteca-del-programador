@@ -317,6 +317,19 @@ channel.consume("ordenes.procesar", async (msg) => {
 
 RabbitMQ implementa DLQ mediante Dead Letter Exchanges: cuando un mensaje es rechazado (NACK sin requeue) o expira (TTL), se publica automáticamente en un exchange configurado.
 
+> [!TIP]
+> ### 📬 La Oficina de Cartas no Entregadas con Casilleros Temporizados (DLX & TTL)
+>
+> Imagina que eres un mensajero en una oficina postal de mensajería asíncrona (RabbitMQ):
+> - Te entregan una carta para entregar a un cliente (un consumidor). Llegas a la casa pero no hay nadie para recibirla o la dirección tiene un error temporal (el consumidor falla).
+> - **Si intentas entregarla síncronamente**: Te quedarías parado en la puerta del cliente esperando 10 horas a que regrese, lo que significa que el camión de correspondencia trasera se detendría por completo (hilo bloqueado).
+> - **La solución de RabbitMQ con DLX y TTL**:
+>   1. **El buzón de cartas no entregadas (Dead Letter Exchange)**: Al fallar la entrega, el cartero marca la carta con un sello de *"Rechazado temporalmente"* y la envía automáticamente a una oficina de clasificación especial llamada **Dead Letter Exchange (DLX)**.
+>   2. **El Casillero Temporizado (Cola con TTL)**: El DLX coloca la carta en un casillero cerrado que tiene un temporizador físico de **10 segundos** (una cola con TTL de 10s). Nadie está autorizado a sacar la carta de allí antes de tiempo; simplemente espera.
+>   3. **Re-entrega Automática**: En cuanto el temporizador de 10 segundos expira, el casillero expulsa automáticamente la carta y la redirige de vuelta a la **oficina postal principal (el exchange original)** para que el cartero intente de nuevo la entrega.
+>
+> **En resumen**: Combinando Dead Letter Exchanges (DLX) y Time-To-Live (TTL), RabbitMQ permite crear sofisticados bucles de reintento automatizados con tiempos de espera programados sin que tu aplicación tenga que dormir hilos de ejecución síncrones ni retener mensajes en tránsito.
+
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │ Cola "ordenes.creadas"                                      │

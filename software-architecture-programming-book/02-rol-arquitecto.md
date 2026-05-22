@@ -29,7 +29,10 @@ El arquitecto de software es el responsable de las decisiones técnicas estructu
 - Profundo conocimiento de patrones de diseño y arquitectura.
 - Experiencia en múltiples stacks tecnológicos.
 - Comprensión de infraestructura, redes y bases de datos.
-- Capacidad de modelado (C4 Model, UML, ADRs).
+- Capacidad de modelado:
+  - **C4 Model**: Una forma de dibujar la arquitectura de un sistema en 4 niveles de "zoom" — desde una vista panorámica (nivel 1: ¿quiénes usan el sistema?) hasta el detalle del código (nivel 4: ¿cómo está implementada esta clase?).
+  - **UML** (Unified Modeling Language): Un lenguaje visual estándar para dibujar diagramas de software (diagramas de clases, de secuencia, de estados, etc.).
+  - **ADRs** (Architecture Decision Records): Documentos cortos que explican POR QUÉ se tomó una decisión técnica. Son como actas notariales de cada decisión importante. Ejemplo: "Elegimos PostgreSQL porque necesitamos transacciones ACID y el equipo ya lo conoce."
 
 ### Soft Skills
 - **Comunicación efectiva**: Explicar conceptos complejos a audiencias no técnicas.

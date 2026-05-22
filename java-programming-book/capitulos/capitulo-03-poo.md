@@ -34,7 +34,16 @@ Prestar un libro              Método prestarLibro()
 El catálogo de la biblioteca  Colección<Libro>
 ```
 
-Este mapeo no es automático ni trivial. Requiere identificar:
+Este mapeo no es automático ni trivial. Para no perderte entre tanta jerga de arquitectura, divide tus clases de objetos en tres conceptos cotidianos muy sencillos:
+
+> [!NOTE]
+> ### 📦 Pasaportes, Billetes y Cajas de Herramientas
+> 
+> 1. **Entidades (El Pasaporte)**: Es un objeto que tiene una identidad única. Tu pasaporte físico tiene un número único impreso. Si le cambias la foto o la dirección, sigue siendo *tu* pasaporte. Dos pasaportes con los mismos datos personales pero diferente número de pasaporte representan a dos personas distintas. En programación, un `Cliente` o un `Pedido` son entidades.
+> 2. **Objetos de Valor / Value Objects (El Billete de $20 USD)**: A estos objetos no les importa su identidad individual, sino el valor de sus propiedades. Si tienes un billete de $20 en tu cartera y lo cambias por otro billete de $20 diferente, sigues teniendo exactamente la misma cantidad de dinero. No te importa el número de serie del billete. En Java, cosas como un color (`Color`), una coordenada (`Coordenada`) o el dinero (`Dinero`) son Value Objects: si sus atributos son iguales, son el mismo objeto.
+> 3. **Agregados (La Caja de Herramientas)**: Es un grupo de objetos relacionados que se manipulan como una sola unidad. Imagina una caja de herramientas cerrada. No puedes sacar el martillo ni el destornillador sin abrir la caja completa. La caja es la raíz del agregado (por ejemplo, el `Pedido` es el agregado y las `Líneas de Pedido` son las herramientas internas; solo modificas las líneas a través del pedido principal).
+
+En el modelado tradicional y el diseño táctico de Domain-Driven Design (DDD), esto se clasifica en:
 - **Entidades**: objetos con identidad propia que persisten en el tiempo (un `Cliente`, un `Pedido`).
 - **Objetos de valor** (_value objects_): inmutables, definidos por sus atributos, no por identidad (un `Dinero`, una `Dirección`, una `Coordenada`).
 - **Agregados**: grupos de objetos tratados como una unidad (`Pedido` contiene `LineaPedido`).

@@ -97,6 +97,18 @@ function manejarMetodo(metodo: MetodoHTTP): string {
 
 ### Exhaustiveness checking con never
 
+> [!NOTE]
+> ### 🛡️ El Seguro Contra Olvidos: El tipo `never` en Switch
+> 
+> Imagina que trabajas como clasificador en una oficina de correos. Tienes 4 cajas marcadas: "Cartas", "Paquetes", "Postales" y "Publicidad". Tu jefe te dice: *"Si llega algo que no pertenece a ninguna de estas 4 categorías, ponlo en la mesa especial de 'Imposibles'"*.
+> 
+> En TypeScript, esa mesa especial de "Imposibles" es el tipo **`never`**. Representa un camino o valor que **nunca debería ocurrir**.
+> 
+> **¿Por qué hacemos esto en un `switch`?**
+> Si en el bloque `default` (cuando no entra en ningún `case`) intentas asignar el objeto a una variable de tipo `never`, le estás diciendo a TypeScript: *"Oye, he clasificado todas las opciones válidas. Si el código llega aquí, significa que hay un error"*.
+> 
+> Si en el futuro tu jefe agrega una quinta categoría llamada "Revistas", pero olvidas agregar un `case "Revistas":` en tu `switch`, ¡TypeScript detectará que una "Revista" podría llegar a la mesa de 'Imposibles' (`never`) y detendrá la compilación con un error! Es tu red de seguridad definitiva contra olvidos accidentales en producción.
+
 ```typescript
 type Estado =
   | { tipo: "cargando" }
@@ -328,6 +340,18 @@ const etiquetas = usuarios.flatMap((u) => [u.nombre, `${u.edad} años`]);
 ```
 
 ### Iteradores personalizados
+
+> [!TIP]
+> ### 🏭 Generadores y yield: La Fábrica de Galletas bajo Demanda
+> 
+> Normalmente, cuando creas una lista de datos (como un array `[1, 2, 3]`), estás horneando y guardando todas las galletas en una caja al mismo tiempo. Si la caja tiene un millón de galletas, gastas muchísima memoria y espacio en tu cocina (la memoria RAM).
+> 
+> Un **Generador** (indicado por el asterisco en `function*`) es como una **máquina expendedora automática de galletas**:
+> - En lugar de hornear un millón de galletas de golpe, la máquina las prepara **una por una**, solo cuando alguien presiona el botón.
+> - La palabra reservada **`yield`** es ese botón: detiene la ejecución de tu código, te entrega la galleta actual, y congela la máquina en ese estado exacto.
+> - La próxima vez que solicitas un elemento (usando un bucle `for...of`), el código se "descongela" justo donde se quedó y continúa hasta el siguiente `yield`.
+> 
+> **¿La gran ventaja?** Puedes simular una secuencia infinita de números (como la secuencia de Fibonacci) ocupando la memoria de un solo número, ya que los valores se calculan perezosamente "bajo demanda".
 
 ```typescript
 class Rango implements Iterable<number> {

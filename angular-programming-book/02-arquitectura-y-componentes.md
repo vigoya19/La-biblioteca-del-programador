@@ -82,7 +82,7 @@ Un valor booleano (`true`) que habilita la arquitectura independiente. A partir 
 
 #### 3. `imports`
 Aquí se especifican de forma explícita todos los elementos externos (componentes, directivas, pipes o módulos) que la plantilla de este componente consume. 
-* *Ventaja*: Si tu plantilla no usa un componente determinado, no lo importas en este array. Esto permite un **tree-shaking extremadamente granular**, reduciendo drásticamente el tamaño final de los archivos que tus usuarios descargan en el navegador.
+* *Ventaja*: Si tu plantilla no usa un componente determinado, no lo importas en este array. Esto permite un **tree-shaking extremadamente granular**. Tree-shaking (literalmente, "sacudir el árbol") es un proceso automático que elimina el código que no se usa, como podar las ramas secas de un árbol: si tu aplicación importa una biblioteca de 100 funciones pero solo usa 3, el tree-shaking elimina las otras 97 del archivo final que tus usuarios descargan. Resultado: archivos más pequeños y carga más rápida.
 
 #### 4. `templateUrl` e Inline `template`
 * `templateUrl`: Apunta a un archivo externo `.html` para definir la interfaz de usuario. Es la opción recomendada para componentes complejos o de gran envergadura (> 30 líneas de HTML).
@@ -111,6 +111,9 @@ export class BadgeComponent {
 
 #### 6. `changeDetection`
 Controla el algoritmo de detección de cambios de Angular.
+
+> **📖 ¿Qué es la detección de cambios?** Cada vez que algo sucede en tu aplicación (un click, datos que llegan del servidor, un temporizador), Angular necesita **revisar** la pantalla para actualizar lo que el usuario ve. Este proceso de revisión se llama "detección de cambios". La estrategia `Default` revisa TODOS los componentes ante cualquier evento (como un guardia de seguridad paranoico que revisa todo el edificio cada vez que suena una alarma). La estrategia `OnPush` es más inteligente: solo revisa un componente cuando algo que le afecta directamente ha cambiado (como un guardia que solo revisa el piso donde sonó la alarma). El concepto de "cambio de referencia" mencionado abajo significa que Angular compara si el objeto es literalmente el mismo o uno nuevo, no si su contenido cambió.
+
 * **`ChangeDetectionStrategy.OnPush` (Recomendado)**: Indica a Angular que solo debe ejecutar el ciclo de detección de cambios cuando las propiedades de entrada (`Input`) del componente cambien de referencia, cuando se emita un evento desde la plantilla, o cuando un Signal del que depende sufra modificaciones. Esto optimiza enormemente el rendimiento en comparación con la estrategia `Default`, la cual recorre todo el árbol de componentes ante cualquier evento asíncrono (como un `setTimeout` o un click en cualquier parte de la pantalla).
 
 ---
@@ -263,6 +266,8 @@ export class PerfilUsuarioComponent implements OnInit, AfterViewInit, OnDestroy 
   private subscription?: Subscription;
 
   // 2. Control de estado reactivo local con Signals
+  // Los Signals son como pantallas de marcador: siempre muestran el valor actual
+  // y se actualizan automáticamente cuando el valor cambia.
   usuario = signal<Usuario | null>(null);
   cargando = signal<boolean>(true);
 
@@ -273,7 +278,13 @@ export class PerfilUsuarioComponent implements OnInit, AfterViewInit, OnDestroy 
   ngOnInit(): void {
     console.log("2. OnInit: Iniciando peticiones HTTP.");
     
-    // Suscripción asíncrona segura
+    // Suscripción asíncrona segura.
+    // Un Observable (de RxJS) es como suscribirte a un canal de noticias en vivo:
+    // las noticias llegan una a una, a lo largo del tiempo. Es ideal para datos
+    // que llegan del servidor de forma asíncrona.
+    // IMPORTANTE: siempre debes "cancelar la suscripción" (unsubscribe) cuando
+    // el componente se destruye, o las noticias seguirán llegando para siempre
+    // (fuga de memoria). Los Signals, en cambio, se limpian automáticamente.
     this.subscription = this.usuarioService.obtenerPerfil().subscribe({
       next: (datos) => {
         this.usuario.set(datos);

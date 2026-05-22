@@ -554,6 +554,15 @@ services:
 
 **Limitación clásica**: `depends_on` solo espera a que el contenedor esté *iniciado*, no a que la aplicación dentro del contenedor esté *lista*. PostgreSQL puede estar aceptando conexiones TCP pero todavía inicializando la base de datos.
 
+> [!NOTE]
+> ### 🚪 El Guardia de Puerta Impaciente vs. El Inspector de Calidad (depends_on vs. healthcheck)
+>
+> Imagina que estás organizando una gran cena de gala y deseas sincronizar el inicio del evento:
+> - **`depends_on` simple (El Guardia de Puerta Impaciente)**: Contratas a un guardia en la puerta que tiene la orden estricta de dejar pasar a todos los invitados al salón comedor (el servicio `web`) tan pronto como vea entrar al chef de cocina (el contenedor `db`). El chef cruza la puerta principal del edificio (el contenedor `db` se inicia). El guardia grita: *"¡El chef ya llegó al edificio! ¡Abran las puertas a los invitados!"*. Los invitados entran corriendo y piden comida, pero el chef aún tiene el abrigo puesto, no ha encendido los hornos ni desempacado los ingredientes. La cena es un desastre y los invitados se retiran molestos al recibir platos vacíos (errores de conexión `ConnectionRefused`).
+> - **`depends_on` con `condition: service_healthy` (El Inspector de Calidad)**: En lugar del guardia impaciente, colocas a un inspector en la cocina. El chef entra, enciende los quemadores, calienta las ollas, prepara los insumos y, una vez que la cocina está operativa al 100%, enciende una luz verde de "Cocina Lista" (el contenedor supera el **Healthcheck** y pasa a estado `healthy`). Solo entonces, el inspector autoriza la entrada de los invitados al salón comedor.
+>
+> **En resumen**: Usar un `depends_on` básico en Docker Compose solo garantiza que el contenedor dependido ha sido creado por el motor de Docker. Para asegurar que tu aplicación web no falle al intentar conectarse a la base de datos durante el arranque, debes asociar un *health check* a tu base de datos y configurar tu servicio web para que espere a que pase de estado iniciado a saludable (`condition: service_healthy`).
+
 **Solución con `condition`** (disponible en Compose V2 con health checks):
 
 ```yaml

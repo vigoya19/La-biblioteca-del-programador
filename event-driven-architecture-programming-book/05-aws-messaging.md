@@ -93,6 +93,18 @@ async function consumirCola(): Promise<void> {
 
 ### Visibility Timeout: el corazón de SQS
 
+> [!TIP]
+> ### 📚 El Préstamo de Libros con Alarma de Devolución (Visibility Timeout & Heartbeat)
+> 
+> Imagina que vas a una biblioteca pública (la cola de mensajería SQS):
+> - Pides un libro muy solicitado para resolver una tarea (el mensaje). La biblioteca te lo entrega y activa un temporizador de **30 minutos** (el **Visibility Timeout**).
+> - Durante esos 30 minutos, el libro desaparece del catálogo público para que nadie más intente llevárselo a casa mientras tú trabajas en él.
+> - **El problema**: Tu tarea es sumamente larga y te tomará 2 horas resolverla.
+>   - **Si te quedas callado**: Al minuto 31, la biblioteca asumirá que te quedaste dormido, pondrá el libro de nuevo como "Disponible" y otro estudiante (un consumidor duplicado) se lo llevará, haciendo que ambos hagan la misma tarea dos veces.
+>   - **La solución (El Heartbeat)**: Cada 25 minutos, envías un mensaje rápido a la biblioteca diciendo: *"Oye, sigo despierto y trabajando, por favor extiendan mi préstamo 30 minutos más"* (`ChangeMessageVisibility`).
+> 
+> Este latido constante (Heartbeat) mantiene tu exclusividad hasta que terminas, momento en el cual devuelves y destruyes la ficha de préstamo (`DeleteMessage`).
+
 ```
 Tiempo ──────────────────────────────────────────────────────▶
 

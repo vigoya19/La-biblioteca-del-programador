@@ -361,6 +361,14 @@ function procesarSeguro(valor: unknown): string {
 
 ### Satisfies (TypeScript 4.9+)
 
+> [!NOTE]
+> **¿Qué es esto en palabras simples?**
+> Imagina que vas a pasar por seguridad en un aeropuerto llevando una maleta:
+> - **Anotación de Tipo Estándar (`const config: Tipo`)**: Es una regla muy rígida. Si dices que tu equipaje es de tipo general `Record<string, string | number | boolean>`, el oficial de seguridad dice: *"Muy bien, a partir de ahora trato tu equipaje de forma genérica como string, number o boolean"*. Si dentro tenías un dato numérico específico (como el puerto `8080`), el oficial "olvida" que era exactamente un número y solo recuerda que es "una de las opciones". ¡Ya no te deja usar funciones específicas de números como `.toFixed()` de forma directa!
+> - **El Operador `satisfies` (El validador flexible)**: El oficial de seguridad revisa tu maleta y dice: *"¿Cumple con ser string, number o boolean? ¡Sí, pasa!"*, pero **deja que tu maleta conserve la memoria exacta de lo que hay dentro**. TypeScript sigue sabiendo que `puerto` es exactamente un número (`8080`) y te permite seguir usando métodos de número con él.
+> 
+> En resumen, `satisfies` comprueba que un objeto cumpla con un contrato general **sin borrar ni degradar los tipos de datos específicos** e individuales de sus propiedades.
+
 ```typescript
 // satisfies: verifica que un valor cumple un tipo sin cambiar su tipo inferido
 const config = {
@@ -602,6 +610,13 @@ const fn: () => void = () => "ignorado"; // OK: string se descarta
 
 ### keyof type operator
 
+> [!NOTE]
+> 🏷️ **La Analogía del Archivador**
+> Imagina que tienes un archivador físico para guardar la información de un `Usuario`. Este archivador tiene tres cajones con etiquetas: `"id"`, `"nombre"` y `"email"`.
+> El operador **`keyof`** es como una máquina lectora que escanea los nombres de los cajones y crea una lista de etiquetas válidas: `"id" | "nombre" | "email"`.
+> Si intentas buscar información en un cajón con la etiqueta `"apellido"`, TypeScript te detiene de inmediato porque esa etiqueta no pertenece a la lista de cajones escaneados.
+
+
 ```typescript
 // keyof: obtiene las claves de un tipo como union de literales
 interface Usuario {
@@ -628,6 +643,12 @@ type ClavesDic = keyof Diccionario; // string | number (number por index signatu
 
 ### typeof en contexto de tipos
 
+> [!NOTE]
+> 🍰 **La Analogía de la Receta de Pastel**
+> - **`typeof` (en contexto de tipos)**: Imagina que ves un pastel de chocolate terminado y delicioso en un mostrador. Le dices a TypeScript: *"Analiza este pastel y hazme un molde con su forma exacta"*. `typeof` extrae la estructura/tipo de una variable existente en tiempo de compilación.
+> - **`ReturnType`**: Imagina que vas a una panadería, señalas una **receta compleja** (una función) y le dices al panadero: *"Por favor, fabrícame una caja que tenga el tamaño y la forma exacta para guardar el producto que resulte al cocinar esta receta"*. `ReturnType` analiza una función y te da automáticamente el tipo de dato que devuelve al ejecutarse.
+
+
 ```typescript
 // typeof en runtime (JavaScript): devuelve string
 console.log(typeof 42);       // "number"
@@ -653,6 +674,12 @@ type Usuario = ReturnType<typeof crearUsuario>;
 ```
 
 ### declare (ambient declarations)
+
+> [!NOTE]
+> 📝 **La Analogía del Post-It en el Formulario**
+> - **`declare` (Variables Globales)**: Es tu forma de decirle a TypeScript: *"Oye, sé que en mis archivos de código no ves definida esta variable `API_KEY` por ningún lado, pero te prometo que existirá en el navegador en tiempo de ejecución. Confía en mí y no me muestres errores"*.
+> - **Module Augmentation (Modificar Express)**: Imagina que compras una agenda preimpresa (el objeto `Request` de Express). Como viene de fábrica, no tiene espacio para escribir el `"usuarioId"`. No puedes reimprimir la agenda original porque es externa, pero usando `declare module`, **pegas un Post-It permanente** en la agenda diciendo: *"A partir de ahora, todas estas agendas tienen una línea extra llamada `usuarioId`"*. TypeScript lo acepta encantado y a partir de ese momento te autocompleta el campo en todo tu código.
+
 
 ```typescript
 // declare: le dice a TypeScript que algo existe en runtime

@@ -92,10 +92,19 @@ No existe una respuesta universal — cada proyecto tiene necesidades distintas.
    incluye toolchains de compilación, documentación, manuales y headers innecesarios en
    producción. La variante `:slim` elimina todo eso excepto las dependencias runtime.
 
-2. **Considera musl vs glibc**. Alpine usa musl libc, no glibc. La mayoría del software
-   funciona sin problemas, pero algunas librerías compiladas contra glibc (como ciertos
-   wheels de Python con extensiones C) pueden fallar. Si tu app depende de paquetes
-   binarios precompilados para glibc, usa `debian:stable-slim`.
+2. **Considera musl vs glibc**. Alpine usa musl libc, no glibc.
+
+   > [!NOTE]
+   > ### 🗣️ glibc vs. musl: El Traductor de Bolsillo vs. El Intérprete Profesional
+   > 
+   > Las aplicaciones que escribimos en lenguajes como Python, Node.js o Java eventualmente necesitan comunicarse con el "cerebro" del sistema operativo (el Kernel de Linux) para pedir cosas como leer un archivo o enviar datos por internet. Para lograrlo, usan una librería traductora estándar de C.
+   > 
+   > - **`glibc` (El Intérprete Profesional - Debian/Ubuntu)**: Es un traductor con un vocabulario gigantesco, preparado para entender cualquier dialecto, modismo o palabra técnica compleja. Es sumamente compatible con todo el software del mundo, pero pesa bastante (hace que las imágenes sean más grandes).
+   > - **`musl` (El Traductor de Bolsillo - Alpine)**: Es una pequeña libreta de traducción supercompacta y ligera. Contiene solo lo indispensable para comunicarse rápidamente. Gracias a esto, las imágenes de Alpine pesan apenas 5 MB.
+   > 
+   > **¿La trampa?** Si tu aplicación viene con un módulo binario precompilado que usa una palabra sumamente técnica y compleja escrita específicamente para el intérprete profesional (`glibc`), el traductor de bolsillo (`musl`) no la entenderá y tu contenedor fallará.
+   > 
+   > **Regla de oro sencilla**: Si tu aplicación es puramente web y usa paquetes estándar, usa **Alpine** (ligero). Si usas librerías científicas pesadas de Python (como NumPy o Pandas) o extensiones nativas complejas de C, prefiere **Debian Slim** (`glibc`) para evitar dolores de cabeza.
 
 3. **No uses `:latest` nunca**. `FROM node:latest` es una bomba de tiempo. Lo que hoy
    es Node 20 mañana será Node 22 y tu build se romperá sin cambios en tu código.

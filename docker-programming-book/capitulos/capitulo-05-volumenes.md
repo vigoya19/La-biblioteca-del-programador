@@ -1539,6 +1539,17 @@ exec gosu appuser "$@"
 
 `userns-remap` es una configuración del daemon Docker que crea un namespace de usuario separado para todos los contenedores. El UID 0 (root) dentro del contenedor se mapea a un UID alto (ej: 100000) en el host.
 
+> [!NOTE]
+> ### 👑 El Rey en un País de Juguete (Legoland) vs. El Ciudadano Común (userns-remap)
+> 
+> Por defecto, si eres el usuario administrador (`root`, UID 0) dentro de un contenedor Docker, tienes los mismos privilegios de superusuario en el sistema operativo del host si logras escapar del contenedor. Esto es un grave riesgo de seguridad.
+> 
+> Habilitar **`userns-remap`** es como aplicar un filtro de realidad virtual:
+> - **Dentro del contenedor (Legoland)**: Llevas corona, capa y tienes poder absoluto (`root`, UID 0). Puedes crear carpetas, instalar programas y gobernar a tu antojo.
+> - **Fuera del contenedor (El Mundo Real del Host)**: El sistema te mira a través del mapa de seguridad y dice: *"Para mí, tú no eres ningún rey; eres simplemente el ciudadano número 100,000"*. No tienes permisos sobre los archivos reales del host y no puedes hacer ningún daño.
+> 
+> Así, `userns-remap` permite que el contenedor funcione con total comodidad creyendo que tiene máximo control, mientras que el host real permanece 100% blindado contra cualquier intento de abuso de privilegios.
+
 ```bash
 # /etc/docker/daemon.json
 {

@@ -375,6 +375,16 @@ public static void demo() {
 ```
 ### 4.1.9 Type Erasure (Borrado de tipos) — en profundidad
 
+> [!NOTE]
+> ### 🧥 El Guardarropa de Eventos (Type Erasure)
+> 
+> Imagina que asistes a una gala muy elegante. Al entrar, hay un **guardia de seguridad súper estricto (el compilador de Java)**.
+> - Si llevas un abrigo de diseñador (un tipo específico `String`), el guardia verifica que cumple con la etiqueta y te da un **ticket numerado con el nombre exacto de tu prenda** (verificación de tipos).
+> - Sin embargo, cuando pasas a dejar tu abrigo en el **guardarropa (el tiempo de ejecución o JVM)**, el perchero no entiende de diseñadores: **todas las prendas se cuelgan en perchas idénticas y genéricas (de tipo `Object`)**.
+> - Cuando termina la gala y entregas tu ticket, el recepcionista saca tu prenda genérica y **automáticamente te la entrega asegurando que es tu abrigo de diseñador** (el *cast* automático que inserta el compilador).
+> 
+> **En resumen**: Java es sumamente estricto al dejar entrar tus datos (compilación), pero una vez adentro (en ejecución), elimina las etiquetas de tipo específicas para ahorrar espacio y mantener la compatibilidad, tratándolos a todos como perchas universales (`Object`).
+
 Los genéricos en Java se implementan mediante **borrado de tipos** (*type erasure*). Esta fue una decisión de diseño deliberada para mantener compatibilidad hacia atrás con el código pre-Java 5. A diferencia de C# (que usa *reified generics*), en Java los genéricos son puramente una construcción de tiempo de compilación.
 
 #### Cómo funciona el borrado de tipos
@@ -500,6 +510,16 @@ List<String> miLista = new ArrayList<>();
 ```
 
 ### 4.1.10 Bridge Methods
+
+> [!NOTE]
+> ### 🔌 El Adaptador de Enchufe Universal Automático (Bridge Methods)
+> 
+> Imagina que tienes un electrodoméstico moderno con un enchufe de clavija plana (`Comparable<Persona>`), pero la pared del hotel antiguo solo tiene entradas de clavija redonda universal (`Comparable<Object>` debido al borrado de tipos).
+> 
+> Si intentas conectarlo directamente, no encajará. Para solucionar esto sin que tú hagas nada, el **compilador de Java coloca un adaptador inteligente e invisible en la pared (un Bridge Method)**:
+> - Cuando el hotel antiguo intenta enviar energía usando la clavija redonda (`Object`), el adaptador la recibe, verifica que el flujo es correcto y la **redirige automáticamente** a tu enchufe de clavija plana (`Persona`).
+> 
+> El programador no ve este adaptador en su código fuente, pero el sistema lo genera en el bytecode para que las llamadas heredadas y polimórficas sigan fluyendo a la perfección.
 
 Los *bridge methods* (métodos puente) son métodos sintéticos que el compilador genera automáticamente para mantener el polimorfismo correcto después del borrado de tipos.
 
@@ -629,6 +649,18 @@ public static <T> void metodoPeligroso(T... elementos) {
 - El método no debe exponer el array varargs fuera de sí mismo.
 
 ### 4.1.12 Genéricos y Arrays
+
+> [!TIP]
+> ### 🗄️ La Caja Fuerte con Escáner vs. La Caja de Madera Genérica (Arrays vs. Genéricos)
+> 
+> Para entender por qué Java prohíbe crear arrays de tipos genéricos (como `new T[10]` o `new List<String>[10]`), imagina estas dos cajas:
+> 
+> 1. **El Array (La Caja Fuerte con Escáner en Ejecución)**:
+>    - Un array de Strings (`String[]`) es una caja fuerte que tiene grabado en su puerta el logo de "Solo Strings". En tiempo de ejecución, si intentas meter un número a la fuerza, la caja fuerte activa una alarma inmediata y te detiene con un `ArrayStoreException`. El array conoce y defiende su tipo en todo momento.
+> 2. **El Genérico (La Caja de Madera con Etiqueta de Papel)**:
+>    - Una lista genérica (`List<String>`) es una simple caja de madera sin tecnología. El guardia (compilador) le pega una etiqueta de papel que dice "Contiene Strings" y vigila que no metas otra cosa. Pero al entrar al camión de mudanzas (tiempo de ejecución), **la etiqueta de papel se arranca (borrado de tipos)** y la caja queda como madera común que acepta cualquier cosa.
+> 
+> **¿El peligro?** Si mezclaras ambos e hicieras un array de listas genéricas, podrías camuflar una caja de números dentro de un compartimiento etiquetado para textos. Al intentar sacar un texto, ¡el sistema explotaría silenciosamente! Para evitar esta "contaminación" (*heap pollution*), Java corta el problema de raíz y prohíbe terminantemente la creación de arrays genéricos.
 
 Una de las restricciones más confusas de los genéricos en Java es que **no puedes crear arrays de tipos genéricos**. Esta limitación deriva del type erasure y de cómo los arrays manejan los tipos en tiempo de ejecución.
 

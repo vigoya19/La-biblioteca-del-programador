@@ -138,6 +138,8 @@ EDA implementa naturalmente estos principios:
 
 ### Broker Topology (Choreography)
 
+En esta topología, los servicios se comunican a través de un intermediario llamado **broker** (agente de mensajes). Un broker es como un **tablón de anuncios central**: los servicios publican noticias en el tablón y otros servicios las leen cuando quieren. Nadie necesita saber quién más está leyendo. Las herramientas más populares para esto son **Apache Kafka** (como un sistema de correo postal masivo diseñado para manejar millones de mensajes por segundo) y **RabbitMQ** (como un operador de centralita telefónica que dirige cada mensaje al destinatario correcto).
+
 ```
          ┌──────────────────────┐
          │     Event Broker      │
@@ -153,6 +155,8 @@ Ningun servicio conoce a otro directamente.
 ```
 
 ### Mediator Topology (Orchestration)
+
+En esta topología, hay un **orquestador central** que coordina el flujo de trabajo, como un **director de orquesta** que le dice a cada músico cuándo tocar. Las herramientas más conocidas para orquestación son **AWS Step Functions** (servicio de Amazon para coordinar flujos de trabajo), **Temporal** (plataforma de orquestación de código abierto), **Camunda** y **Zeebe** (herramientas de automatización de procesos de negocio).
 
 ```
     ┌─────────────────────────┐
@@ -192,12 +196,20 @@ Nivel 2: Eventos con transferencia de estado
   "Algo paso y aqui tienes los datos"
   Ej: "Usuario cambio email a nuevo@test.com"
 
-Nivel 3: Event Sourcing
-  "Todo cambio es un evento. El estado se reconstruye"
+Nivel 3: Event Sourcing (Almacenamiento basado en eventos)
+  En vez de guardar solo el estado actual (ej: "saldo = $500"),
+  guardas TODOS los cambios como una secuencia de eventos:
+  UsuarioCreado -> EmailCambiado -> EmailVerificado.
+  El estado actual se reconstruye "reproduciendo" los eventos,
+  como rebobinar y volver a ver una película.
   Ej: Secuencia de eventos: UsuarioCreado → EmailCambiado → EmailVerificado
 
 Nivel 4: CQRS + Event Sourcing
-  "Escrituras via eventos, lecturas via proyecciones optimizadas"
+  CQRS (Command Query Responsibility Segregation) separa
+  la forma en que ESCRIBES datos de la forma en que LEES datos.
+  Es como tener una puerta de entrada (escritura) y una de
+  salida (lectura) en un edificio, cada una optimizada para
+  su proposito.
   Ej: Tabla usuarios_lectura se actualiza via proyeccion de eventos
 ```
 

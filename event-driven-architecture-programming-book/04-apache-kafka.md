@@ -6,6 +6,16 @@ Apache Kafka es el estandar de facto para streaming de eventos a escala empresar
 
 ## 4.1 Arquitectura Interna
 
+> [!NOTE]
+> ### 🍕 Consumer Groups: El Buffet de Pizza Gigante
+> 
+> Si no entiendes cómo Kafka escala horizontalmente la lectura de millones de mensajes sin duplicados, imagina un buffet libre con una cinta transportadora de pizza dividida en **4 carriles independientes** (nuestras **Particiones** de un Topic):
+> 
+> - **Un solo comensal (Consumidor único)**: Si hay un solo comensal en la mesa, tiene que estirar los brazos y vigilar los 4 carriles de la cinta transportadora a la vez para agarrar la pizza. Puede comer tranquilo, pero si la velocidad de la cinta aumenta, se saturará rápidamente.
+> - **Un grupo de 4 comensales en la misma mesa (Consumer Group)**: Para organizarse, se reparten las tareas: cada uno vigila y consume los platos de **un solo carril específico**. Nadie se cruza con nadie, y comen en perfecto orden a la velocidad de la luz.
+> - **¿Qué pasa si agregas un quinto comensal al grupo?** Se quedará sentado mirando de brazos cruzados. Como solo hay 4 carriles (particiones) y cada carril solo puede asignarse a un comensal del mismo grupo a la vez para evitar que dos personas agarren la misma rebanada, el quinto queda de repuesto.
+> - **Rebalanceo (El relevo)**: Si uno de los 4 comensales se llena y se retira de la mesa, el grupo se reorganiza automáticamente: uno de los comensales restantes estira el brazo para cubrir y consumir el carril que quedó vacío.
+
 ```
 ┌──────────────────────────────────────────────────────────────┐
 │                      KAFKA CLUSTER                           │

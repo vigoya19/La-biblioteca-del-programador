@@ -1,6 +1,6 @@
 # 📚 Biblioteca de Libros de Programación
 
-Colección de 8 libros de programación en español, escritos como capítulos individuales en formato Markdown. Cada libro cubre una tecnología o concepto desde los fundamentos hasta temas avanzados y producción.
+Colección de 12 libros de programación en español, escritos como capítulos individuales en formato Markdown. Cada libro cubre una tecnología o concepto desde los fundamentos hasta temas avanzados y producción.
 
 ---
 
@@ -44,7 +44,15 @@ Desarrollo frontend con React moderno (v18/19+): Virtual DOM, JSX, Hooks, Contex
 
 ### 10. [Bases de Datos NoSQL: Guía Completa de Programación y Diseño de Sistemas](nosql-databases-programming-book/README.md)
 Desarrollo, modelado y escalabilidad con bases de datos no relacionales: Teorema de CAP, MongoDB, Amazon DynamoDB, Redis, Apache Cassandra, Neo4j, Single-Table Design y consistencia eventual.
-- **12 capítulos** | `nosql-databases-programming-book/`
+- **12 capítulos + 1 apéndice** | `nosql-databases-programming-book/`
+
+### 11. [Bases de Datos Relacionales y SQL: Diseño de Sistemas de Alto Rendimiento](sql-databases-programming-book/README.md)
+Desarrollo, optimización y diseño de arquitecturas con bases de datos relacionales tradicionales: internals de indexación (B-Trees, GIN), el motor de optimización física, niveles de aislamiento transaccional MVCC, bloqueos, Explain Analyze, particionamiento, migraciones zero-downtime y seguridad RLS en PostgreSQL.
+- **15 capítulos** | `sql-databases-programming-book/`
+
+### 12. [El Libro de DevOps: Integración y Entrega Continua (CI/CD) de Alto Rendimiento](devops-programming-book/README.md)
+Automatización, cultura y tuberías de entrega continua: Git Flow, GitHub Actions, GitLab CI/CD, Azure DevOps, análisis estático y seguridad de código con SonarQube y Snyk, Docker, Terraform, ArgoCD, Kubernetes y observabilidad.
+- **15 capítulos** | `devops-programming-book/`
 
 ---
 
@@ -61,7 +69,10 @@ Desarrollo, modelado y escalabilidad con bases de datos no relacionales: Teorema
 | Arquitectura de Software | 36 + 2 apéndices | Markdown |
 | Node.js + TypeScript | 17 | Markdown |
 | React: Guía Completa | 15 | Markdown |
-| Bases de Datos NoSQL | 12 | Markdown |
+| Bases de Datos NoSQL | 12 + 1 apéndice | Markdown |
+| Bases de Datos Relacionales y SQL | 15 | Markdown |
+| El Libro de DevOps | 15 | Markdown |
 
-**Total: ~198 archivos Markdown** · Todos en español.
+**Total: ~229 archivos Markdown** · Todos en español.
+
 

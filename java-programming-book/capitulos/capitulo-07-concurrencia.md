@@ -2020,6 +2020,15 @@ Platform thread:  1 Thread Java = 1 OS Thread
 
 ### 7.12.2 Virtual Threads: la solución
 
+> [!NOTE]
+> ### 🚲 La Analogía de los Mensajeros en Bicicleta vs. Los Camiones de Carga (Virtual Threads vs. Platform Threads)
+> 
+> Para comprender la diferencia entre los hilos tradicionales y los nuevos hilos virtuales de Java 21, imagina el sistema de envíos de una megaciudad:
+> 
+> - **Un Hilo de Plataforma (Platform Thread)** es equivalente a un **Camión de Carga de 18 ruedas**: Cada vez que creas uno, reservas 1 MB de espacio físico en la carretera de la memoria principal (**el stack**), y necesitas contratar a un conductor profesional con licencia estatal externa del sistema operativo (**el kernel**). Si el camión se detiene en un semáforo en rojo o espera en un muelle de descarga de una tienda (**operaciones de bloqueo de I/O**), el camión entero queda bloqueado, ocupa espacio y consume combustible inútilmente. Por su enorme peso, la ciudad solo puede tolerar unos pocos miles de camiones en las calles antes de causar un colapso total de tráfico (**OutOfMemoryError**).
+> - **Un Hilo Virtual (Virtual Thread)** es equivalente a un **Mensajero Express en Bicicleta Eléctrica**: Las bicicletas son ultra-ligeras, consumen apenas 200 bytes de memoria de espacio de almacenamiento digital (**el heap**), y no requieren una licencia formal del kernel de la carretera. Son despachadas por un coordinador de envíos inteligente dentro de la propia empresa de mensajería de Java (**la JVM**).
+> - Si un mensajero en bicicleta llega a entregar un paquete y la oficina está cerrada esperando a que llegue el recepcionista (**bloqueo de I/O**), el mensajero no bloquea la bicicleta en la calle. Simplemente estaciona la bicicleta a un lado en el heap, el despachador de la JVM sube a otro mensajero en la misma bicicleta en movimiento (**el carrier thread**), y el trabajo continúa sin detener el motor. ¡Puedes tener millones de bicicletas circulando de forma coordinada en tu aplicación sin causar atascos en la RAM!
+
 Los **virtual threads** (JEP 444, final en Java 21) desacoplan el hilo Java del hilo del SO:
 
 ```

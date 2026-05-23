@@ -64,6 +64,19 @@ console.log("6. Sincrono final");
 // Macrotasks: setTimeout, setInterval, setImmediate, I/O callbacks
 // Se ejecutan en fases especificas del event loop
 
+> [!NOTE]
+> ### 🏦 La Analogía de la Ventanilla de Banco VIP vs. La Fila General (Microtasks vs. Macrotasks)
+> 
+> Para comprender la diferencia entre las microtareas (promesas) y las macrotareas (timers, I/O), imagina la sucursal de un gran banco comercial:
+> 
+> - **El cajero de la ventanilla** es el **hilo único de JavaScript en Node.js**. Solo hay un empleado atendiendo todas las solicitudes una por una de forma secuencial.
+> - **La Fila General en la calle (Macrotasks)**: Son las personas haciendo cola para retirar efectivo por caja. En esta fila están las alarmas temporizadas (**`setTimeout`**), peticiones HTTP que acaban de responder y lecturas de archivos de disco (**I/O callbacks**). Entran a ser atendidas en fases específicas y ordenadas de atención al público.
+> - **La Sala de Espera VIP (Microtasks)**: Son clientes especiales que tienen pases de acceso ultra-prioritarios, como los contratos de promesas resueltas (**`Promise.resolve().then(...)`**) o procesos de interrupción directa (**`process.nextTick`**).
+> 
+> El cajero tiene una directiva corporativa de obligado cumplimiento y de severidad absoluta: **"Jamás, bajo ninguna circunstancia, atenderás a una persona de la fila de la calle si queda al menos un solo cliente esperando en la sala VIP"**.
+> 
+> **¿Qué pasa en la vida real?** Si el cajero termina con un cliente VIP, y otro VIP entra por la puerta trasera inmediatamente, el cajero seguirá atendiendo en la sala VIP. Si encadenas promesas recursivas o llamadas continuas de microtareas, el cajero seguirá atendiendo en la sala VIP de forma perpetua. Los clientes de la fila de la calle (timers, I/O) se congelarán en la acera muriendo de frío por tiempo indefinido (**bloqueo del Event Loop por saturación de microtareas o *starvation***).
+
 // DEMOSTRACION: microtasks pueden bloquear el event loop
 function bloquearConMicrotasks(): void {
   let contador = 0;

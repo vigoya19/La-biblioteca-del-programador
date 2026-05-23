@@ -53,6 +53,22 @@ func main() {
 - **Multiplexadas**: multiples goroutines se ejecutan sobre pocos hilos del SO gracias al runtime de Go.
 - **No son hilos**: el scheduler de Go las gestiona, no el SO directamente.
 
+> [!NOTE]
+> ### 🎛️ La Analogía del Supervisor de Fábrica y los Obreros "Ladrones de Trabajo" (El Scheduler GMP de Go)
+> 
+> Para entender cómo Go multiplexa de forma ultraeficiente millones de goroutines sobre apenas un puñado de hilos de tu CPU, debemos analizar su arquitectura central: **el modelo GMP**.
+> 
+> - **G (Goroutine)**: Es la tarea a ejecutar (la receta de comida). Ocupa apenas 2KB de memoria y es extremadamente ligera.
+> - **M (Machine / OS Thread)**: Es el operario o máquina física real (hilo de tu sistema operativo) que ejecuta el trabajo en tu procesador.
+> - **P (Processor / Contexto lógico)**: Representa una estación de trabajo o recurso lógico de computación. Su número coincide con los núcleos físicos de tu CPU.
+> 
+> Imagina una enorme fábrica de ensamblaje de juguetes organizada por el runtime de Go:
+> 
+> - Cada estación de trabajo (**P**) tiene a su propio obrero físico (**M**) y una bandeja o cola local con montones de tareas de juguetes a armar (**Goroutines**).
+> - Si un obrero físico (**M**) de la estación 1 es extremadamente rápido y termina todas las tareas de su bandeja local, se queda sin trabajo. En otros lenguajes, el obrero simplemente se iría a dormir, perdiendo tiempo y CPU.
+> - Go implementa un algoritmo brillante de **Robo de Trabajo (Work Stealing)**: El supervisor de la fábrica (el scheduler de Go) le ordena al obrero desocupado: *"No te cruces de brazos. Ve a la estación 2 de tu compañero que está saturado de tareas, roba silenciosamente la mitad de su bandeja local de Goroutines (**Work Stealing**) y tráelas a tu mesa para procesarlas"*.
+> - Si un operario se queda atascado con una tarea que requiere esperar un camión de suministros externo (**bloqueo de I/O**), el supervisor separa la tarea bloqueada, asigna al operario a una nueva mesa temporal, y pone a un ayudante a seguir procesando las tareas pendientes en la mesa original. ¡La fábrica nunca se detiene!
+
 ```go
 // Puedes lanzar miles de goroutines sin problema
 func main() {

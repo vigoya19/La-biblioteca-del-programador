@@ -144,6 +144,23 @@ La función `inject()` no es solo azúcar sintáctico; resuelve serios límites 
 
 La Inyección de Dependencias en Angular no es plana; se organiza como un **árbol jerárquico de inyectores** que se asemeja al propio árbol de componentes del DOM. Esto significa que si un componente solicita una dependencia, Angular la busca en su inyector local. Si no la encuentra, escala hacia arriba en la jerarquía hasta llegar al inyector raíz.
 
+> [!NOTE]
+> ### 🏢 La Analogía del Conserje del Hotel y los Suministros (Jerarquía de Inyectores)
+> 
+> Para comprender cómo Angular gestiona la resolución y el aislamiento de tus servicios a través del árbol, imagina que te hospedas en un gigantesco hotel de lujo de 5 estrellas:
+> 
+> - **El Minibar de tu Habitación (Local Component Injector / `ElementInjector`)**: Es una provisión privada y exclusiva de tu suite. Si tienes sed, abres la nevera de tu habitación y tomas una bebida. Esta bebida solo la tienes tú, y cuando haces el checkout (**el componente se desmonta y destruye**), el personal vacía y limpia la nevera, liberando la memoria.
+> - **El Casillero de Housekeeping del Piso (Route Injector / `EnvironmentInjector`)**: Es un almacén intermedio ubicado en el pasillo de tu planta. Guarda mantas extras y toallas para las habitaciones de esa planta. Solo está disponible para los huéspedes que se alojan en ese piso específico (**la ruta activa y sus sub-rutas**).
+> - **El Almacén Central del Vestíbulo (Root Injector / `EnvironmentInjector` Global)**: Es el almacén principal del hotel en el sótano. Tiene todos los suministros permanentes, maletas, repuestos y amenities globales. Es permanente, existe durante toda la vida del hotel (**Singleton global**) y todos los huéspedes de todos los pisos tienen acceso a él.
+> 
+> **¿Cómo resuelve Angular tu llamada a un servicio?**
+> Si solicitas una botella de agua mineral (`inject(WaterService)`):
+> 
+> 1. Angular busca primero en tu minibar privado (**ElementInjector**). Si la encuentra, te la entrega y listo.
+> 2. Si el minibar está vacío, el conserje sale al pasillo y revisa el casillero de la planta (**Route Injector**).
+> 3. Si tampoco está en la planta, el conserje baja en ascensor hasta el almacén central del vestíbulo (**Root Injector**).
+> 4. Si el almacén central del vestíbulo tiene la botella, te la sube a la habitación. Si tampoco existe en el almacén central, el conserje regresa con las manos vacías y te dice: *"Lo siento, no ofrecemos ese servicio en este hotel"* (**`NullInjectorError`**).
+
 Existen dos tipos principales de inyectores en el entorno moderno:
 
 ```

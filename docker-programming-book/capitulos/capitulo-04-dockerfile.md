@@ -3002,6 +3002,16 @@ docker images --filter "label=org.opencontainers.image.vendor=Empresa S.A."
 Los builds multi-stage resuelven el problema fundamental: **necesitas herramientas
 pesadas para compilar, pero no quieres que esas herramientas lleguen a producción**.
 
+> [!NOTE]
+> ### 🍳 La Analogía de la Cocina de Preparación vs. El Chef de Emplatado
+> 
+> Imagina que estás administrando un restaurante de lujo de tres estrellas Michelin:
+> 
+> - Para servir un plato de sopa premium a los comensales, necesitas primero una cocina de preparación enorme en el sótano (**la etapa builder**): allí hay licuadoras industriales gigantes, peladores de papas oxidados, sacos de 50 kg de vegetales terrosos, ollas a presión hirviendo y cuchillos de carnicero pesados. 
+> - Si decidieras hacer el servicio clásico sin multi-stage builds, tendrías que empujar todo ese almacén sucio, los sacos de papas con tierra, las licuadoras industriales y los cuchillos de carnicero directamente al comedor de gala de los clientes para que puedan comer una sola cucharada de sopa (**imágenes de producción gigantes con SDKs, compiladores y código fuente**). Es ineficiente, sucio e inseguro.
+> - **Multi-stage builds** te permite separar ambos mundos: dejas toda la maquinaria pesada, la suciedad, las cáscaras de vegetales y las herramientas en la cocina de preparación del sótano. Una vez que la sopa está perfectamente cocinada, el chef simplemente vierte un frasco de 100 ml con el líquido filtrado y limpio (**el binario estático**) en una bandeja y lo lleva a la elegante cocina de emplatado minimalista del comedor (**la etapa final de producción**). Los comensales comen una sopa deliciosa y ultra-liviana sin ver jamás una sola cáscara ni un cuchillo de carnicero.
+
+
 Antes de multi-stage (introducido en Docker 17.05, 2017), tenías tres opciones,
 todas malas:
 

@@ -38,6 +38,14 @@ Guía definitiva para convertirse en arquitecto de software: fundamentos, princi
 Desarrollo backend con Node.js y TypeScript: sintaxis, asincronía, módulos, testing, generics, patrones de diseño, arquitectura hexagonal y desarrollo web.
 - **17 capítulos** | `node-programming-book/`
 
+### 9. [React: Guía Completa de Programación Moderna](react-programming-book/README.md)
+Desarrollo frontend con React moderno (v18/19+): Virtual DOM, JSX, Hooks, Context, State Management (Zustand/Redux), Suspense, Server Components, Routing y Testing.
+- **15 capítulos** | `react-programming-book/`
+
+### 10. [Bases de Datos NoSQL: Guía Completa de Programación y Diseño de Sistemas](nosql-databases-programming-book/README.md)
+Desarrollo, modelado y escalabilidad con bases de datos no relacionales: Teorema de CAP, MongoDB, Amazon DynamoDB, Redis, Apache Cassandra, Neo4j, Single-Table Design y consistencia eventual.
+- **12 capítulos** | `nosql-databases-programming-book/`
+
 ---
 
 ## 📊 Resumen
@@ -52,5 +60,8 @@ Desarrollo backend con Node.js y TypeScript: sintaxis, asincronía, módulos, te
 | Java: Novato a Experto | 10 | Markdown |
 | Arquitectura de Software | 36 + 2 apéndices | Markdown |
 | Node.js + TypeScript | 17 | Markdown |
+| React: Guía Completa | 15 | Markdown |
+| Bases de Datos NoSQL | 12 | Markdown |
 
-**Total: ~168 archivos Markdown** · Todos en español.
+**Total: ~198 archivos Markdown** · Todos en español.
+

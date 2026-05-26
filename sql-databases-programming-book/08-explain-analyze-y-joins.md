@@ -96,7 +96,7 @@ Cuando unes dos tablas, el optimizador decide dinámicamente qué algoritmo util
 
 A continuación, implementaremos una utilidad avanzada en TypeScript que ejecuta consultas críticas de nuestro sistema financiero utilizando `EXPLAIN (FORMAT JSON, ANALYZE)` para interpretar programáticamente el plan físico arrojado por PostgreSQL. Esto nos permitirá detectar y alertar de forma automática si una consulta en producción está realizando un ineficiente **Sequential Scan** sobre una tabla crítica:
 
-#### [analizadorConsultas.ts](file:///Users/andres/Documents/biblioteca/sql-databases-programming-book/src/services/analizadorConsultas.ts)
+### `analizadorConsultas.ts`
 ```typescript
 import { dbPool } from '../clients/dbClient';
 

@@ -136,7 +136,7 @@ PostgreSQL realiza una **estrategia de doble escaneo físico de disco**:
 
 Implementemos un script seguro de base de datos en TypeScript para inicializar índices compuestos y GIN utilizando queries parametrizadas robustas:
 
-#### [indexMigration.ts](file:///Users/andres/Documents/biblioteca/sql-databases-programming-book/src/migrations/indexMigration.ts)
+### `indexMigration.ts`
 ```typescript
 import { dbPool } from '../clients/dbClient';
 

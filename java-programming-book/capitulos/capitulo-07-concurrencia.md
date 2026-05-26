@@ -3072,4 +3072,4 @@ VisualVM (incluido en JDK hasta Java 8, descargable para versiones posteriores) 
 
 ---
 
-← [Capítulo anterior](capitulo-06-io-nio.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-08-streams-lambdas.md)
+← [Capítulo anterior](capitulo-06-io-nio.md) | [Inicio](../README.md) | [Capítulo siguiente →](capitulo-08-streams-lambdas.md)

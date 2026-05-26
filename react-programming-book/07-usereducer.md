@@ -102,7 +102,7 @@ const reducer = (state: State, action: Action): State => { ... }
 
 ## 7.4 Ejemplo Práctico: Bandeja de Entrada con useReducer y TypeScript
 
-#### [emailReducer.ts](file:///Users/andres/Documents/biblioteca/react-programming-book/src/reducers/emailReducer.ts)
+### `emailReducer.ts`
 ```typescript
 import React, { useReducer } from 'react';
 

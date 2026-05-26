@@ -27,8 +27,8 @@ Lenguaje Go desde cero: sintaxis, tipos, concurrencia, interfaces, generics, tes
 - **20 capítulos** | `go-programming-book/`
 
 ### 6. [Java: De Novato a Experto](java-programming-book/README.md)
-Programación en Java desde fundamentos hasta producción: POO, colecciones, excepciones, I/O, concurrencia, streams, lambdas, JDBC y buenas prácticas.
-- **10 capítulos** | `java-programming-book/`
+Programación en Java desde fundamentos hasta producción: POO, colecciones, excepciones, I/O, concurrencia, streams, lambdas, JDBC, Spring Boot, testing, Maven y Gradle.
+- **13 capítulos** | `java-programming-book/`
 
 ### 7. [Arquitectura de Software: De la Teoría a la Práctica](software-architecture-programming-book/README.md)
 Guía definitiva para convertirse en arquitecto de software: fundamentos, principios SOLID, DDD, Clean/Hexagonal, resiliencia, seguridad, escalabilidad, cloud, contenedores, observabilidad y más.
@@ -65,7 +65,7 @@ Automatización, cultura y tuberías de entrega continua: Git Flow, GitHub Actio
 | Docker: Novato a Experto | 13 + 2 apéndices | Markdown |
 | Git: La Guía Completa | 21 + 3 apéndices | Markdown |
 | Go: Guía Completa | 20 | Markdown |
-| Java: Novato a Experto | 10 | Markdown |
+| Java: Novato a Experto | 13 | Markdown |
 | Arquitectura de Software | 36 + 2 apéndices | Markdown |
 | Node.js + TypeScript | 17 | Markdown |
 | React: Guía Completa | 15 | Markdown |
@@ -73,6 +73,5 @@ Automatización, cultura y tuberías de entrega continua: Git Flow, GitHub Actio
 | Bases de Datos Relacionales y SQL | 15 | Markdown |
 | El Libro de DevOps | 15 | Markdown |
 
-**Total: ~229 archivos Markdown** · Todos en español.
-
+**Total: 244 archivos Markdown** · Todos en español.
 

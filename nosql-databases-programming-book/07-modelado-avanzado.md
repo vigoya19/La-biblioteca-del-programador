@@ -121,7 +121,7 @@ Si tienes una colección de `Pedidos` que requiere información del `Usuario`, e
 
 Implementemos el patrón de **Extended Reference** en MongoDB utilizando **Mongoose** en TypeScript:
 
-#### [EsquemaPedido.ts](file:///Users/andres/Documents/biblioteca/nosql-databases-programming-book/src/models/EsquemaPedido.ts)
+### `EsquemaPedido.ts`
 ```typescript
 import { Schema, model, Document } from 'mongoose';
 

@@ -3093,4 +3093,4 @@ docker volume rm $(docker volume ls -q | grep monitoring) 2>/dev/null
 
 ---
 
-← [Capítulo anterior](capitulo-10-seguridad.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-12-produccion.md)
+← [Capítulo anterior](capitulo-10-seguridad.md) | [Inicio](../README.md) | [Capítulo siguiente →](capitulo-12-produccion.md)

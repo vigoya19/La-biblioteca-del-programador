@@ -1733,4 +1733,4 @@ Cada ejercicio ha reforzado conceptos de los capítulos anteriores en un context
 
 ---
 
-← [Capítulo anterior](capitulo-12-produccion.md) | [Inicio](README.md) | [Capítulo siguiente →](apendice-a-quick-reference.md)
+← [Capítulo anterior](capitulo-12-produccion.md) | [Inicio](../README.md) | [Capítulo siguiente →](../apendices/apendice-a-quick-reference.md)

@@ -3,7 +3,7 @@
 La arquitectura hexagonal (Ports & Adapters) combinada con Domain-Driven Design produce aplicaciones Node.js mantenibles, testeables e independientes de la infraestructura. TypeScript permite expresar el dominio con tipos precisos.
 
 > [!NOTE]
-> Para comprender en profundidad los fundamentos teóricos detrás de estos patrones, te recomendamos leer el [Capítulo 6: Domain-Driven Design (DDD)](../libro-arquitectura-software/06-ddd.md) y el [Capítulo 7: Arquitectura Hexagonal y Clean Architecture](../libro-arquitectura-software/07-hexagonal-clean.md) del libro de **Arquitectura de Software** en tu workspace.
+> Para comprender en profundidad los fundamentos teóricos detrás de estos patrones, te recomendamos leer el [Capítulo 6: Domain-Driven Design (DDD)](../software-architecture-programming-book/06-ddd.md) y el [Capítulo 7: Arquitectura Hexagonal y Clean Architecture](../software-architecture-programming-book/07-hexagonal-clean.md) del libro de **Arquitectura de Software** en tu workspace.
 
 ---
 

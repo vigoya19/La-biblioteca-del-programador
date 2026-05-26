@@ -109,7 +109,7 @@ app.post('/api/login', async (req, res) => {
 
 Implementemos un middleware Express en TypeScript para sanitizar de forma automática todas las peticiones entrantes contra inyecciones de objetos NoSQL, despojando cualquier clave que empiece con el carácter reservado `$`:
 
-#### [middlewareSanitizar.ts](file:///Users/andres/Documents/biblioteca/nosql-databases-programming-book/src/middlewares/middlewareSanitizar.ts)
+### `middlewareSanitizar.ts`
 ```typescript
 import { Request, Response, NextFunction } from 'express';
 
@@ -141,12 +141,6 @@ export function middlewarePrevenirInyeccionNoSQL(req: Request, res: Response, ne
     req.params = sanitizarObjeto(req.params);
   }
   
-  next();
-}
-```
-
----
-
   next();
 }
 ```

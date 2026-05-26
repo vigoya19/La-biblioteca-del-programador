@@ -130,7 +130,7 @@ Para aplicaciones de gran escala que forman parte de sistemas core de la empresa
 
 En este enfoque, Angular se reduce a un simple "detalle de infraestructura" (el adaptador primario de presentación). La lógica pura, las reglas de negocio y los modelos de dominio viven en una capa interna agnóstica que utiliza TypeScript puro, facilitando portar el código a otros frameworks o entornos Node.js si fuera necesario en el futuro.
 
-Puedes consultar una explicación teórica sumamente detallada de esta arquitectura en nuestro libro de [Arquitectura de Software: Capas de Hexagonal y Clean](../libro-arquitectura-software/07-hexagonal-clean.md).
+Puedes consultar una explicación teórica sumamente detallada de esta arquitectura en nuestro libro de [Arquitectura de Software: Capas de Hexagonal y Clean](../software-architecture-programming-book/07-hexagonal-clean.md).
 
 ```
 ┌───────────────────────────────────────────────────────────────┐

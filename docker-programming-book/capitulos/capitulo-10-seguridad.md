@@ -3222,4 +3222,4 @@ Cada capa de seguridad que anades hace el trabajo del atacante exponencialmente 
 
 ---
 
-← [Capítulo anterior](capitulo-09-cicd.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-11-monitoreo.md)
+← [Capítulo anterior](capitulo-09-cicd.md) | [Inicio](../README.md) | [Capítulo siguiente →](capitulo-11-monitoreo.md)

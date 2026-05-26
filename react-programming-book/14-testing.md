@@ -57,7 +57,7 @@ Cuando un componente hace peticiones HTTP a una API externa, **nunca debemos peg
 
 Escribamos una prueba de integración para un componente que descarga datos de internet al hacer clic en un botón:
 
-#### [BuscadorUsuarios.test.tsx](file:///Users/andres/Documents/biblioteca/react-programming-book/src/components/BuscadorUsuarios.test.tsx)
+### `BuscadorUsuarios.test.tsx`
 ```typescript
 import React from 'react';
 import { describe, it, expect, beforeAll, afterEach, afterAll } from 'vitest';

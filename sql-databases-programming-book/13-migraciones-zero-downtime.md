@@ -83,7 +83,7 @@ Para evolucionar un esquema de producción en caliente sin provocar caídas, deb
 
 A continuación, implementaremos un script orquestador en TypeScript diseñado para desplegar una migración en producción. El script configura de forma defensiva un **Lock Timeout** antes de realizar alteraciones de tabla, gestiona el reintento automático exponencial ante bloqueos activos, y ejecuta una creación de índice concurrente fuera del bloque transaccional para garantizar que la base de datos nunca sufra caídas:
 
-#### [orquestadorMigracion.ts](file:///Users/andres/Documents/biblioteca/sql-databases-programming-book/src/services/orquestadorMigracion.ts)
+### `orquestadorMigracion.ts`
 ```typescript
 import { dbPool } from '../clients/dbClient';
 

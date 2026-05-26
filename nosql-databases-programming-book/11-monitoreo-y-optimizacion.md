@@ -87,7 +87,7 @@ Para blindar Redis, configuramos en el archivo `redis.conf` el límite de memori
 
 Implementemos una consulta en Mongoose en TypeScript que ejecute de forma programática un `.explain()` y analice si el plan de ejecución físico arroja un preocupante `COLLSCAN` para disparar alertas automáticas de infraestructura:
 
-#### [profilerService.ts](file:///Users/andres/Documents/biblioteca/nosql-databases-programming-book/src/services/profilerService.ts)
+### `profilerService.ts`
 ```typescript
 import { Usuario } from '../models/UsuarioModel';
 
@@ -121,18 +121,6 @@ export async function perfilarBusquedaUsuarios(filtro: any): Promise<AnalisisCon
       Docs Examinados: ${docsExaminados} 
       Tiempo: ${tiempoEjecucionMs}ms`);
   }
-
-  return {
-    stage: stageFisico,
-    docsExaminados,
-    clavesExaminadas,
-    tiempoEjecucionMs,
-    esPeligrosa
-  };
-}
-```
-
----
 
   return {
     stage: stageFisico,

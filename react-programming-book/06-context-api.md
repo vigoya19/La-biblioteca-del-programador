@@ -72,7 +72,7 @@ Usamos el hook nativo `useContext` para extraer el valor inyectado en el subárb
 
 ### Ejemplo Profesional: Sistema de Autenticación de Usuario
 
-#### [AuthContext.tsx](file:///Users/andres/Documents/biblioteca/react-programming-book/src/context/AuthContext.tsx)
+### `AuthContext.tsx`
 ```typescript
 import React, { createContext, useState, useContext, ReactNode } from 'react';
 

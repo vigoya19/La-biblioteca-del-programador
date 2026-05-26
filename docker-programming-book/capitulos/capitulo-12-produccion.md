@@ -3422,4 +3422,4 @@ aws s3 cp /backup/ s3://myapp-backups/ --recursive --sse AES256
 
 ---
 
-← [Capítulo anterior](capitulo-11-monitoreo.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-13-ejercicios.md)
+← [Capítulo anterior](capitulo-11-monitoreo.md) | [Inicio](../README.md) | [Capítulo siguiente →](capitulo-13-ejercicios.md)

@@ -577,7 +577,7 @@ public void inicializar() {
 
 Cuando varios hilos acceden a un mismo atributo, la JVM puede mantener copias locales del valor en cachés de CPU o en registros. Esto significa que un hilo puede no ver los cambios realizados por otro. El modificador `volatile` resuelve este problema.
 
-#### `volatile`
+### `volatile`
 
 Un campo `volatile` garantiza que:
 1. Las lecturas siempre ven el valor más reciente escrito por cualquier hilo (se lee directamente de memoria principal).
@@ -644,7 +644,7 @@ La JVM puede reordenar 2 y 3: un hilo puede ver `instance` no-null **antes** de 
 private static volatile SingletonRoto instance;
 ```
 
-#### `AtomicReference`
+### `AtomicReference`
 
 `volatile` solo garantiza visibilidad, no atomicidad. Para operaciones de lectura-escritura compuestas (como _compare-and-swap_), necesitas las clases atómicas del paquete `java.util.concurrent.atomic`.
 
@@ -4292,4 +4292,4 @@ public record DireccionRecord(String calle, String ciudad, String codigoPostal) 
 
 ---
 
-← [Capítulo anterior](capitulo-02-fundamentos.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-04-colecciones.md)
+← [Capítulo anterior](capitulo-02-fundamentos.md) | [Inicio](../README.md) | [Capítulo siguiente →](capitulo-04-colecciones.md)

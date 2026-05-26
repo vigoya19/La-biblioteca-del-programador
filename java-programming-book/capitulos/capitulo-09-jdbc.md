@@ -3522,4 +3522,4 @@ Nunca expongas mensajes de error SQL al usuario final. Contienen información so
 
 ---
 
-← [Capítulo anterior](capitulo-08-streams-lambdas.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-10-buenas-practicas.md)
+← [Capítulo anterior](capitulo-08-streams-lambdas.md) | [Inicio](../README.md) | [Capítulo siguiente →](capitulo-10-buenas-practicas.md)

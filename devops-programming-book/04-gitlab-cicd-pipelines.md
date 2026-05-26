@@ -68,7 +68,7 @@ A continuación, implementaremos la configuración real y sin placeholders para 
 1. Dispara de forma remota un pipeline multi-proyecto en un repositorio secundario.
 2. Ejecuta un script en TypeScript para escanear directorios modificados, escribe un archivo YAML temporal en caliente y lo dispara como un **Dynamic Child Pipeline**:
 
-#### [.gitlab-ci.yml](file:///Users/andres/Documents/biblioteca/devops-programming-book/.gitlab-ci.yml)
+### `.gitlab-ci.yml`
 ```yaml
 stages:
   - test
@@ -124,7 +124,7 @@ ejecutar-pipeline-hijo:
     strategy: depend
 ```
 
-#### [generarPipelineManifiesto.js](file:///Users/andres/Documents/biblioteca/devops-programming-book/scripts/generarPipelineManifiesto.js)
+### `generarPipelineManifiesto.js`
 ```javascript
 const fs = require('fs');
 

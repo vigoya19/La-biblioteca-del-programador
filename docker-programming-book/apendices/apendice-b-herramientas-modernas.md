@@ -557,4 +557,4 @@ El ecosistema Wasm aún está en fase temprana para aplicaciones generales, pero
 
 ---
 
-← [Capítulo anterior](apendice-a-quick-reference.md) | [Inicio](README.md)
+← [Capítulo anterior](apendice-a-quick-reference.md) | [Inicio](../README.md)

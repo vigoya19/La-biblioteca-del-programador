@@ -92,7 +92,7 @@ Los drivers de base de datos modernos (como `pg` en TypeScript) envían la consu
 
 A continuación, implementaremos un script SQL de inicialización para configurar políticas de **Row-Level Security (RLS)** que aíslan los datos de los inquilinos (`tenants`) mediante variables de sesión personalizadas, y escribiremos el código TypeScript del backend que establece de forma segura el contexto de sesión transaccional en cada petición del usuario:
 
-#### [inicializarSeguridadRLS.sql](file:///Users/andres/Documents/biblioteca/sql-databases-programming-book/src/migrations/inicializarSeguridadRLS.sql)
+### `inicializarSeguridadRLS.sql`
 ```sql
 -- 1. Crear tabla de clientes multi-tenant con campo de aislamiento
 CREATE TABLE cuentas_usuario (
@@ -116,7 +116,7 @@ CREATE POLICY tenant_isolation_policy ON cuentas_usuario
     WITH CHECK (tenant_id = NULLIF(current_setting('app.current_tenant_id', true), '')::integer);
 ```
 
-#### [servicioCuentasRLS.ts](file:///Users/andres/Documents/biblioteca/sql-databases-programming-book/src/services/servicioCuentasRLS.ts)
+### `servicioCuentasRLS.ts`
 ```typescript
 import { dbPool } from '../clients/dbClient';
 

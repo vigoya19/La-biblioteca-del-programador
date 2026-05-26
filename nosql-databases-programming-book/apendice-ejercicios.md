@@ -25,7 +25,7 @@ Para resolver este problema con latencias de microsegundos, la base de datos RAM
 
 ### 3. Solución de Código en TypeScript:
 
-#### [rateLimiter.ts](file:///Users/andres/Documents/biblioteca/nosql-databases-programming-book/src/ejercicios/rateLimiter.ts)
+### `rateLimiter.ts`
 ```typescript
 import Redis from 'ioredis';
 import { Request, Response, NextFunction } from 'express';
@@ -98,7 +98,7 @@ Para procesar millones de registros de forma óptima directamente en la base de 
 
 ### 3. Solución de Código en TypeScript:
 
-#### [analisisVentas.ts](file:///Users/andres/Documents/biblioteca/nosql-databases-programming-book/src/ejercicios/analisisVentas.ts)
+### `analisisVentas.ts`
 ```typescript
 import { Schema, model, Document } from 'mongoose';
 
@@ -224,7 +224,7 @@ Para mezclar estas entidades de forma eficiente en una única tabla física, dis
 
 ### 3. Solución de Código en TypeScript:
 
-#### [foroDynamoService.ts](file:///Users/andres/Documents/biblioteca/nosql-databases-programming-book/src/ejercicios/foroDynamoService.ts)
+### `foroDynamoService.ts`
 ```typescript
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocumentClient, QueryCommand } from '@aws-sdk/lib-dynamodb';
@@ -295,7 +295,7 @@ Este problema es extremadamente complejo de procesar en bases relacionales SQL t
 
 ### 3. Solución de Código en TypeScript:
 
-#### [detectorFraude.ts](file:///Users/andres/Documents/biblioteca/nosql-databases-programming-book/src/ejercicios/detectorFraude.ts)
+### `detectorFraude.ts`
 ```typescript
 import neo4j from 'neo4j-driver';
 

@@ -72,7 +72,7 @@ ArgoCD implementa un bucle continuo de reconciliación en Kubernetes:
 
 A continuación, implementaremos un manifiesto de aplicación real en Kubernetes para configurar **ArgoCD**. El archivo describe una **ArgoCD Application** de forma declarativa, vinculando un repositorio Git de configuración con el destino físico del clúster, con políticas de autorreparación (`Self-Healing`) y sincronización automática activas:
 
-#### [aplicacionArgoCD.yml](file:///Users/andres/Documents/biblioteca/devops-programming-book/kubernetes/gitops/aplicacionArgoCD.yml)
+### `aplicacionArgoCD.yml`
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application

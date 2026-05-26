@@ -3,7 +3,7 @@
 > "No hay decisión arquitectónica más impactante que cómo modelas y persistes tus datos."
 
 > [!TIP]
-> Dado que **CQRS** y **Event Sourcing** son fundamentales para sistemas orientados a eventos de alta escala, te recomendamos complementar esta lectura con los capítulos prácticos de la [Arquitectura Orientada a Eventos: Guía Completa](../arquitectura-orientada-eventos/00-indice.md) en tu workspace.
+> Dado que **CQRS** y **Event Sourcing** son fundamentales para sistemas orientados a eventos de alta escala, te recomendamos complementar esta lectura con los capítulos prácticos de la [Arquitectura Orientada a Eventos: Guía Completa](../event-driven-architecture-programming-book/00-indice.md) en tu workspace.
 
 ## 11.1 CQRS (Command Query Responsibility Segregation)
 

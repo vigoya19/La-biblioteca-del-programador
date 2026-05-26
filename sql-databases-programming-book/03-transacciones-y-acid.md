@@ -78,7 +78,7 @@ En sistemas relacionales empresariales, podemos calibrar la velocidad física y 
 
 Implementemos una transacción bancaria robusta en TypeScript con control de excepciones y rollback automático utilizando nuestro pool de conexiones de PostgreSQL:
 
-#### [transferenciaService.ts](file:///Users/andres/Documents/biblioteca/nosql-databases-programming-book/src/services/transferenciaService.ts)
+### `transferenciaService.ts`
 ```typescript
 import { dbPool } from '../clients/dbClient';
 

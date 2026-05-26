@@ -78,7 +78,7 @@ En un pipeline de producción real, no permitimos que un commit se consolide si 
 
 A continuación, implementaremos la sintaxis real y unificada para integrar Snyk en una tubería de integración continua en **GitHub Actions**:
 
-#### [tuberíaSeguridadSnyk.yml](file:///Users/andres/Documents/biblioteca/devops-programming-book/.github/workflows/tuberiaSeguridadSnyk.yml)
+### `tuberíaSeguridadSnyk.yml`
 ```yaml
 name: Tubería de Seguridad y DevSecOps (Snyk)
 

@@ -62,7 +62,7 @@ El aprovisionamiento de infraestructura mediante pipelines automatizados debe se
 
 A continuación, implementaremos la configuración real para automatizar el aprovisionamiento de infraestructura mediante **Terraform** en **GitHub Actions**. El pipeline implementa el flujo de seguridad auditando cambios en Pull Requests (`plan`) y aplicando modificaciones únicamente al fusionar a `main` (`apply`) con persistencia segura de estado:
 
-#### [despliegueTerraform.yml](file:///Users/andres/Documents/biblioteca/devops-programming-book/.github/workflows/despliegueTerraform.yml)
+### `despliegueTerraform.yml`
 ```yaml
 name: Tubería de Aprovisionamiento de Infraestructura (Terraform)
 

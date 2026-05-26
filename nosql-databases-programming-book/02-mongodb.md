@@ -48,7 +48,7 @@ Aunque los desarrolladores escribimos y leemos datos en MongoDB utilizando sinta
 
 En el ecosistema de Node.js/TypeScript, **Mongoose** actúa como el ODM (Object Document Mapper) estándar para estructurar esquemas y dotar a nuestro código de validaciones y tipado estricto:
 
-#### [UsuarioModel.ts](file:///Users/andres/Documents/biblioteca/nosql-databases-programming-book/src/models/UsuarioModel.ts)
+### `UsuarioModel.ts`
 ```typescript
 import { Schema, model, Document } from 'mongoose';
 

@@ -57,7 +57,7 @@ Con **OIDC (OpenID Connect)**, eliminamos por completo las llaves permanentes:
 
 A continuación, implementaremos la configuración real de producción para autenticar de forma federada un pipeline de **GitHub Actions** contra la nube de **AWS** utilizando **OpenID Connect (OIDC)** de forma totalmente segura y libre de contraseñas permanentes en caliente:
 
-#### [desplieguePasswordless.yml](file:///Users/andres/Documents/biblioteca/devops-programming-book/.github/workflows/desplieguePasswordless.yml)
+### `desplieguePasswordless.yml`
 ```yaml
 name: Tubería de Despliegue Seguro (OIDC Passwordless AWS)
 

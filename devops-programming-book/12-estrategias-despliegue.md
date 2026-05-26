@@ -61,7 +61,7 @@ En el desarrollo de software:
 
 A continuación, implementaremos la configuración real para orquestar un **Canary Deployment** en Kubernetes utilizando el controlador popular de **Nginx Ingress**. Definiremos el Ingress de soporte de la versión Canary que desvía de forma automática e inteligente exactamente el **$10\%$ del tráfico de Internet** hacia nuestro servicio experimental en caliente:
 
-#### [ingressCanary.yml](file:///Users/andres/Documents/biblioteca/devops-programming-book/kubernetes/ingress/ingressCanary.yml)
+### `ingressCanary.yml`
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress

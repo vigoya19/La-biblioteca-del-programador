@@ -62,7 +62,7 @@ A continuación, implementaremos un pipeline de producción modular en Azure Dev
 1. Una **Plantilla Reutilizable (`template-compilacion.yml`)** parametrizada que encapsula la lógica compleja de compilar, testear y validar caché.
 2. El **Pipeline de Aplicación (`azure-pipelines.yml`)** que simplemente importa la plantilla pasándole sus variables específicas:
 
-#### [template-compilacion.yml](file:///Users/andres/Documents/biblioteca/devops-programming-book/pipelines/templates/template-compilacion.yml)
+### `template-compilacion.yml`
 ```yaml
 # 1. Definir los parámetros de entrada y sus tipos de datos estrictos para la plantilla
 parameters:
@@ -116,7 +116,7 @@ jobs:
         displayName: 'Ejecutar compilación distributiva (build)'
 ```
 
-#### [azure-pipelines.yml](file:///Users/andres/Documents/biblioteca/devops-programming-book/azure-pipelines.yml)
+### `azure-pipelines.yml`
 ```yaml
 # Tubería principal de la aplicación
 

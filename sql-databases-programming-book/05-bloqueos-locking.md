@@ -118,7 +118,7 @@ Cuando diseñamos concurrencia, nos enfrentamos a dos filosofías arquitectónic
 
 A continuación, implementaremos un sistema de procesamiento de retiros de saldo financiero robusto que utiliza **Bloqueo Pesimista con protección contra esperas infinitas (`NOWAIT`)**, y un despachador de tareas asíncronas de alto rendimiento utilizando la potente cláusula **`SKIP LOCKED`**:
 
-#### [servicioBloqueos.ts](file:///Users/andres/Documents/biblioteca/sql-databases-programming-book/src/services/servicioBloqueos.ts)
+### `servicioBloqueos.ts`
 ```typescript
 import { dbPool } from '../clients/dbClient';
 

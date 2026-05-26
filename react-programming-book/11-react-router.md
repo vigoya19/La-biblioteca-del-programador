@@ -55,7 +55,7 @@ Esta aproximación permite definir **Loaders**: funciones asíncronas que se eje
 
 ### Ejemplo Profesional de Rutas y Data Loaders:
 
-#### [router.tsx](file:///Users/andres/Documents/biblioteca/react-programming-book/src/router.tsx)
+### `router.tsx`
 ```typescript
 import React from 'react';
 import { createBrowserRouter, RouterProvider, Outlet, useLoaderData, useParams, Link } from 'react-router-dom';

@@ -110,7 +110,7 @@ Los **Custom Hooks** son simplemente funciones de JavaScript convencionales cuyo
 
 ### Creación de un Custom Hook de Fetching con TypeScript:
 
-#### [useFetch.ts](file:///Users/andres/Documents/biblioteca/react-programming-book/src/hooks/useFetch.ts)
+### `useFetch.ts`
 ```typescript
 import { useState, useEffect } from 'react';
 

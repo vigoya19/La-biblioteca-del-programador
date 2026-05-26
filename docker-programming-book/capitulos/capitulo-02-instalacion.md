@@ -415,7 +415,7 @@ Ambos deben funcionar porque comparten el mismo daemon Docker. El CLI de Windows
 
 Ejecuta estos tres comandos tras cualquier instalación:
 
-#### `docker version`
+### `docker version`
 
 ```bash
 docker version
@@ -455,7 +455,7 @@ Server: Docker Engine - Community          # ← Daemon corriendo en el servidor
 - Las APIs de Client y Server pueden diferir, pero el servidor mantiene compatibilidad hacia atrás (mínimo `1.24`).
 - `containerd` gestiona el ciclo de vida de contenedores. `runc` crea y ejecuta contenedores OCI.
 
-#### `docker info`
+### `docker info`
 
 ```bash
 docker info
@@ -566,7 +566,7 @@ Server:
 | `Live Restore Enabled: false` | Si lo activas, los contenedores sobreviven a un reinicio del daemon. | Útil en actualizaciones sin downtime. |
 | `Security Options` | Capas de seguridad activas (seccomp, AppArmor, cgroupns). | Añaden restricciones que pueden necesitar relajarse con `--security-opt`. |
 
-#### `docker run hello-world`
+### `docker run hello-world`
 
 ```bash
 docker run hello-world
@@ -3006,4 +3006,4 @@ Si respondiste SÍ a todas, estás listo para el **Capítulo 3: Imágenes y Regi
 
 ---
 
-← [Capítulo anterior](capitulo-01-introduccion.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-03-imagenes.md)
+← [Capítulo anterior](capitulo-01-introduccion.md) | [Inicio](../README.md) | [Capítulo siguiente →](capitulo-03-imagenes.md)

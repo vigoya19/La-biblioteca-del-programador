@@ -85,7 +85,7 @@ Introducido en Redis 5.0, es una estructura de datos inmutable de tipo append-on
 
 Implementemos un sistema completo de ranking dinámico de videojuegos utilizando **Sorted Sets (ZSET)** y transacciones atómicas seguras en TypeScript mediante la librería líder `ioredis`:
 
-#### [rankingService.ts](file:///Users/andres/Documents/biblioteca/nosql-databases-programming-book/src/services/rankingService.ts)
+### `rankingService.ts`
 ```typescript
 import Redis from 'ioredis';
 

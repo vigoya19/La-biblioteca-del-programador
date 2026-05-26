@@ -396,4 +396,4 @@ chmod 777 = rwxrwxrwx  (⚠️ NUNCA en producción)
 
 ---
 
-← [Capítulo anterior](capitulo-13-ejercicios.md) | [Inicio](README.md) | [Capítulo siguiente →](apendice-b-herramientas-modernas.md)
+← [Capítulo anterior](../capitulos/capitulo-13-ejercicios.md) | [Inicio](../README.md) | [Capítulo siguiente →](apendice-b-herramientas-modernas.md)

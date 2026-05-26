@@ -4017,4 +4017,4 @@ En el próximo capítulo, pondremos este conocimiento en práctica construyendo 
 
 ---
 
-← [Capítulo anterior](capitulo-02-instalacion.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-04-dockerfile.md)
+← [Capítulo anterior](capitulo-02-instalacion.md) | [Inicio](../README.md) | [Capítulo siguiente →](capitulo-04-dockerfile.md)

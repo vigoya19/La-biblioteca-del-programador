@@ -16,3 +16,6 @@ Guía completa para dominar Java, desde los fundamentos hasta la arquitectura de
 8. [Capítulo 8: Streams y Programación Funcional](capitulos/capitulo-08-streams-lambdas.md)
 9. [Capítulo 9: JDBC y Acceso a Bases de Datos](capitulos/capitulo-09-jdbc.md)
 10. [Capítulo 10: Buenas Prácticas y Profesionalismo](capitulos/capitulo-10-buenas-practicas.md)
+11. [Capítulo 11: Spring Boot — El Framework de Desarrollo Java](capitulos/capitulo-11-spring-boot.md)
+12. [Capítulo 12: Testing Profesional con JUnit y Mockito](capitulos/capitulo-12-testing.md)
+13. [Capítulo 13: Herramientas de Construcción — Maven y Gradle](capitulos/capitulo-13-maven-gradle.md)

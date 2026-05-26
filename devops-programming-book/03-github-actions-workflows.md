@@ -66,7 +66,7 @@ Los archivos de configuración de GitHub Actions residen obligatoriamente en la 
 
 A continuación, crearemos un archivo YAML de producción para automatizar la integración continua de un backend Node.js estructurado en TypeScript. El pipeline realiza triggers en `push` a la rama principal, implementa una estrategia de **Matrix Build** para probar en múltiples versiones de Node simultáneamente, y optimiza los tiempos de compilación al mínimo aplicando caché persistente nativa sobre `npm`:
 
-#### [integracionContinua.yml](file:///Users/andres/Documents/biblioteca/devops-programming-book/.github/workflows/integracionContinua.yml)
+### `integracionContinua.yml`
 ```yaml
 name: Tubería de Integración Continua (TypeScript)
 

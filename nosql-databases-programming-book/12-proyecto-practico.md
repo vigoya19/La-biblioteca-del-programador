@@ -51,7 +51,7 @@ Nuestra plataforma SaaS requiere resolver cuatro grandes desafíos de negocio a 
 
 Escribamos el código completo de nuestro controlador backend en TypeScript que simula y coordina todas las conexiones simultáneas de bases de datos para procesar una compra y consolidar la persistencia políglota:
 
-#### [SaaSCompraController.ts](file:///Users/andres/Documents/biblioteca/nosql-databases-programming-book/src/controllers/SaaSCompraController.ts)
+### `SaaSCompraController.ts`
 ```typescript
 import mongoose from 'mongoose';
 import Redis from 'ioredis';

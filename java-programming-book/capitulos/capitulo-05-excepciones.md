@@ -3896,4 +3896,4 @@ Las excepciones son una herramienta poderosa, pero como cualquier herramienta, r
 
 ---
 
-← [Capítulo anterior](capitulo-04-colecciones.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-06-io-nio.md)
+← [Capítulo anterior](capitulo-04-colecciones.md) | [Inicio](../README.md) | [Capítulo siguiente →](capitulo-06-io-nio.md)

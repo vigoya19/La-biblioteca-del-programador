@@ -72,7 +72,7 @@ A continuación, implementaremos la configuración real y completa de producció
 
 Este pipeline asume un rol de AWS a través de **OIDC sin contraseñas**, compila la aplicación Node con caché caliente, ejecuta un análisis completo de **Snyk** y **SonarQube** (rompiendo el flujo si fallan las condiciones de seguridad o calidad), construye y publica la imagen a **Amazon ECR** optimizando capas con BuildKit, ejecuta un ciclo atómico de infraestructura con **Terraform**, y finalmente actualiza el repositorio secundario de infraestructura GitOps mediante un commit en caliente para forzar la sincronización a cargo de **ArgoCD** en Kubernetes.
 
-#### [pipelineMasterIntegrador.yml](file:///Users/andres/Documents/biblioteca/devops-programming-book/.github/workflows/pipelineMasterIntegrador.yml)
+### `pipelineMasterIntegrador.yml`
 ```yaml
 name: Pipeline Global de Integración, Seguridad, Infraestructura y GitOps
 

@@ -32,7 +32,7 @@ Un servidor SonarQube local o de producción consta de tres componentes lógicos
 ### El Archivo Docker Compose de Producción:
 A continuación, implementaremos la configuración real y sin placeholders para levantar un servidor de SonarQube autónomo y persistente en caliente:
 
-#### [docker-compose.yml](file:///Users/andres/Documents/biblioteca/devops-programming-book/docker-compose.yml)
+### `docker-compose.yml`
 ```yaml
 version: '3.8'
 
@@ -125,7 +125,7 @@ En el pipeline de desarrollo, una vez compilada la aplicación, disparamos el **
 
 A continuación, implementaremos la sintaxis real y unificada para integrar el escáner en **GitHub Actions**:
 
-#### [tuberíaSonarQube.yml](file:///Users/andres/Documents/biblioteca/devops-programming-book/.github/workflows/tuberiaSonarQube.yml)
+### `tuberíaSonarQube.yml`
 ```yaml
 name: Tubería de Calidad de Código (SonarQube)
 

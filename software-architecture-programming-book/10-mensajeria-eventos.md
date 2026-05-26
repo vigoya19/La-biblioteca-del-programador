@@ -3,7 +3,7 @@
 > "Los eventos son el pegamento invisible que mantiene unidos los sistemas distribuidos."
 
 > [!TIP]
-> Si deseas profundizar en la teoría de la **Arquitectura Orientada a Eventos** y ver implementaciones avanzadas paso a paso con código real de producción, te recomendamos encarecidamente consultar la [Arquitectura Orientada a Eventos: Guía Completa](../arquitectura-orientada-eventos/00-indice.md) en tu workspace.
+> Si deseas profundizar en la teoría de la **Arquitectura Orientada a Eventos** y ver implementaciones avanzadas paso a paso con código real de producción, te recomendamos encarecidamente consultar la [Arquitectura Orientada a Eventos: Guía Completa](../event-driven-architecture-programming-book/00-indice.md) en tu workspace.
 
 ## 10.1 Fundamentos de Mensajería
 

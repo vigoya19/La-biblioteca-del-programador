@@ -68,7 +68,7 @@ En DynamoDB, existen dos formas de definir la llave de identificación de tu tab
 
 Para interactuar con DynamoDB de forma profesional en TypeScript, empleamos el SDK oficial de AWS (`@aws-sdk/client-dynamodb`):
 
-#### [dynamoClient.ts](file:///Users/andres/Documents/biblioteca/nosql-databases-programming-book/src/clients/dynamoClient.ts)
+### `dynamoClient.ts`
 ```typescript
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocumentClient, PutCommand, UpdateCommand } from '@aws-sdk/lib-dynamodb';

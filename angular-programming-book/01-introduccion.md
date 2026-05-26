@@ -162,7 +162,7 @@ mi-app-angular/
 
 ### Análisis Detallado de los Archivos Clave Modernos
 
-#### 1. [app.config.ts](file:///Users/andres/angular-programming-book/src/app/app.config.ts)
+#### 1. `app.config.ts`
 Este archivo es el cerebro de la configuración de la aplicación moderna standalone. Aquí se configuran los enrutadores globales, interceptores HTTP, animaciones y cualquier servicio que deba estar provisto a nivel global:
 
 ```typescript
@@ -184,7 +184,7 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
-#### 2. [app.component.ts](file:///Users/andres/angular-programming-book/src/app/app.component.ts)
+#### 2. `app.component.ts`
 El primer componente de nuestra aplicación. En Angular moderno, notarás que lleva la bandera `standalone: true` obligatoria:
 
 ```typescript
@@ -202,7 +202,7 @@ export class AppComponent {
 }
 ```
 
-#### 3. [main.ts](file:///Users/andres/angular-programming-book/src/main.ts)
+#### 3. `main.ts`
 El archivo que inicializa y arranca la aplicación. A diferencia de las versiones antiguas de Angular que arrancaban un módulo (`bootstrapModule`), en la arquitectura standalone inicializamos la aplicación cargando directamente el componente raíz (`bootstrapApplication`) junto con su objeto de configuración global:
 
 ```typescript

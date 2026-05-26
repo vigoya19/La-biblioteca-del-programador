@@ -76,7 +76,7 @@ Mientras que el particionamiento divide tus datos dentro de los discos de un **m
 
 Implementaremos primero un script en código SQL de producción para crear una **Tabla Padre de Facturas** particionada declarativamente de forma nativa por rango de fecha en PostgreSQL, junto con sus particiones mensuales e índices específicos. Posteriormente, escribiremos el código de ruteo y creación dinámica de particiones en TypeScript:
 
-#### [crearEsquemaParticionado.sql](file:///Users/andres/Documents/biblioteca/sql-databases-programming-book/src/migrations/crearEsquemaParticionado.sql)
+### `crearEsquemaParticionado.sql`
 ```sql
 -- 1. Crear la Tabla Padre utilizando la cláusula PARTITION BY RANGE
 CREATE TABLE facturas_historicas (
@@ -104,7 +104,7 @@ CREATE TABLE facturas_y2026_m06 PARTITION OF facturas_historicas
 CREATE INDEX idx_facturas_fecha_usuario ON facturas_historicas(fecha, usuario_id);
 ```
 
-#### [servicioParticionamiento.ts](file:///Users/andres/Documents/biblioteca/sql-databases-programming-book/src/services/servicioParticionamiento.ts)
+### `servicioParticionamiento.ts`
 ```typescript
 import { dbPool } from '../clients/dbClient';
 

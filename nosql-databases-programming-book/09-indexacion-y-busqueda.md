@@ -84,7 +84,7 @@ Para lograr esto, las arquitecturas modernas acoplan la base de datos NoSQL a un
 
 Implementemos un listener en caliente utilizando **Change Streams** de MongoDB para sincronizar automáticamente cambios hacia un cliente simulado de Elasticsearch en TypeScript:
 
-#### [sincronizadorElastic.ts](file:///Users/andres/Documents/biblioteca/nosql-databases-programming-book/src/services/sincronizadorElastic.ts)
+### `sincronizadorElastic.ts`
 ```typescript
 import { MongoClient, ChangeStream } from 'mongodb';
 
@@ -137,16 +137,6 @@ export async function iniciarSincronizacionCDC(): Promise<void> {
         
         await elasticsearch.indexarDocumento(documentoId, documentoCompleto);
       }
-    } catch (error) {
-      console.error(`[CDC-Worker-Error] Fallo al sincronizar ID = ${documentoId}:`, error);
-      // Aquí se implementaría una cola de reintentos (Dead Letter Queue)
-    }
-  });
-}
-```
-
----
-
     } catch (error) {
       console.error(`[CDC-Worker-Error] Fallo al sincronizar ID = ${documentoId}:`, error);
       // Aquí se implementaría una cola de reintentos (Dead Letter Queue)

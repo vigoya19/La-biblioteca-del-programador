@@ -2978,4 +2978,4 @@ En el próximo capítulo abordaremos **almacenamiento en Docker**: volúmenes, b
 
 ---
 
-← [Capítulo anterior](capitulo-05-volumenes.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-07-compose.md)
+← [Capítulo anterior](capitulo-05-volumenes.md) | [Inicio](../README.md) | [Capítulo siguiente →](capitulo-07-compose.md)

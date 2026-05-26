@@ -4314,4 +4314,4 @@ Ahora tienes las herramientas para tomar decisiones informadas sobre orquestaci�
 
 ---
 
-← [Capítulo anterior](capitulo-07-compose.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-09-cicd.md)
+← [Capítulo anterior](capitulo-07-compose.md) | [Inicio](../README.md) | [Capítulo siguiente →](capitulo-09-cicd.md)

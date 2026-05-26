@@ -104,7 +104,7 @@ Un proceso o worker secundario asíncrono e independiente lee continuamente la t
 
 Implementemos una transacción segura con el patrón **Transactional Outbox** utilizando transacciones locales en MongoDB mediante Mongoose en TypeScript:
 
-#### [OutboxModel.ts](file:///Users/andres/Documents/biblioteca/nosql-databases-programming-book/src/models/OutboxModel.ts)
+### `OutboxModel.ts`
 ```typescript
 import { Schema, model, Document } from 'mongoose';
 
@@ -129,7 +129,7 @@ const OutboxEventSchema = new Schema<IOutboxEvent>({
 export const OutboxEvent = model<IOutboxEvent>('OutboxEvent', OutboxEventSchema);
 ```
 
-#### [pedidoOutboxService.ts](file:///Users/andres/Documents/biblioteca/nosql-databases-programming-book/src/services/pedidoOutboxService.ts)
+### `pedidoOutboxService.ts`
 ```typescript
 import mongoose from 'mongoose';
 import { Pedido } from '../models/EsquemaPedido';

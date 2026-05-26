@@ -102,7 +102,7 @@ Para interactuar de forma expresiva y sencilla con Neo4j, se diseñó **Cypher**
 
 Implementemos un servicio robusto para modelar y consultar una red de conexiones en TypeScript utilizando el controlador oficial de Neo4j (`neo4j-driver`):
 
-#### [neo4jClient.ts](file:///Users/andres/Documents/biblioteca/nosql-databases-programming-book/src/clients/neo4jClient.ts)
+### `neo4jClient.ts`
 ```typescript
 import neo4j from 'neo4j-driver';
 
@@ -113,7 +113,7 @@ export const driver = neo4j.driver(
 );
 ```
 
-#### [recomendacionService.ts](file:///Users/andres/Documents/biblioteca/nosql-databases-programming-book/src/services/recomendacionService.ts)
+### `recomendacionService.ts`
 ```typescript
 import { driver } from './clients/neo4jClient';
 

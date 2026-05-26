@@ -6,7 +6,7 @@ Este capítulo integra todos los conceptos del libro en una implementación comp
 > **Prerrequisitos de Lectura:**
 > Esta implementación práctica está desarrollada en **TypeScript / Node.js** y está diseñada para ser empaquetada en contenedores. Para comprender al máximo los bloques de código y la configuración del entorno, te recomendamos encarecidamente revisar previamente:
 > - El [Capítulo 7: Asincronía y el Event Loop](../node-programming-book/07-asincronia.md) del libro de **Node.js**.
-> - El [Capítulo 4: El Archivo Dockerfile](../docker-programmin-book/capitulos/capitulo-04-dockerfile.md) del libro de **Docker**.
+> - El [Capítulo 4: El Archivo Dockerfile](../docker-programming-book/capitulos/capitulo-04-dockerfile.md) del libro de **Docker**.
 
 > "Un ejemplo vale más que mil diagramas de arquitectura." — Pragmatic Programmer
 

@@ -103,7 +103,7 @@ A continuación, implementaremos un servicio de análisis corporativo avanzado e
 1. Un organigrama jerárquico recursivo de empleados completo con su nivel de profundidad.
 2. Un cálculo analítico de ventas acumulado mensual y comparativo con el mes anterior (`LAG`) de forma instantánea.
 
-#### [analisisMétricas.ts](file:///Users/andres/Documents/biblioteca/sql-databases-programming-book/src/services/analisisMetricas.ts)
+### `analisisMétricas.ts`
 ```typescript
 import { dbPool } from '../clients/dbClient';
 

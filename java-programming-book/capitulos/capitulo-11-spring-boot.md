@@ -465,3 +465,5 @@ Accede a `http://localhost:8080/api/v1/saludo` y verás:
 Has creado tu primer endpoint REST con Spring Boot en menos de 10 líneas de código. Sin XML, sin `web.xml`, sin configurar manualmente Jackson. Así de sencillo.
 
 ---
+
+[← Capítulo anterior](capitulo-10-buenas-practicas.md) | [Inicio](../README.md) | [Capítulo siguiente →](capitulo-12-testing.md)

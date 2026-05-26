@@ -61,7 +61,7 @@ Para instrumentar y visualizar la observabilidad sin acoplar nuestro software a 
 
 A continuación, implementaremos la configuración real y sin placeholders para definir **Prometheus Alerting Rules**. El archivo describe una regla de alerta en Kubernetes que vigila la tasa de errores HTTP 500 y las latencias de nuestra API financiera, disparando una notificación de nivel crítico a través de **Alertmanager** si el sistema supera los umbrales seguros:
 
-#### [reglasAlertaPrometheus.yml](file:///Users/andres/Documents/biblioteca/devops-programming-book/kubernetes/prometheus/reglasAlertaPrometheus.yml)
+### `reglasAlertaPrometheus.yml`
 ```yaml
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule

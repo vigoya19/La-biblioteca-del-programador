@@ -99,7 +99,7 @@ En Cassandra **no existen los JOINs ni las llaves foráneas**. El modelado de da
 
 Implementemos una conexión robusta y una consulta utilizando el controlador oficial `cassandra-driver` en TypeScript:
 
-#### [cassandraClient.ts](file:///Users/andres/Documents/biblioteca/nosql-databases-programming-book/src/clients/cassandraClient.ts)
+### `cassandraClient.ts`
 ```typescript
 import { Client, auth } from 'cassandra-driver';
 
@@ -112,7 +112,7 @@ export const cassandraClient = new Client({
 });
 ```
 
-#### [sensorService.ts](file:///Users/andres/Documents/biblioteca/nosql-databases-programming-book/src/services/sensorService.ts)
+### `sensorService.ts`
 ```typescript
 import { cassandraClient } from './clients/cassandraClient';
 

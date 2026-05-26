@@ -64,7 +64,7 @@ Cuando se ejecuta un trigger, el motor relacional expone dos variables especiale
 
 A continuación, implementaremos un sistema de auditoría física completo utilizando **PL/pgSQL**. Crearemos una función disparadora que registra en una tabla histórica de auditorías todos los cambios microscópicos realizados en una tabla de saldos financieros, almacenando los valores anteriores (`OLD`) y nuevos (`NEW`) de forma automatizada:
 
-#### [auditoriaSaldos.sql](file:///Users/andres/Documents/biblioteca/sql-databases-programming-book/src/migrations/auditoriaSaldos.sql)
+### `auditoriaSaldos.sql`
 ```sql
 -- 1. Crear la tabla de saldos financieros principal
 CREATE TABLE cuentas_bancarias (
@@ -125,7 +125,7 @@ FOR EACH ROW
 EXECUTE FUNCTION registrar_cambio_saldo();
 ```
 
-#### [servicioAuditoriaWrapper.ts](file:///Users/andres/Documents/biblioteca/sql-databases-programming-book/src/services/servicioAuditoriaWrapper.ts)
+### `servicioAuditoriaWrapper.ts`
 ```typescript
 import { dbPool } from '../clients/dbClient';
 

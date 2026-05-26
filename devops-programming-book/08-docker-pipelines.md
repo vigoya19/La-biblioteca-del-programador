@@ -60,7 +60,7 @@ Utilizando el nuevo motor de compilación **Docker BuildKit**, podemos indicarle
 
 A continuación, implementaremos primero el **Dockerfile Multi-Stage optimizado** para Node/TypeScript, y posteriormente el archivo YAML de **GitHub Actions** que compila la imagen, aplica caching avanzado de capas BuildKit y la publica en Docker Hub:
 
-#### [Dockerfile](file:///Users/andres/Documents/biblioteca/devops-programming-book/Dockerfile)
+### `Dockerfile`
 ```dockerfile
 # ==========================================
 # ETAPA 1: Compilación de Código (Builder)
@@ -108,7 +108,7 @@ EXPOSE 3000
 CMD ["node", "dist/app.js"]
 ```
 
-#### [publicarContenedor.yml](file:///Users/andres/Documents/biblioteca/devops-programming-book/.github/workflows/publicarContenedor.yml)
+### `publicarContenedor.yml`
 ```yaml
 name: Tubería de Compilación y Publicación de Contenedor Docker
 

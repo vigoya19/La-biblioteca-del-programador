@@ -528,3 +528,7 @@ class PruebasDependientesDelEntorno {
 | `assumingThat(condition, executable)` | Ejecuta `executable` solo si `condition` es true, pero no aborta si es false |
 | `assumeTrue(condition, message)` | Aborta con mensaje personalizado |
 | `assumeTrue(condition, messageSupplier)` | Mensaje con supplier para lazy evaluation |
+
+---
+
+[← Capítulo anterior](capitulo-11-spring-boot.md) | [Inicio](../README.md) | [Capítulo siguiente →](capitulo-13-maven-gradle.md)

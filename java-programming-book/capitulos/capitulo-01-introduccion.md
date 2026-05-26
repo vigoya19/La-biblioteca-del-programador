@@ -2372,4 +2372,4 @@ java -Xms64m -Xmx256m -Xlog:gc*:file=gc.log:time,level,tags GeneradorBasura
 
 ---
 
-[Inicio](README.md) | [Capítulo siguiente →](capitulo-02-fundamentos.md)
+[Inicio](../README.md) | [Capítulo siguiente →](capitulo-02-fundamentos.md)

@@ -103,7 +103,7 @@ PostgreSQL ofrece soporte de primer nivel para datos documentales en formato bin
 
 A continuación, implementaremos un servicio en TypeScript que modela y almacena registros de un e-commerce con catálogo dinámico utilizando una columna **JSONB** en PostgreSQL. Validaremos los atributos dinámicos con la potente librería **Zod** antes de la inserción y demostraremos consultas nativas con operadores de búsqueda sobre JSONB:
 
-#### [gestionCatalogo.ts](file:///Users/andres/Documents/biblioteca/sql-databases-programming-book/src/services/gestionCatalogo.ts)
+### `gestionCatalogo.ts`
 ```typescript
 import { z } from 'zod';
 import { dbPool } from '../clients/dbClient';

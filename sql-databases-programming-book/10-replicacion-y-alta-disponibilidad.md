@@ -84,7 +84,7 @@ PgBouncer es un proxy intermedio ultraligero que realiza **Connection Pooling ex
 
 A continuación, implementaremos un despachador de base de datos en TypeScript para producción que cuenta con **dos pools de conexiones separados**: uno dirigido al nodo **Primary** (para transacciones de escritura y consultas de alta consistencia crítica) y otro dirigido al balanceador de carga de las réplicas de sólo lectura **Read Replicas**. Rutearemos las consultas de forma inteligente basándonos en la naturaleza de la operación:
 
-#### [clienteBaseDeDatosRuteado.ts](file:///Users/andres/Documents/biblioteca/sql-databases-programming-book/src/clients/clienteBaseDeDatosRuteado.ts)
+### `clienteBaseDeDatosRuteado.ts`
 ```typescript
 import { Pool, PoolClient } from 'pg';
 

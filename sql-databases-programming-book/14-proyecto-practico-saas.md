@@ -37,7 +37,7 @@ En el desarrollo de software tipo Software as a Service (SaaS), nos enfrentamos 
 A continuación, implementaremos el código completo y unificado para nuestro SaaS Multi-Tenant Financiero. Primero, configuraremos el esquema físico de base de datos con RLS. Después, implementaremos el backend en TypeScript utilizando el pool de PostgreSQL nativo para gestionar la creación de tenants y el procesamiento transaccional de depósitos financieros:
 
 ### 1. El Esquema Físico SQL de Producción
-#### [esquemaSaaSSecure.sql](file:///Users/andres/Documents/biblioteca/sql-databases-programming-book/src/migrations/esquemaSaaSSecure.sql)
+### `esquemaSaaSSecure.sql`
 ```sql
 -- Habilitar extensiones de seguridad para UUIDs si es necesario
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
@@ -72,7 +72,7 @@ CREATE POLICY policy_cuentas_tenant_isolation ON cuentas_saas
 ```
 
 ### 2. El Orquestador Backend en TypeScript
-#### [servicioSaaS.ts](file:///Users/andres/Documents/biblioteca/sql-databases-programming-book/src/services/servicioSaaS.ts)
+### `servicioSaaS.ts`
 ```typescript
 import { dbPool } from '../clients/dbClient';
 

@@ -38,7 +38,7 @@ Para combinar la ligereza de los componentes no controlados con la reactividad y
 
 Implementemos un formulario de registro profesional con validaciones complejas (como confirmación de contraseña) y tipado automático inferido en TypeScript:
 
-#### [RegistroForm.tsx](file:///Users/andres/Documents/biblioteca/react-programming-book/src/components/RegistroForm.tsx)
+### `RegistroForm.tsx`
 ```typescript
 import React from 'react';
 import { useForm } from 'react-hook-form';

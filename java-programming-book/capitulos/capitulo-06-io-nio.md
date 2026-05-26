@@ -3417,4 +3417,4 @@ public class ComparacionRendimiento {
 
 ---
 
-← [Capítulo anterior](capitulo-05-excepciones.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-07-concurrencia.md)
+← [Capítulo anterior](capitulo-05-excepciones.md) | [Inicio](../README.md) | [Capítulo siguiente →](capitulo-07-concurrencia.md)

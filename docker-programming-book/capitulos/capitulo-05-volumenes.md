@@ -3321,4 +3321,4 @@ En este capítulo has aprendido todo lo necesario sobre persistencia en Docker:
 
 ---
 
-← [Capítulo anterior](capitulo-04-dockerfile.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-06-redes.md)
+← [Capítulo anterior](capitulo-04-dockerfile.md) | [Inicio](../README.md) | [Capítulo siguiente →](capitulo-06-redes.md)

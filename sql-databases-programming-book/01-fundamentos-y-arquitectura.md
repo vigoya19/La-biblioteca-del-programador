@@ -168,7 +168,7 @@ El Executor recibe el plan físico óptimo y procesa los datos reales.
 
 Para interactuar con PostgreSQL de forma profesional y prevenir inyecciones SQL a nivel de driver en Node.js/TypeScript, empleamos el controlador líder `pg` y aserciones estrictas:
 
-#### [dbClient.ts](file:///Users/andres/Documents/biblioteca/sql-databases-programming-book/src/clients/dbClient.ts)
+### `dbClient.ts`
 ```typescript
 import { Pool } from 'pg';
 
@@ -185,7 +185,7 @@ export const dbPool = new Pool({
 });
 ```
 
-#### [usuarioService.ts](file:///Users/andres/Documents/biblioteca/sql-databases-programming-book/src/services/usuarioService.ts)
+### `usuarioService.ts`
 ```typescript
 import { dbPool } from '../clients/dbClient';
 

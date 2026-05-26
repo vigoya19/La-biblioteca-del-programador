@@ -168,7 +168,7 @@ mi-app-react/
 
 ### Análisis Detallado del Punto de Entrada
 
-#### 1. [index.html](file:///Users/andres/Documents/biblioteca/react-programming-book/index.html)
+#### 1. `index.html`
 A diferencia de otros frameworks, el archivo HTML de entrada en React es sumamente minimalista. Contiene únicamente un elemento `div` vacío con un identificador único (comúnmente `root`) y carga el script principal de TypeScript:
 
 ```html
@@ -186,7 +186,7 @@ A diferencia de otros frameworks, el archivo HTML de entrada en React es sumamen
 </html>
 ```
 
-#### 2. [src/main.tsx](file:///Users/andres/Documents/biblioteca/react-programming-book/src/main.tsx)
+#### 2. `src/main.tsx`
 Este archivo se encarga de inicializar React enlazando el mundo digital del Virtual DOM con el contenedor físico del DOM real. React v18/19 utiliza la API de enraizamiento `createRoot`:
 
 ```typescript
@@ -216,7 +216,7 @@ raizReact.render(
 )
 ```
 
-#### 3. [src/App.tsx](file:///Users/andres/Documents/biblioteca/react-programming-book/src/App.tsx)
+#### 3. `src/App.tsx`
 El componente raíz de la aplicación, implementado como una función de JavaScript pura que retorna sintaxis JSX (XML integrado en JavaScript):
 
 ```typescript

@@ -139,7 +139,7 @@ Si el componente hijo necesita modificar el estado del padre, el padre le pasa u
 
 ### Ejemplo Completo y Tipado Estricto de Elevación de Estado:
 
-#### 1. [Filtro.tsx](file:///Users/andres/Documents/biblioteca/react-programming-book/src/Filtro.tsx) (Componente Dumb/Hijo)
+#### 1. `Filtro.tsx` (Componente Dumb/Hijo)
 ```typescript
 import React from 'react';
 
@@ -173,7 +173,7 @@ export function Filtro({ valorActual, onCambio }: FiltroProps): React.JSX.Elemen
 }
 ```
 
-#### 2. [Dashboard.tsx](file:///Users/andres/Documents/biblioteca/react-programming-book/src/Dashboard.tsx) (Componente Smart/Padre)
+#### 2. `Dashboard.tsx` (Componente Smart/Padre)
 ```typescript
 import React, { useState } from 'react';
 import { Filtro } from './Filtro';

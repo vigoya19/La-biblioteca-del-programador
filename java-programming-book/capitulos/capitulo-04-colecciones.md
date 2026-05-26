@@ -3047,4 +3047,4 @@ Tengo que almacenar...
 
 ---
 
-← [Capítulo anterior](capitulo-03-poo.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-05-excepciones.md)
+← [Capítulo anterior](capitulo-03-poo.md) | [Inicio](../README.md) | [Capítulo siguiente →](capitulo-05-excepciones.md)

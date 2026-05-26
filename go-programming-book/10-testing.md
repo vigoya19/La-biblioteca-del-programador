@@ -40,7 +40,11 @@ func TestDividirPorCero(t *testing.T) {
         t.Fatal("Dividir(10, 0): esperaba error, no ocurrio")
     }
 }
-Ejecutar tests
+```
+
+### Ejecutar tests
+
+```bash
 # Todos los tests del paquete actual
 go test
 # Con salida detallada
@@ -60,6 +64,8 @@ go tool cover -html=coverage.out  # Abre en navegador
 go test -race ./...
 # Paralelizar tests (por defecto GOMAXPROCS)
 go test -parallel 4 ./...
+```
+
 ### Convenciones de archivos de test
 
 ```
@@ -71,8 +77,12 @@ mi-paquete/
   # Archivos de integracion (build tag)
   usuario_integration_test.go  # //go:build integration
 ```
-10.2 Tests de Tabla (Table-Driven Tests)
+
+## 10.2 Tests de Tabla (Table-Driven Tests)
+
 El patron mas comun en Go. Cada caso de prueba es una entrada en un slice:
+
+```go
 package calculadora
 import "testing"
 func Sumar(a, b int) int {
@@ -150,7 +160,11 @@ func TestValidarEmail(t *testing.T) {
         })
     }
 }
-Test de tabla con setup complejo
+```
+
+### Test de tabla con setup complejo
+
+```go
 func TestServicioUsuario(t *testing.T) {
     // Setup compartido
     repo := NuevoRepositorioMemoria()
@@ -195,8 +209,13 @@ func TestServicioUsuario(t *testing.T) {
         })
     }
 }
-10.3 Helpers y t.Helper()
+```
+
+## 10.3 Helpers y t.Helper()
+
 Marca tus funciones auxiliares con t.Helper() para que los errores apunten al test, no al helper:
+
+```go
 package usuario
 import (
     "errors"
@@ -229,8 +248,13 @@ func verificarErrorEs(t *testing.T, esperado, obtenido error) {
         t.Fatalf("error esperado %v, obtenido %v", esperado, obtenido)
     }
 }
-10.4 Sub-tests con t.Run()
+```
+
+## 10.4 Sub-tests con t.Run()
+
 t.Run() crea sub-tests que pueden ejecutarse individualmente y en paralelo:
+
+```go
 func TestCalculadora(t *testing.T) {
     t.Run("Suma", func(t *testing.T) {
         t.Parallel() // Ejecutar en paralelo con otros sub-tests
@@ -265,12 +289,20 @@ func TestCalculadora(t *testing.T) {
         })
     })
 }
+```
+
+```bash
 # Ejecutar un sub-test especifico
 go test -run TestCalculadora/Suma
 # Ejecutar grupo de sub-tests
 go test -run TestCalculadora/Division
-10.5 TestMain
+```
+
+## 10.5 TestMain
+
 TestMain permite setup y teardown global para todos los tests de un paquete:
+
+```go
 package database
 import (
     "os"
@@ -306,9 +338,15 @@ func TestCrearUsuario(t *testing.T) {
         t.Errorf("nombre incorrecto: %s", u.Nombre)
     }
 }
-10.6 Fakes, Stubs y Mocks
+```
+
+## 10.6 Fakes, Stubs y Mocks
+
 Go prefiere interfaces para testing. No necesitas librerias de mocking (aunque existen).
-Fake: implementacion simplificada
+
+### Fake: implementacion simplificada
+
+```go
 package usuario
 import (
     "errors"
@@ -437,8 +475,13 @@ func TestServicioLlamaRepositorio(t *testing.T) {
         t.Errorf("llamadas incorrectas: %v", spy.ObtenerLlamadas)
     }
 }
-10.7 Benchmarks
+```
+
+## 10.7 Benchmarks
+
 Los benchmarks miden el rendimiento de funciones:
+
+```go
 package calculadora
 import (
     "testing"
@@ -486,7 +529,11 @@ func BenchmarkConcatenarStrings(b *testing.B) {
         }
     })
 }
-Ejecutar benchmarks
+```
+
+### Ejecutar benchmarks
+
+```bash
 # Todos los benchmarks
 go test -bench=. ./...
 # Benchmark especifico
@@ -507,7 +554,11 @@ go tool pprof mem.out
 go test -bench=. -count=10 > nuevo.txt
 # Antes: go test -bench=. -count=10 > viejo.txt
 # benchstat viejo.txt nuevo.txt
-Tabla de benchmarks
+```
+
+### Tabla de benchmarks
+
+```go
 func BenchmarkJSONUnmarshal(b *testing.B) {
     tamanos := []int{100, 1000, 10000, 100000}
     for _, tam := range tamanos {
@@ -521,8 +572,13 @@ func BenchmarkJSONUnmarshal(b *testing.B) {
         })
     }
 }
-10.8 Fuzzing (Go 1.18+)
+```
+
+## 10.8 Fuzzing (Go 1.18+)
+
 El fuzzing genera entradas aleatorias para encontrar bugs:
+
+```go
 package usuario
 import (
     "testing"
@@ -554,14 +610,22 @@ func FuzzValidarNombre(f *testing.F) {
         _ = err
     })
 }
+```
+
+```bash
 # Ejecutar fuzz tests (por tiempo limitado, por defecto)
 go test -fuzz=FuzzValidarNombre
 # Por tiempo especifico
 go test -fuzz=FuzzValidarNombre -fuzztime=30s
 # Con carpeta de corpus (guarda entradas que encontraron bugs)
 go test -fuzz=. -fuzztime=1m
-10.9 Tests de Integracion
+```
+
+## 10.9 Tests de Integracion
+
 Build tags para separar tests
+
+```go
 // usuario_integration_test.go
 //go:build integration
 package usuario
@@ -589,23 +653,38 @@ func TestIntegracionCrearUsuario(t *testing.T) {
         t.Error("esperaba ID > 0")
     }
 }
+```
+
+```bash
 # Solo tests unitarios (sin build tag integration)
 go test ./...
 # Solo tests de integracion
 go test -tags=integration ./...
 # Ejecutar ambos
 go test -tags=integration ./...
-Short mode: omitir tests lentos
+```
+
+### Short mode: omitir tests lentos
+
+```go
 func TestExportacionMasiva(t *testing.T) {
     if testing.Short() {
         t.Skip("omitido en modo corto")
     }
     // Test que tarda mucho...
 }
+```
+
+```bash
 # Omitir tests largos
 go test -short ./...
-10.10 Ejemplos como Tests
+```
+
+## 10.10 Ejemplos como Tests
+
 Los ejemplos de documentacion son tests ejecutables:
+
+```go
 package matematicas
 import "fmt"
 func Sumar(a, b int) int {
@@ -633,11 +712,18 @@ func Example_conDesorden() {
     // 2
     // 3
 }
+```
+
+```bash
 # Los ejemplos se ejecutan como tests
 go test -v
 # Tambien aparecen en documentacion
 go doc matematicas Sumar
-10.11 Cobertura de Codigo
+```
+
+## 10.11 Cobertura de Codigo
+
+```bash
 # Generar perfil de cobertura
 go test -coverprofile=coverage.out ./...
 # Ver cobertura por funcion
@@ -646,7 +732,10 @@ go tool cover -func=coverage.out
 go tool cover -html=coverage.out
 # Cobertura en CI (umbral no nativo, usa herramienta externa)
 go test -cover ./... | grep coverage
-10.12 Buenas Practicas de Testing
+```
+
+## 10.12 Buenas Practicas de Testing
+
 1. Paquete de test: _test
 // usuario_test.go
 package usuario_test // Paquete externo, solo ve API publica
@@ -712,26 +801,18 @@ func TestSimple(t *testing.T) {
     }
 }
 ## Resumen del Capítulo
-- 
-go test ejecuta tests con el paquete estandar testing.
-- 
-Los tests de tabla son el patron idiomatico por excelencia.
-- 
-t.Run() crea sub-tests que pueden ejecutarse en paralelo.
-- 
-Fakes, stubs y spies evitan dependencias externas en tests.
-- 
-Los benchmarks miden rendimiento con testing.B.
-- 
-El fuzzing genera entradas aleatorias para encontrar bugs.
-- 
-Build tags separan tests unitarios de integracion.
-- 
-testing.Short() permite omitir tests lentos.
-- 
-Los ejemplos son tests ejecutables que ademas documentan.
-- 
-Testea comportamiento, no implementacion. Manten los tests simples.
+
+- `go test` ejecuta tests con el paquete estandar `testing`.
+- Los tests de tabla son el patron idiomatico por excelencia.
+- `t.Run()` crea sub-tests que pueden ejecutarse en paralelo.
+- Fakes, stubs y spies evitan dependencias externas en tests.
+- Los benchmarks miden rendimiento con `testing.B`.
+- El fuzzing genera entradas aleatorias para encontrar bugs.
+- Build tags separan tests unitarios de integracion.
+- `testing.Short()` permite omitir tests lentos.
+- Los ejemplos son tests ejecutables que ademas documentan.
+- Testea comportamiento, no implementacion. Manten los tests simples.
+
 En el siguiente capitulo exploraremos Generics en Go.
 
 ---

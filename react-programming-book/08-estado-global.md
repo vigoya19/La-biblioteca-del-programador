@@ -46,7 +46,7 @@ En el ecosistema de React coexisten tres formas radicalmente diferentes de model
 
 Implementemos un almacén dinámico para un carrito de compras profesional con Zustand:
 
-#### [cartStore.ts](file:///Users/andres/Documents/biblioteca/react-programming-book/src/store/cartStore.ts)
+### `cartStore.ts`
 ```typescript
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';

@@ -56,7 +56,7 @@ Se declaran agregando la directiva **`'use server'`** al inicio del archivo o de
 
 ### Ejemplo Profesional: Creación de un Post en base de datos usando Server Actions y Formulario Nativo
 
-#### 1. [postActions.ts](file:///Users/andres/Documents/biblioteca/react-programming-book/src/actions/postActions.ts) (Lógica que corre estrictamente en Servidor)
+#### 1. `postActions.ts` (Lógica que corre estrictamente en Servidor)
 ```typescript
 'use server';
 
@@ -86,7 +86,7 @@ export async function crearNuevoPost(formData: FormData): Promise<{ success: boo
 }
 ```
 
-#### 2. [FormularioPost.tsx](file:///Users/andres/Documents/biblioteca/react-programming-book/src/components/FormularioPost.tsx) (Componente de Cliente Interactivo)
+#### 2. `FormularioPost.tsx` (Componente de Cliente Interactivo)
 ```typescript
 'use client';
 

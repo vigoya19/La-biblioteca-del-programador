@@ -101,7 +101,7 @@ Aquí entra el proceso **VACUUM**:
 
 Implementemos un servicio en TypeScript que ejecute transferencias bancarias críticas utilizando el nivel de aislamiento máximo **Serializable**, incorporando de forma obligatoria un bucle de reintentos asíncrono para gestionar los abortos lógicos que PostgreSQL disparará si detecta colisiones de concurrencia o Write Skew:
 
-#### [transaccionSerializable.ts](file:///Users/andres/Documents/biblioteca/nosql-databases-programming-book/src/services/transaccionSerializable.ts)
+### `transaccionSerializable.ts`
 ```typescript
 import { dbPool } from '../clients/dbClient';
 

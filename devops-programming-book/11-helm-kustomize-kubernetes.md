@@ -59,7 +59,7 @@ Kustomize se basa en la herencia y superposición de capas lógicas (**Base y Ov
 
 A continuación, implementaremos la estructura de archivos real y unificada para configurar **Kustomize** en caliente. Definiremos la carpeta del overlay de **Staging** que aplica parches lógicos de replicas, nombres y parches JSON directos sobre la tabla de manifiestos base de Kubernetes:
 
-#### [kustomization.yaml](file:///Users/andres/Documents/biblioteca/devops-programming-book/kubernetes/overlays/staging/kustomization.yaml)
+### `kustomization.yaml`
 ```yaml
 # 1. Vincular el cimiento físico común (Base)
 resources:

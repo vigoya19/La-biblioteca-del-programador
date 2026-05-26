@@ -3175,4 +3175,4 @@ public class ShadowingDemo {
 
 ---
 
-← [Capítulo anterior](capitulo-01-introduccion.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-03-poo.md)
+← [Capítulo anterior](capitulo-01-introduccion.md) | [Inicio](../README.md) | [Capítulo siguiente →](capitulo-03-poo.md)

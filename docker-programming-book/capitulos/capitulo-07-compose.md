@@ -4543,4 +4543,4 @@ jobs:
 
 ---
 
-← [Capítulo anterior](capitulo-06-redes.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-08-orquestacion.md)
+← [Capítulo anterior](capitulo-06-redes.md) | [Inicio](../README.md) | [Capítulo siguiente →](capitulo-08-orquestacion.md)

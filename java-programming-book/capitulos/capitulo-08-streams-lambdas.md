@@ -3562,4 +3562,4 @@ Características:
 
 ---
 
-← [Capítulo anterior](capitulo-07-concurrencia.md) | [Inicio](README.md) | [Capítulo siguiente →](capitulo-09-jdbc.md)
+← [Capítulo anterior](capitulo-07-concurrencia.md) | [Inicio](../README.md) | [Capítulo siguiente →](capitulo-09-jdbc.md)
